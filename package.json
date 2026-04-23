@@ -1,0 +1,33 @@
+{
+  "name": "finance-news-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "generate:local-news": "tsx scripts/generate-local-news.ts",
+    "generate:crawled-news": "tsx scripts/generate-crawled-news.ts",
+    "generate:all": "tsx scripts/generate-all.ts"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "html-entities": "^2.6.0",
+    "next": "^16.2.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "slugify": "^1.6.6",
+    "tesseract.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.2.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
