@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "观潮财经",
-  description: "聚合本地精选资讯与财经网站高质量快讯的中文财经新闻站点。",
+  title: "高盛内参（香港）",
+  description: "聚合高价值国际公开标题流与中国股票直接影响资讯的品牌化站点。",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -14,24 +15,34 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <header className="site-header">
           <div className="site-header-inner">
-            <div className="brand-lockup">
-              <span className="brand-kicker">Market Wire</span>
-              <Link className="brand-title" href="/">
-                观潮财经
-              </Link>
-              <div className="brand-subtitle">
-                本地导入资讯 + 白名单站点抓取，优先呈现当日市场情绪、重要事件与行业脉络。
+            <div className="brand-lockup brand-lockup-wide">
+              <div className="header-brand-frame">
+                <Image
+                  alt="Goldman Sachs HK Reference 英文品牌章实拍"
+                  className="header-brand-mark header-brand-photo"
+                  height={98}
+                  priority
+                  src="/brand/header-brand-photo.jpg"
+                  width={150}
+                />
+              </div>
+              <div className="brand-copy">
+                <span className="brand-kicker">Goldman Sachs HK Reference</span>
+                <Link className="brand-title" href="/">
+                  高盛内参（香港）
+                </Link>
+                <div className="brand-subtitle">公开标题流、精选预览流与中国股票直接影响筛选，聚焦更值得追踪的全球市场线索。</div>
               </div>
             </div>
             <nav className="top-nav" aria-label="主导航">
               <Link className="nav-pill" href="/">
-                今日资讯
+                中国股票影响流
               </Link>
-              <Link className="nav-pill" href="/sources/%E4%BB%8A%E6%97%A5%E6%96%B0%E9%97%BB">
-                本地导入
+              <Link className="nav-pill" href="/sources/Reuters">
+                国际来源
               </Link>
               <Link className="nav-pill" href="/reports">
-                研报解读
+                策略库预留
               </Link>
             </nav>
           </div>

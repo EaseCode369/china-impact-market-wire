@@ -1,136 +1,299 @@
 import * as cheerio from "cheerio";
 import { decode } from "html-entities";
 
-import type { NewsPost } from "@/lib/content-schema";
+import type { ContentLevel, NewsPost } from "@/lib/content-schema";
 import { CRAWLER_LIMIT } from "@/scripts/lib/constants";
 import {
+  buildDedupeKey,
   createSlug,
   inferCategory,
+  inferChinaStockRelevance,
   inferTags,
+  makeHeadlineSummary,
   safeDate,
   stableId,
   summarizeText,
   writeCollection,
 } from "@/scripts/lib/helpers";
+import { getActiveSourceConfigs, getSourceConfigById } from "@/scripts/lib/source-config";
 
 type RawItem = {
+  sourceId: string;
   sourceName: string;
   title: string;
   summary: string;
   url: string;
   publishedAt: string;
+  contentLevel: ContentLevel;
 };
 
-export async function generateCrawledNews() {
-  const sourceItems = await Promise.allSettled([
-    crawlDzh(),
-    crawlEastmoney(),
-    crawlCls(),
-    crawlStcn(),
-  ]);
+type GenerateOptions = {
+  limit?: number;
+  sourceIds?: string[];
+  since?: string | null;
+};
 
-  const merged = sourceItems.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
-  const deduped = new Map<string, NewsPost>();
+const sourceFetchers: Record<string, () => Promise<RawItem[]>> = {
+  reuters: crawlReuters,
+  bloomberg: crawlBloomberg,
+  ft: crawlFt,
+  wsj: crawlWsj,
+  wallstreetcn: crawlWallstreetcn,
+  scmp: crawlScmp,
+  cls: crawlCls,
+  stcn: crawlStcn,
+};
 
-  for (const item of merged) {
-    const key = item.url || `${item.sourceName}:${item.title}`;
-    if (deduped.has(key)) {
-      continue;
-    }
-    const id = stableId(`${item.sourceName}:${item.url}:${item.title}`);
-    deduped.set(key, {
-      id,
-      slug: createSlug(item.title, id),
-      source_type: "crawled_site",
-      source_name: item.sourceName,
-      title: item.title,
-      summary: item.summary,
-      original_url: item.url,
-      published_at: safeDate(item.publishedAt),
-      imported_at: new Date().toISOString(),
-      category: inferCategory(item.title, item.summary, item.sourceName),
-      tags: inferTags(item.title, item.summary, item.sourceName),
-    });
-  }
-
-  const posts = Array.from(deduped.values()).sort(
-    (a, b) => +new Date(b.published_at) - +new Date(a.published_at),
+export async function generateCrawledNews(options: GenerateOptions = {}) {
+  const activeSources = getActiveSourceConfigs(options.sourceIds);
+  const settled = await Promise.allSettled(
+    activeSources.map(async (source) => {
+      const fetcher = sourceFetchers[source.id];
+      if (!fetcher) {
+        return [] as RawItem[];
+      }
+      return fetcher();
+    }),
   );
 
+  const merged = settled.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
+  const posts = merged
+    .map((item) => createNewsPost(item))
+    .filter((post) => {
+      if (!options.since) {
+        return true;
+      }
+      return +new Date(post.published_at) >= +new Date(options.since);
+    })
+    .sort((a, b) => +new Date(b.published_at) - +new Date(a.published_at))
+    .slice(0, options.limit ?? CRAWLER_LIMIT * Math.max(activeSources.length, 1));
+
   writeCollection("crawled-news.json", posts);
-  return posts;
+  return {
+    posts,
+    activeSources: activeSources.map((source) => source.displayName),
+  };
 }
 
-async function crawlDzh(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.dzh.com.cn/index/home?mod=nc");
+function createNewsPost(item: RawItem): NewsPost {
+  const sourceConfig = getSourceConfigById(item.sourceId);
+  const id = stableId(`${item.sourceId}:${item.url}:${item.title}`);
+  const relevance = inferChinaStockRelevance(item.title, item.summary);
+
+  return {
+    id,
+    slug: createSlug(item.title, id),
+    source_type: "crawled_site",
+    source_name: item.sourceName,
+    source_id: item.sourceId,
+    source_group: sourceConfig?.sourceGroup ?? "global_media",
+    source_priority: sourceConfig?.priority ?? 0,
+    title: item.title,
+    summary: item.summary || makeHeadlineSummary(item.sourceName),
+    original_url: item.url || null,
+    published_at: safeDate(item.publishedAt),
+    imported_at: new Date().toISOString(),
+    category: inferCategory(item.title, item.summary, item.sourceName),
+    tags: inferTags(item.title, item.summary, item.sourceName),
+    is_china_stock_relevant: relevance.isRelevant,
+    relevance_reason: relevance.reason,
+    dedupe_key: buildDedupeKey(item.title, item.summary),
+    content_level: item.contentLevel,
+  };
+}
+
+async function crawlReuters(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.reuters.com/world/");
   const $ = cheerio.load(html);
-  const links = $(".item > a")
+
+  return $("a[data-testid='Heading']")
     .slice(0, CRAWLER_LIMIT)
     .map((_, element) => {
       const href = $(element).attr("href");
-      return href ? new URL(href, "https://www.dzh.com.cn").toString() : null;
-    })
-    .get()
-    .filter((href): href is string => Boolean(href));
-
-  const items: RawItem[] = [];
-
-  for (const url of links) {
-    try {
-      const detailHtml = await fetchText(url);
-      const detail$ = cheerio.load(detailHtml);
-      const title = detail$(".article h2").first().text().trim();
-      const summary =
-        detail$(".article .abstract").first().text().trim() ||
-        summarizeText(detail$(".article").text().trim(), 2, 160);
-      const timeText = detail$(".article .source span").eq(1).text().trim();
-
-      if (!title || !summary) {
-        continue;
+      const title = decode($(element).text().trim());
+      if (!href || !title) {
+        return null;
       }
 
-      items.push({
-        sourceName: "大智慧",
+      const wrapper = $(element).closest("article");
+      const fallback = makeHeadlineSummary("Reuters");
+      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
+      const timeText =
+        wrapper.find("time").attr("datetime")?.trim() ||
+        wrapper.find("time").text().trim() ||
+        new Date().toISOString();
+
+      return {
+        sourceId: "reuters",
+        sourceName: "Reuters",
         title,
         summary,
-        url,
-        publishedAt: parseCnTime(timeText),
-      });
-    } catch {
-      continue;
-    }
-  }
-
-  return items;
+        url: new URL(href, "https://www.reuters.com").toString(),
+        publishedAt: timeText,
+        contentLevel: summary === fallback ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
 }
 
-async function crawlEastmoney(): Promise<RawItem[]> {
-  const html = await fetchText("https://finance.eastmoney.com/yaowen.html");
+async function crawlBloomberg(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.bloomberg.com/markets");
   const $ = cheerio.load(html);
 
-  return $(".artitleList2 li")
+  return $("a[href*='/news/articles/']")
     .slice(0, CRAWLER_LIMIT)
     .map((_, element) => {
-      const title = decode($(element).find("p.title a").text().trim());
-      const summary = decode($(element).find("p.info").attr("title")?.trim() || $(element).find("p.info").text().trim());
-      const href = $(element).find("p.title a").attr("href");
-      const timeText = decode($(element).find("p.time").text().trim());
-      const url = href ? new URL(href, "https://finance.eastmoney.com").toString() : "";
+      const href = $(element).attr("href");
+      const title = decode($(element).text().replace(/\s+/g, " ").trim());
+      if (!href || !title || title.length < 10) {
+        return null;
+      }
 
-      if (!title || !summary || !url) {
+      const wrapper = $(element).closest("article, div");
+      const fallback = makeHeadlineSummary("Bloomberg");
+      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
+      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
+
+      return {
+        sourceId: "bloomberg",
+        sourceName: "Bloomberg",
+        title,
+        summary,
+        url: new URL(href, "https://www.bloomberg.com").toString(),
+        publishedAt: timeText,
+        contentLevel: summary === fallback ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
+}
+
+async function crawlFt(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.ft.com/world?format=rss");
+  const $ = cheerio.load(html, { xmlMode: true });
+
+  return $("item")
+    .slice(0, CRAWLER_LIMIT)
+    .map((_, element) => {
+      const title = decode($(element).find("title").first().text().trim());
+      const url = $(element).find("link").first().text().trim();
+      const fallback = makeHeadlineSummary("Financial Times");
+      const summary = decode($(element).find("description").first().text().trim()) || fallback;
+      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
+
+      if (!title || !url) {
         return null;
       }
 
       return {
-        sourceName: "东方财富",
+        sourceId: "ft",
+        sourceName: "Financial Times",
         title,
-        summary: summary.replace(title, "").trim() || summary,
+        summary,
         url,
-        publishedAt: parseCnTime(timeText),
+        publishedAt,
+        contentLevel: summary === fallback ? "headline" : "teaser",
       };
     })
     .get()
-    .filter((item): item is RawItem => Boolean(item));
+    .filter(Boolean) as RawItem[];
+}
+
+async function crawlWsj(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.wsj.com/news/world");
+  const $ = cheerio.load(html);
+
+  return $("a[href*='/articles/']")
+    .slice(0, CRAWLER_LIMIT)
+    .map((_, element) => {
+      const href = $(element).attr("href");
+      const title = decode($(element).text().replace(/\s+/g, " ").trim());
+      if (!href || !title || title.length < 10) {
+        return null;
+      }
+
+      const wrapper = $(element).closest("article, div");
+      const fallback = makeHeadlineSummary("WSJ");
+      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
+      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
+
+      return {
+        sourceId: "wsj",
+        sourceName: "WSJ",
+        title,
+        summary,
+        url: new URL(href, "https://www.wsj.com").toString(),
+        publishedAt: timeText,
+        contentLevel: summary === fallback ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
+}
+
+async function crawlWallstreetcn(): Promise<RawItem[]> {
+  const html = await fetchText("https://wallstreetcn.com/rss");
+  const $ = cheerio.load(html, { xmlMode: true });
+
+  return $("item")
+    .slice(0, CRAWLER_LIMIT)
+    .map((_, element) => {
+      const title = decode($(element).find("title").first().text().trim());
+      const url = $(element).find("link").first().text().trim();
+      const description = decode($(element).find("description").first().text().trim());
+
+      if (!title || !url) {
+        return null;
+      }
+
+      const summary = summarizeText(description, 2, 180) || makeHeadlineSummary("华尔街见闻");
+      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
+
+      return {
+        sourceId: "wallstreetcn",
+        sourceName: "华尔街见闻",
+        title,
+        summary,
+        url,
+        publishedAt,
+        contentLevel: description ? "teaser" : "headline",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
+}
+
+async function crawlScmp(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.scmp.com/business");
+  const $ = cheerio.load(html);
+
+  return $("a[href*='/news/'], a[href*='/economy/'], a[href*='/markets/']")
+    .slice(0, CRAWLER_LIMIT)
+    .map((_, element) => {
+      const href = $(element).attr("href");
+      const title = decode($(element).text().replace(/\s+/g, " ").trim());
+      if (!href || !title || title.length < 10) {
+        return null;
+      }
+
+      const wrapper = $(element).closest("article, div");
+      const fallback = makeHeadlineSummary("SCMP");
+      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
+      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
+
+      return {
+        sourceId: "scmp",
+        sourceName: "SCMP",
+        title,
+        summary,
+        url: new URL(href, "https://www.scmp.com").toString(),
+        publishedAt: timeText,
+        contentLevel: summary === fallback ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
 }
 
 async function crawlCls(): Promise<RawItem[]> {
@@ -153,15 +316,17 @@ async function crawlCls(): Promise<RawItem[]> {
       }
 
       return {
+        sourceId: "cls",
         sourceName: "财联社",
         title,
         summary,
         url: new URL(detailPath, "https://www.cls.cn").toString(),
         publishedAt: parseCnTime(timeText),
+        contentLevel: "summary",
       };
     })
     .get()
-    .filter((item): item is RawItem => Boolean(item));
+    .filter(Boolean) as RawItem[];
 }
 
 async function crawlStcn(): Promise<RawItem[]> {
@@ -173,7 +338,7 @@ async function crawlStcn(): Promise<RawItem[]> {
       return href ? new URL(href, "https://www.stcn.com").toString() : null;
     })
     .get()
-    .filter((href): href is string => Boolean(href));
+    .filter(Boolean) as string[];
 
   const uniqueLinks = Array.from(new Set(links)).slice(0, CRAWLER_LIMIT);
   const items: RawItem[] = [];
@@ -205,11 +370,13 @@ async function crawlStcn(): Promise<RawItem[]> {
       }
 
       items.push({
+        sourceId: "stcn",
         sourceName: "证券时报",
         title,
         summary,
         url,
         publishedAt: parseCnTime(timeText),
+        contentLevel: "summary",
       });
     } catch {
       continue;
@@ -224,6 +391,7 @@ async function fetchText(url: string) {
     headers: {
       "user-agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
     cache: "no-store",
   });

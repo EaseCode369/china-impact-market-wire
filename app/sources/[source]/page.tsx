@@ -30,6 +30,8 @@ export default async function SourcePage({ params }: SourcePageProps) {
     notFound();
   }
 
+  const chinaRelevantCount = posts.filter((post) => post.is_china_stock_relevant).length;
+
   return (
     <main className="page-shell">
       <section className="content-panel">
@@ -38,13 +40,17 @@ export default async function SourcePage({ params }: SourcePageProps) {
             <p className="brand-kicker">Source View</p>
             <h1 className="section-title">{sourceName}</h1>
           </div>
-          <div className="section-caption">共 {posts.length} 条内容，按时间倒序展示。</div>
+          <div className="section-caption">
+            共 {posts.length} 条内容，其中 {chinaRelevantCount} 条直接影响中国股票。
+          </div>
         </div>
         <div className="news-list">
           {posts.map((post) => (
             <Link className="news-card" href={`/news/${post.slug}`} key={post.id}>
               <div className="news-card-meta">
                 <span className="meta-chip">{post.category}</span>
+                <span>{post.source_group}</span>
+                <span>{post.content_level}</span>
                 <span>{formatDate(post.published_at)}</span>
               </div>
               <h2 className="news-card-title">{post.title}</h2>

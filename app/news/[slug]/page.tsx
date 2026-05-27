@@ -30,6 +30,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   }
 
   const relatedSources = getSources().slice(0, 4);
+  const levelLabel = post.content_level === "headline" ? "公开标题流" : post.content_level === "teaser" ? "公开预览流" : "站内摘要流";
 
   return (
     <main className="page-shell">
@@ -38,6 +39,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           <div className="detail-meta">
             <span className="meta-chip">{post.source_name}</span>
             <span>{post.category}</span>
+            <span>{levelLabel}</span>
             <span>{formatDate(post.published_at)}</span>
           </div>
 
@@ -50,6 +52,9 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                 #{tag}
               </span>
             ))}
+            {post.is_china_stock_relevant && post.relevance_reason ? (
+              <span className="tag tag-strong">直接影响中国股票：{post.relevance_reason}</span>
+            ) : null}
           </div>
 
           <div className="detail-actions">
@@ -58,7 +63,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                 查看原文链接
               </a>
             ) : (
-              <span className="button-link secondary">本地导入内容，无外部原文链接</span>
+              <span className="button-link secondary">当前条目没有外部原文链接</span>
             )}
             <Link className="button-link secondary" href="/">
               返回首页
@@ -70,21 +75,28 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           <div className="content-panel">
             <div className="section-heading">
               <div>
-                <p className="brand-kicker">About</p>
+                <p className="brand-kicker">About This Entry</p>
                 <h2 className="section-title">条目说明</h2>
               </div>
             </div>
             <p className="news-card-summary">
-              {post.source_type === "local_pdf"
-                ? "这条资讯来自你的本地“今日新闻”目录，通过 PDF 转图片 + OCR + 摘要提取后生成。"
-                : "这条资讯来自白名单财经站点抓取，站内保存标题、摘要与原文链接，用于快速浏览和跳转。"}
+              {post.content_level === "headline"
+                ? "本条为公开标题流，只保留来源、标题、时间与原文链接，用来快速识别事件与后续追踪方向。"
+                : post.content_level === "teaser"
+                  ? "本条为公开预览流，站内保留来源公开提供的导语或 teaser，适合快速判断是否值得打开原文。"
+                  : "本条为摘要流，站内保留了更完整的公开摘要信息，适合直接浏览关键信息。"}
+            </p>
+            <p className="news-card-summary">
+              {post.is_china_stock_relevant
+                ? `系统判定其与中国股票存在直接影响：${post.relevance_reason ?? "命中相关规则"}。`
+                : "系统未将其判定为中国股票直接影响条目，但仍保留在全量资讯流中供参考。"}
             </p>
           </div>
 
           <div className="content-panel">
             <div className="section-heading">
               <div>
-                <p className="brand-kicker">Explore</p>
+                <p className="brand-kicker">Explore Sources</p>
                 <h2 className="section-title">继续浏览</h2>
               </div>
             </div>
@@ -92,7 +104,9 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               {relatedSources.map((source) => (
                 <Link href={`/sources/${source.slug}`} key={source.name}>
                   <div className="source-name">{source.name}</div>
-                  <div className="source-count">{source.count} 条内容</div>
+                  <div className="source-count">
+                    {source.count} 条内容 · 相关 {source.chinaRelevantCount} 条
+                  </div>
                 </Link>
               ))}
             </div>

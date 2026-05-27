@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { getAllPosts, getSiteStats, getSources } from "@/lib/content";
+import { getAllPosts, getRelevantPosts, getSiteStats, getSourcesByGroup } from "@/lib/content";
 
 function formatDate(dateString: string) {
   return new Intl.DateTimeFormat("zh-CN", {
@@ -13,31 +14,49 @@ function formatDate(dateString: string) {
 
 export default function HomePage() {
   const posts = getAllPosts();
+  const relevantPosts = getRelevantPosts();
   const stats = getSiteStats();
-  const sources = getSources();
-  const featuredPosts = posts.slice(0, 10);
-  const quickList = posts.slice(0, 5);
+  const sourceGroups = getSourcesByGroup();
+  const featuredPosts = relevantPosts.slice(0, 10);
+  const latestPosts = posts.slice(0, 6);
 
   return (
     <main className="page-shell">
-      <section className="hero">
-        <div className="hero-grid">
+      <section className="hero hero-brand">
+        <div className="hero-grid hero-grid-brand">
           <div>
-            <span className="brand-kicker" style={{ color: "rgba(255,247,232,0.74)" }}>
-              Data-first newsroom
-            </span>
-            <h1 className="hero-title">把本地精选新闻和主流财经快讯，整理成一条可读的市场主线。</h1>
+            <span className="brand-kicker hero-kicker">China-impact market wire</span>
+            <h1 className="hero-title">把高价值公开标题流整理成中国股票真正需要看的影响线索。</h1>
             <p className="hero-copy">
-              当前站点会先读取“今日新闻”文件夹中的扫描版 PDF，并结合大智慧、东方财富、财联社、证券时报的白名单抓取结果，
-              自动生成可直接浏览的资讯流页面，后续再继续接审核与研报模块。
+              这一版聚焦 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、财联社与证券时报等公开可获取来源。
+              页面优先展示对中国股票、港股、产业链和政策面有直接影响的资讯，并尽量去掉重复转载与同题材噪声。
             </p>
+            <div className="hero-badges">
+              <span className="tag">高盛内参（香港）</span>
+              <span className="tag">Goldman Sachs HK Reference</span>
+            </div>
           </div>
-          <aside className="metric-panel">
-            <div className="metric-value">{stats.total}</div>
-            <div className="metric-label">已生成资讯条目</div>
+          <aside className="metric-panel metric-panel-brand">
+            <div className="metric-panel-header">
+              <Image
+                alt="高盛内参（香港）公章"
+                className="seal-mark seal-mark-image"
+                height={120}
+                priority
+                src="/brand/seal-hk-cropped.png"
+                width={120}
+              />
+              <div>
+                <div className="metric-value">{stats.chinaRelevantCount}</div>
+                <div className="metric-label">直接影响中国股票</div>
+              </div>
+            </div>
             <div className="metric-hint">
-              本地导入 {stats.localCount} 条，网站抓取 {stats.externalCount} 条。
-              {stats.latestPublishedAt ? ` 最近更新时间：${formatDate(stats.latestPublishedAt)}` : " 先运行生成脚本后，这里会展示最新内容。"}
+              当前汇总 {stats.total} 条资讯，去重删除 {stats.dedupedCount} 条重复项。
+              {stats.latestPublishedAt ? ` 最近发布时间：${formatDate(stats.latestPublishedAt)}。` : " 先运行 `npm run generate:all` 生成最新数据。"}
+            </div>
+            <div className="metric-inline">
+              <span>活跃来源 {stats.activeSources.length}</span>
             </div>
           </aside>
         </div>
@@ -47,16 +66,14 @@ export default function HomePage() {
         <div className="content-panel">
           <div className="section-heading">
             <div>
-              <p className="brand-kicker">News Flow</p>
-              <h2 className="section-title">今日市场资讯流</h2>
+              <p className="brand-kicker">Direct Impact</p>
+              <h2 className="section-title">直接影响中国股票</h2>
             </div>
-            <div className="section-caption">默认按发布时间倒序排列，优先展示最新生成内容。</div>
+            <div className="section-caption">按相关性优先、来源优先级其次、发布时间再次排序。</div>
           </div>
 
           {featuredPosts.length === 0 ? (
-            <div className="empty-state">
-              暂时还没有生成内容。先运行 `npm run generate:all`，站点就会自动读取生成后的 JSON 数据。
-            </div>
+            <div className="empty-state">还没有生成命中“中国股票直接影响”规则的内容。先运行 `npm run generate:all`，再查看最新站内结果。</div>
           ) : (
             <div className="news-list">
               {featuredPosts.map((post) => (
@@ -64,6 +81,7 @@ export default function HomePage() {
                   <div className="news-card-meta">
                     <span className="meta-chip">{post.source_name}</span>
                     <span>{post.category}</span>
+                    <span>{post.content_level === "headline" ? "标题流" : post.content_level === "teaser" ? "预览流" : "摘要流"}</span>
                     <span>{formatDate(post.published_at)}</span>
                   </div>
                   <h3 className="news-card-title">{post.title}</h3>
@@ -74,6 +92,7 @@ export default function HomePage() {
                         #{tag}
                       </span>
                     ))}
+                    {post.relevance_reason ? <span className="tag tag-strong">{post.relevance_reason}</span> : null}
                   </div>
                 </Link>
               ))}
@@ -85,16 +104,25 @@ export default function HomePage() {
           <div className="content-panel">
             <div className="section-heading">
               <div>
-                <p className="brand-kicker">Sources</p>
+                <p className="brand-kicker">Source Groups</p>
                 <h2 className="section-title">来源地图</h2>
               </div>
             </div>
-            <div className="source-list">
-              {sources.map((source) => (
-                <Link href={`/sources/${source.slug}`} key={source.name}>
-                  <div className="source-name">{source.name}</div>
-                  <div className="source-count">{source.count} 条内容</div>
-                </Link>
+            <div className="source-groups">
+              {sourceGroups.map((group) => (
+                <section key={group.group} className="source-group-block">
+                  <div className="source-group-title">{formatGroupLabel(group.group)}</div>
+                  <div className="source-list">
+                    {group.sources.map((source) => (
+                      <Link href={`/sources/${source.slug}`} key={source.name}>
+                        <div className="source-name">{source.name}</div>
+                        <div className="source-count">
+                          {source.count} 条内容 · 相关 {source.chinaRelevantCount} 条
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
           </div>
@@ -102,12 +130,12 @@ export default function HomePage() {
           <div className="content-panel">
             <div className="section-heading">
               <div>
-                <p className="brand-kicker">Radar</p>
-                <h2 className="section-title">今日速览</h2>
+                <p className="brand-kicker">Latest Feed</p>
+                <h2 className="section-title">全部资讯速览</h2>
               </div>
             </div>
             <div className="quick-list">
-              {quickList.map((post) => (
+              {latestPosts.map((post) => (
                 <Link href={`/news/${post.slug}`} key={post.id}>
                   <div className="source-name">{post.title}</div>
                   <div className="quick-time">
@@ -117,21 +145,25 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-
-          <div className="placeholder-card">
-            <p className="brand-kicker">Reports</p>
-            <h2 className="section-title">研报解读入口已预留</h2>
-            <p className="news-card-summary">
-              当前版本先把资讯流跑通。后续你发来研报或解读成稿后，这里可以直接接入独立栏目、专题页和首页推荐位。
-            </p>
-            <div className="detail-actions">
-              <Link className="button-link secondary" href="/reports">
-                查看占位页
-              </Link>
-            </div>
-          </div>
         </aside>
       </section>
     </main>
   );
+}
+
+function formatGroupLabel(group: string) {
+  switch (group) {
+    case "global_media":
+      return "国际高价值公开标题流";
+    case "hk_media":
+      return "香港与区域媒体";
+    case "china_media":
+      return "中国补充资讯源";
+    case "strategy_feed":
+      return "策略与机构源";
+    case "local_pdf":
+      return "本地导入";
+    default:
+      return group;
+  }
 }
