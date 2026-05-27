@@ -49,3 +49,12 @@ export type SiteSummary = {
   pausedSources: string[];
   lastSuccessfulRunAt: string;
 };
+
+export type InternationalSourceStatus = {
+  id: string;
+  name: string;
+  group: SourceGroup;
+  count: number;
+  chinaRelevantCount: number;
+  hasData: boolean;
+};

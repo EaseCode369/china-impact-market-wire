@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-05-27T22:33:46.586Z",
+  "total": 56,
+  "external": 56,
+  "chinaRelevantCount": 46,
+  "dedupedCount": 0,
+  "activeSources": [
+    "Reuters",
+    "Bloomberg",
+    "Financial Times",
+    "WSJ",
+    "华尔街见闻",
+    "SCMP",
+    "财联社",
+    "证券时报"
+  ],
+  "pausedSources": [
+    "东方财富",
+    "大智慧",
+    "Wind"
+  ],
+  "lastSuccessfulRunAt": "2026-05-27T22:33:46.586Z"
+}

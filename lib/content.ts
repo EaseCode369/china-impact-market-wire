@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { GeneratedCollection, NewsPost, SiteSummary, SourceSummary } from "@/lib/content-schema";
+import type { GeneratedCollection, InternationalSourceStatus, NewsPost, SiteSummary, SourceSummary } from "@/lib/content-schema";
+import { getInternationalSourceConfigs } from "@/scripts/lib/source-config";
 
 const generatedDir = path.join(process.cwd(), "content", "generated");
 const postsPath = path.join(generatedDir, "posts.json");
@@ -79,6 +80,23 @@ export function getSourcesByGroup() {
     group,
     sources,
   }));
+}
+
+export function getInternationalSourceStatuses(): InternationalSourceStatus[] {
+  const sources = getSources();
+  const mapped = new Map(sources.map((source) => [source.id, source]));
+
+  return getInternationalSourceConfigs().map((config) => {
+    const existing = mapped.get(config.id);
+    return {
+      id: config.id,
+      name: config.displayName,
+      group: config.sourceGroup,
+      count: existing?.count ?? 0,
+      chinaRelevantCount: existing?.chinaRelevantCount ?? 0,
+      hasData: Boolean(existing),
+    };
+  });
 }
 
 export function getSiteStats() {

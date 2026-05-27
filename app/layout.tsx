@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link className="nav-pill" href="/">
                 中国股票影响流
               </Link>
-              <Link className="nav-pill" href="/sources/Reuters">
+              <Link className="nav-pill" href="/sources">
                 国际来源
               </Link>
               <Link className="nav-pill" href="/reports">

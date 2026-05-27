@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
-import { getAllPosts, getPostsBySource } from "@/lib/content";
+import { getInternationalSourceStatuses, getPostsBySource } from "@/lib/content";
 
 type SourcePageProps = {
   params: Promise<{ source: string }>;
@@ -17,20 +16,14 @@ function formatDate(dateString: string) {
 }
 
 export async function generateStaticParams() {
-  const names = new Set(getAllPosts().map((post) => post.source_name));
-  return Array.from(names).map((source) => ({ source: encodeURIComponent(source) }));
+  return getInternationalSourceStatuses().map((source) => ({ source: encodeURIComponent(source.name) }));
 }
 
 export default async function SourcePage({ params }: SourcePageProps) {
   const { source } = await params;
   const sourceName = decodeURIComponent(source);
   const posts = getPostsBySource(sourceName);
-
-  if (posts.length === 0) {
-    notFound();
-  }
-
-  const chinaRelevantCount = posts.filter((post) => post.is_china_stock_relevant).length;
+  const status = getInternationalSourceStatuses().find((item) => item.name === sourceName);
 
   return (
     <main className="page-shell">
@@ -41,23 +34,44 @@ export default async function SourcePage({ params }: SourcePageProps) {
             <h1 className="section-title">{sourceName}</h1>
           </div>
           <div className="section-caption">
-            共 {posts.length} 条内容，其中 {chinaRelevantCount} 条直接影响中国股票。
+            {posts.length > 0 ? `共 ${posts.length} 条，其中 ${posts.filter((post) => post.is_china_stock_relevant).length} 条直接影响中国股票。` : "当前暂无可展示条目。"}
           </div>
         </div>
-        <div className="news-list">
-          {posts.map((post) => (
-            <Link className="news-card" href={`/news/${post.slug}`} key={post.id}>
-              <div className="news-card-meta">
-                <span className="meta-chip">{post.category}</span>
-                <span>{post.source_group}</span>
-                <span>{post.content_level}</span>
-                <span>{formatDate(post.published_at)}</span>
-              </div>
-              <h2 className="news-card-title">{post.title}</h2>
-              <p className="news-card-summary">{post.summary}</p>
-            </Link>
-          ))}
-        </div>
+
+        {posts.length === 0 ? (
+          <div className="empty-state">
+            <p>当前这个国际来源还没有成功生成可展示条目，所以这里不再返回 404。</p>
+            <p>
+              {status
+                ? `当前状态：${status.hasData ? "已有数据" : "暂未抓到数据"}。`
+                : "当前状态：未找到对应来源配置。"}
+            </p>
+            <p>我们已经把国际来源入口改成聚合页，并在继续排查这个来源的抓取链路。</p>
+            <div className="detail-actions">
+              <Link className="button-link secondary" href="/sources">
+                返回国际来源聚合页
+              </Link>
+              <Link className="button-link secondary" href="/">
+                返回首页
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="news-list">
+            {posts.map((post) => (
+              <Link className="news-card" href={`/news/${post.slug}`} key={post.id}>
+                <div className="news-card-meta">
+                  <span className="meta-chip">{post.category}</span>
+                  <span>{post.source_group}</span>
+                  <span>{post.content_level === "headline" ? "标题流" : post.content_level === "teaser" ? "预览流" : "摘要流"}</span>
+                  <span>{formatDate(post.published_at)}</span>
+                </div>
+                <h2 className="news-card-title">{post.title}</h2>
+                <p className="news-card-summary">{post.summary}</p>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

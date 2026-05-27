@@ -1,3 +1,6 @@
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
 import * as cheerio from "cheerio";
 import { decode } from "html-entities";
 
@@ -16,6 +19,8 @@ import {
   writeCollection,
 } from "@/scripts/lib/helpers";
 import { getActiveSourceConfigs, getSourceConfigById } from "@/scripts/lib/source-config";
+
+const execFileAsync = promisify(execFile);
 
 type RawItem = {
   sourceId: string;
@@ -103,133 +108,27 @@ function createNewsPost(item: RawItem): NewsPost {
 }
 
 async function crawlReuters(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.reuters.com/world/");
-  const $ = cheerio.load(html);
-
-  return $("a[data-testid='Heading']")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const href = $(element).attr("href");
-      const title = decode($(element).text().trim());
-      if (!href || !title) {
-        return null;
-      }
-
-      const wrapper = $(element).closest("article");
-      const fallback = makeHeadlineSummary("Reuters");
-      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
-      const timeText =
-        wrapper.find("time").attr("datetime")?.trim() ||
-        wrapper.find("time").text().trim() ||
-        new Date().toISOString();
-
-      return {
-        sourceId: "reuters",
-        sourceName: "Reuters",
-        title,
-        summary,
-        url: new URL(href, "https://www.reuters.com").toString(),
-        publishedAt: timeText,
-        contentLevel: summary === fallback ? "headline" : "teaser",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+  return crawlGoogleNewsSource("reuters", "Reuters", "site:reuters.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
 }
 
 async function crawlBloomberg(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.bloomberg.com/markets");
-  const $ = cheerio.load(html);
-
-  return $("a[href*='/news/articles/']")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const href = $(element).attr("href");
-      const title = decode($(element).text().replace(/\s+/g, " ").trim());
-      if (!href || !title || title.length < 10) {
-        return null;
-      }
-
-      const wrapper = $(element).closest("article, div");
-      const fallback = makeHeadlineSummary("Bloomberg");
-      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
-      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
-
-      return {
-        sourceId: "bloomberg",
-        sourceName: "Bloomberg",
-        title,
-        summary,
-        url: new URL(href, "https://www.bloomberg.com").toString(),
-        publishedAt: timeText,
-        contentLevel: summary === fallback ? "headline" : "teaser",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+  return crawlGoogleNewsSource("bloomberg", "Bloomberg", "site:bloomberg.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
 }
 
 async function crawlFt(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.ft.com/world?format=rss");
-  const $ = cheerio.load(html, { xmlMode: true });
+  const directFeed = await fetchText("https://www.ft.com/world?format=rss");
+  const directItems = parseStandardRss(directFeed, "ft", "Financial Times");
+  const filteredDirectItems = directItems.filter((item) => inferChinaStockRelevance(item.title, item.summary).isRelevant);
 
-  return $("item")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const title = decode($(element).find("title").first().text().trim());
-      const url = $(element).find("link").first().text().trim();
-      const fallback = makeHeadlineSummary("Financial Times");
-      const summary = decode($(element).find("description").first().text().trim()) || fallback;
-      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
+  if (filteredDirectItems.length > 0) {
+    return filteredDirectItems.slice(0, CRAWLER_LIMIT);
+  }
 
-      if (!title || !url) {
-        return null;
-      }
-
-      return {
-        sourceId: "ft",
-        sourceName: "Financial Times",
-        title,
-        summary,
-        url,
-        publishedAt,
-        contentLevel: summary === fallback ? "headline" : "teaser",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+  return crawlGoogleNewsSource("ft", "Financial Times", "site:ft.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
 }
 
 async function crawlWsj(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.wsj.com/news/world");
-  const $ = cheerio.load(html);
-
-  return $("a[href*='/articles/']")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const href = $(element).attr("href");
-      const title = decode($(element).text().replace(/\s+/g, " ").trim());
-      if (!href || !title || title.length < 10) {
-        return null;
-      }
-
-      const wrapper = $(element).closest("article, div");
-      const fallback = makeHeadlineSummary("WSJ");
-      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
-      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
-
-      return {
-        sourceId: "wsj",
-        sourceName: "WSJ",
-        title,
-        summary,
-        url: new URL(href, "https://www.wsj.com").toString(),
-        publishedAt: timeText,
-        contentLevel: summary === fallback ? "headline" : "teaser",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+  return crawlGoogleNewsSource("wsj", "WSJ", "site:wsj.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
 }
 
 async function crawlWallstreetcn(): Promise<RawItem[]> {
@@ -265,35 +164,7 @@ async function crawlWallstreetcn(): Promise<RawItem[]> {
 }
 
 async function crawlScmp(): Promise<RawItem[]> {
-  const html = await fetchText("https://www.scmp.com/business");
-  const $ = cheerio.load(html);
-
-  return $("a[href*='/news/'], a[href*='/economy/'], a[href*='/markets/']")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const href = $(element).attr("href");
-      const title = decode($(element).text().replace(/\s+/g, " ").trim());
-      if (!href || !title || title.length < 10) {
-        return null;
-      }
-
-      const wrapper = $(element).closest("article, div");
-      const fallback = makeHeadlineSummary("SCMP");
-      const summary = decode(wrapper.find("p").first().text().trim()) || fallback;
-      const timeText = wrapper.find("time").attr("datetime")?.trim() || new Date().toISOString();
-
-      return {
-        sourceId: "scmp",
-        sourceName: "SCMP",
-        title,
-        summary,
-        url: new URL(href, "https://www.scmp.com").toString(),
-        publishedAt: timeText,
-        contentLevel: summary === fallback ? "headline" : "teaser",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+  return crawlGoogleNewsSource("scmp", "SCMP", "site:scmp.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
 }
 
 async function crawlCls(): Promise<RawItem[]> {
@@ -347,9 +218,7 @@ async function crawlStcn(): Promise<RawItem[]> {
     try {
       const detailHtml = await fetchText(url);
       const detail$ = cheerio.load(detailHtml);
-      const title =
-        detail$("meta[property='og:title']").attr("content")?.trim() ||
-        detail$("title").text().trim();
+      const title = detail$("meta[property='og:title']").attr("content")?.trim() || detail$("title").text().trim();
       const summary = summarizeText(
         detail$(".detail-content p")
           .slice(0, 2)
@@ -386,21 +255,117 @@ async function crawlStcn(): Promise<RawItem[]> {
   return items;
 }
 
+async function crawlGoogleNewsSource(sourceId: string, sourceName: string, query: string) {
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:7d`)}&hl=en-US&gl=US&ceid=US:en`;
+  const xml = await fetchText(rssUrl);
+  const items = parseGoogleNewsRss(xml, sourceId, sourceName);
+  return items
+    .filter((item) => inferChinaStockRelevance(item.title, item.summary).isRelevant)
+    .slice(0, CRAWLER_LIMIT);
+}
+
+function parseGoogleNewsRss(xml: string, sourceId: string, sourceName: string) {
+  const $ = cheerio.load(xml, { xmlMode: true });
+
+  return $("item")
+    .map((_, element) => {
+      const title = decode($(element).find("title").first().text().trim()).replace(/\s+-\s+[A-Za-z.\s]+$/, "").trim();
+      const url = $(element).find("link").first().text().trim();
+      const descriptionHtml = $(element).find("description").first().text().trim();
+      const source = $(element).find("source").first().text().trim();
+      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
+
+      if (!title || !url) {
+        return null;
+      }
+
+      const summary = descriptionToSummary(descriptionHtml, sourceName);
+      return {
+        sourceId,
+        sourceName: source || sourceName,
+        title,
+        summary,
+        url,
+        publishedAt,
+        contentLevel: summary === makeHeadlineSummary(sourceName) ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
+}
+
+function parseStandardRss(xml: string, sourceId: string, sourceName: string) {
+  const $ = cheerio.load(xml, { xmlMode: true });
+
+  return $("item")
+    .map((_, element) => {
+      const title = decode($(element).find("title").first().text().trim());
+      const url = $(element).find("link").first().text().trim();
+      const description = decode($(element).find("description").first().text().trim());
+      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
+
+      if (!title || !url) {
+        return null;
+      }
+
+      const summary = summarizeText(descriptionToPlainText(description), 2, 180) || makeHeadlineSummary(sourceName);
+      return {
+        sourceId,
+        sourceName,
+        title,
+        summary,
+        url,
+        publishedAt,
+        contentLevel: summary === makeHeadlineSummary(sourceName) ? "headline" : "teaser",
+      };
+    })
+    .get()
+    .filter(Boolean) as RawItem[];
+}
+
+function descriptionToSummary(descriptionHtml: string, fallbackSourceName: string) {
+  const plainText = descriptionToPlainText(descriptionHtml);
+  return summarizeText(plainText, 2, 180) || makeHeadlineSummary(fallbackSourceName);
+}
+
+function descriptionToPlainText(descriptionHtml: string) {
+  const $ = cheerio.load(descriptionHtml);
+  return decode($.text().replace(/\s+/g, " ").trim());
+}
+
 async function fetchText(url: string) {
-  const response = await fetch(url, {
-    headers: {
-      "user-agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
-      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    },
-    cache: "no-store",
-  });
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+        accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      },
+      cache: "no-store",
+    });
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: ${response.status}`);
+    }
+
+    return response.text();
+  } catch {
+    return fetchTextViaPowerShell(url);
   }
+}
 
-  return response.text();
+async function fetchTextViaPowerShell(url: string) {
+  const script = `
+$ProgressPreference = 'SilentlyContinue'
+$response = Invoke-WebRequest -Uri '${url.replace(/'/g, "''")}' -UseBasicParsing -TimeoutSec 30
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$response.Content
+`;
+  const { stdout } = await execFileAsync("powershell", ["-NoProfile", "-Command", script], {
+    maxBuffer: 20 * 1024 * 1024,
+    encoding: "utf8",
+  });
+  return stdout;
 }
 
 function parseCnTime(input: string) {
