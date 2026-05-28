@@ -151,6 +151,146 @@ export function normalizeForComparison(text: string) {
     .trim();
 }
 
+export function containsCjk(text: string) {
+  return /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/.test(text);
+}
+
+export function shouldLocalizeToSimplifiedChinese(title: string, summary: string, sourceName: string, sourceId?: string) {
+  if (containsCjk(title) || containsCjk(summary)) {
+    return false;
+  }
+
+  const normalizedSourceId = sourceId?.trim().toLowerCase();
+  if (normalizedSourceId && ["reuters", "bloomberg", "ft", "wsj", "scmp"].includes(normalizedSourceId)) {
+    return true;
+  }
+
+  const normalizedSource = sourceName.trim().toLowerCase();
+  return [
+    "reuters",
+    "reuters.com",
+    "bloomberg",
+    "bloomberg.com",
+    "financial times",
+    "ft",
+    "ft.com",
+    "wsj",
+    "wsj.com",
+    "scmp",
+    "scmp.com",
+  ].includes(normalizedSource);
+}
+
+function cleanEnglishHeadlineText(text: string) {
+  return normalizeText(text)
+    .replace(/\s+/g, " ")
+    .replace(/\bReuters\b$/i, "")
+    .replace(/\bBloomberg\b$/i, "")
+    .replace(/\bFinancial Times\b$/i, "")
+    .replace(/\bWSJ\b$/i, "")
+    .replace(/\bSCMP\b$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const phraseTranslations: Array<[RegExp, string]> = [
+  [/\bHong Kong watchdog\b/gi, "香港监管机构"],
+  [/\blocal units of two Chinese brokerages\b/gi, "两家中资券商的本地业务部门"],
+  [/\braids?\b/gi, "突击检查"],
+  [/\bsources say\b/gi, "知情人士称"],
+  [/\bTaiwan suspects\b/gi, "台湾方面怀疑"],
+  [/\bNvidia chips\b/gi, "英伟达芯片"],
+  [/\bsmuggled to China\b/gi, "被走私至中国"],
+  [/\bvia Japan\b/gi, "经由日本"],
+  [/\bBloomberg News reports\b/gi, "彭博报道"],
+  [/\bCOSCO\b/gi, "中远海运"],
+  [/\bproducts tanker\b/gi, "成品油轮"],
+  [/\bleaving Strait of Hormuz\b/gi, "驶离霍尔木兹海峡"],
+  [/\boil traffic still limited\b/gi, "石油运输仍然受限"],
+  [/\bChina\b/gi, "中国"],
+  [/\bChinese\b/gi, "中国"],
+  [/\bHong Kong\b/gi, "香港"],
+  [/\bTaiwan\b/gi, "台湾"],
+  [/\bJapan\b/gi, "日本"],
+  [/\bReuters\b/gi, "路透"],
+  [/\bBloomberg\b/gi, "彭博"],
+  [/\bFinancial Times\b/gi, "英国《金融时报》"],
+  [/\bWSJ\b/gi, "《华尔街日报》"],
+  [/\bSCMP\b/gi, "《南华早报》"],
+  [/\bwatchdog\b/gi, "监管机构"],
+  [/\bbrokerages\b/gi, "券商"],
+  [/\bbrokerage\b/gi, "券商"],
+  [/\bchips\b/gi, "芯片"],
+  [/\bchip\b/gi, "芯片"],
+  [/\bsmuggled\b/gi, "走私"],
+  [/\breports?\b/gi, "报道"],
+  [/\bsuspects?\b/gi, "怀疑"],
+  [/\bsources\b/gi, "知情人士"],
+  [/\bsays?\b/gi, "称"],
+];
+
+function fallbackWordTranslations(text: string) {
+  let localized = text;
+
+  for (const [pattern, replacement] of phraseTranslations) {
+    localized = localized.replace(pattern, replacement);
+  }
+
+  localized = localized
+    .replace(/\bof\b/gi, "的")
+    .replace(/\bto\b/gi, "至")
+    .replace(/\bvia\b/gi, "通过")
+    .replace(/\band\b/gi, "和")
+    .replace(/\bthe\b/gi, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([，。！？；：])/g, "$1")
+    .trim();
+
+  return localized;
+}
+
+export function localizeEnglishTitleToSimplifiedChinese(title: string, sourceName: string) {
+  const cleaned = cleanEnglishHeadlineText(title);
+  if (!cleaned) {
+    return title;
+  }
+
+  const translated = fallbackWordTranslations(cleaned);
+
+  if (translated === cleaned) {
+    return `【${sourceName}】${cleaned}`;
+  }
+
+  return translated
+    .replace(/，\s*知情人士称$/u, "，知情人士称")
+    .replace(/，\s*彭博报道$/u, "，彭博报道")
+    .replace(/\s+/g, "")
+    .replace(/，知情人士称$/, "，知情人士称");
+}
+
+export function localizeEnglishSummaryToSimplifiedChinese(summary: string, sourceName: string) {
+  const cleaned = cleanEnglishHeadlineText(summary);
+  if (!cleaned) {
+    return makeHeadlineSummary(sourceName);
+  }
+
+  const translated = fallbackWordTranslations(cleaned);
+
+  if (translated === cleaned) {
+    return `该条资讯来自 ${sourceName}，原标题为英文，站内已保留原文链接供进一步查看。`;
+  }
+
+  const condensed = translated
+    .replace(/\s+/g, "")
+    .replace(/Reuters$/u, "路透")
+    .replace(/Bloomberg$/u, "彭博")
+    .replace(/FinancialTimes$/u, "英国《金融时报》")
+    .replace(/WSJ$/u, "《华尔街日报》")
+    .replace(/SCMP$/u, "《南华早报》");
+
+  return condensed.endsWith("。") ? condensed : `${condensed}。`;
+}
+
 export function summarizeText(text: string, maxSentences = 3, maxLength = 180) {
   const cleaned = normalizeText(text).replace(/\s+/g, " ");
 

@@ -26,10 +26,10 @@ export default function HomePage() {
         <div className="hero-grid hero-grid-brand">
           <div>
             <span className="brand-kicker hero-kicker">China-impact market wire</span>
-            <h1 className="hero-title">把高价值公开标题流整理成中国股票真正需要看的影响线索。</h1>
+            <h1 className="hero-title">从全球公开信息中筛出影响中国资产定价的关键增量。</h1>
             <p className="hero-copy">
-              这一版聚焦 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、财联社与证券时报等公开可获取来源。
-              页面优先展示对中国股票、港股、产业链和政策面有直接影响的资讯，并尽量去掉重复转载与同题材噪声。
+              覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、财联社与证券时报等公开来源；
+              以中国股票、港股、产业链与政策变量为主线，对资讯按影响相关性、来源权重与发布时间进行排序，压缩重复转载与情绪化噪声。
             </p>
             <div className="hero-badges">
               <span className="tag">高盛内参（香港）</span>
@@ -52,11 +52,11 @@ export default function HomePage() {
               </div>
             </div>
             <div className="metric-hint">
-              当前汇总 {stats.total} 条资讯，去重删除 {stats.dedupedCount} 条重复项。
-              {stats.latestPublishedAt ? ` 最近发布时间：${formatDate(stats.latestPublishedAt)}。` : " 先运行 `npm run generate:all` 生成最新数据。"}
+              当前样本共纳入 {stats.total} 条资讯，去重过滤 {stats.dedupedCount} 条重复项。
+              {stats.latestPublishedAt ? ` 最新入库时间：${formatDate(stats.latestPublishedAt)}。` : " 请先运行 `npm run generate:all` 生成最新样本。"}
             </div>
             <div className="metric-inline">
-              <span>活跃来源 {stats.activeSources.length}</span>
+              <span>纳入监测来源 {stats.activeSources.length}</span>
             </div>
           </aside>
         </div>
@@ -69,11 +69,11 @@ export default function HomePage() {
               <p className="brand-kicker">Direct Impact</p>
               <h2 className="section-title">直接影响中国股票</h2>
             </div>
-            <div className="section-caption">按相关性优先、来源优先级其次、发布时间再次排序。</div>
+            <div className="section-caption">默认按影响相关性、来源权重与发布时间综合排序。</div>
           </div>
 
           {featuredPosts.length === 0 ? (
-            <div className="empty-state">还没有生成命中“中国股票直接影响”规则的内容。先运行 `npm run generate:all`，再查看最新站内结果。</div>
+            <div className="empty-state">当前尚无命中“中国股票直接影响”规则的样本。请先运行 `npm run generate:all` 后再查看结果。</div>
           ) : (
             <div className="news-list">
               {featuredPosts.map((post) => (

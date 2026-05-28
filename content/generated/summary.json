@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-27T22:33:46.586Z",
-  "total": 56,
-  "external": 56,
+  "generatedAt": "2026-05-28T01:32:59.952Z",
+  "total": 53,
+  "external": 53,
   "chinaRelevantCount": 46,
-  "dedupedCount": 0,
+  "dedupedCount": 1,
   "activeSources": [
     "Reuters",
     "Bloomberg",
@@ -19,5 +19,5 @@
     "大智慧",
     "Wind"
   ],
-  "lastSuccessfulRunAt": "2026-05-27T22:33:46.586Z"
+  "lastSuccessfulRunAt": "2026-05-28T01:32:59.953Z"
 }

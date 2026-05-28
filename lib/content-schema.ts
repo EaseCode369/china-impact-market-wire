@@ -13,6 +13,8 @@ export type NewsPost = {
   source_priority: number;
   title: string;
   summary: string;
+  original_title?: string;
+  original_summary?: string;
   original_url: string | null;
   published_at: string;
   imported_at: string;

@@ -14,6 +14,7 @@ import {
   inferTags,
   makeHeadlineSummary,
   safeDate,
+  shouldLocalizeToSimplifiedChinese,
   stableId,
   summarizeText,
   writeCollection,
@@ -30,6 +31,11 @@ type RawItem = {
   url: string;
   publishedAt: string;
   contentLevel: ContentLevel;
+};
+
+type LocalizedRawItem = RawItem & {
+  localizedTitle?: string;
+  localizedSummary?: string;
 };
 
 type GenerateOptions = {
@@ -62,7 +68,8 @@ export async function generateCrawledNews(options: GenerateOptions = {}) {
   );
 
   const merged = settled.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
-  const posts = merged
+  const localizedItems = await Promise.all(merged.map((item) => localizeRawItem(item)));
+  const posts = localizedItems
     .map((item) => createNewsPost(item))
     .filter((post) => {
       if (!options.since) {
@@ -80,26 +87,48 @@ export async function generateCrawledNews(options: GenerateOptions = {}) {
   };
 }
 
-function createNewsPost(item: RawItem): NewsPost {
+async function localizeRawItem(item: RawItem): Promise<LocalizedRawItem> {
+  if (!shouldLocalizeToSimplifiedChinese(item.title, item.summary, item.sourceName, item.sourceId)) {
+    return item;
+  }
+
+  const [localizedTitle, localizedSummary] = await Promise.all([
+    translateToSimplifiedChinese(item.title),
+    translateToSimplifiedChinese(item.summary || makeHeadlineSummary(item.sourceName)),
+  ]);
+
+  return {
+    ...item,
+    localizedTitle: localizedTitle || item.title,
+    localizedSummary: localizedSummary || item.summary || makeHeadlineSummary(item.sourceName),
+  };
+}
+
+function createNewsPost(item: LocalizedRawItem): NewsPost {
   const sourceConfig = getSourceConfigById(item.sourceId);
   const id = stableId(`${item.sourceId}:${item.url}:${item.title}`);
+  const localizedTitle = item.localizedTitle ?? item.title;
+  const localizedSummary = item.localizedSummary ?? (item.summary || makeHeadlineSummary(item.sourceName));
+  const wasLocalized = Boolean(item.localizedTitle || item.localizedSummary);
   const relevance = inferChinaStockRelevance(item.title, item.summary);
 
   return {
     id,
-    slug: createSlug(item.title, id),
+    slug: createSlug(localizedTitle, id),
     source_type: "crawled_site",
     source_name: item.sourceName,
     source_id: item.sourceId,
     source_group: sourceConfig?.sourceGroup ?? "global_media",
     source_priority: sourceConfig?.priority ?? 0,
-    title: item.title,
-    summary: item.summary || makeHeadlineSummary(item.sourceName),
+    title: localizedTitle,
+    summary: localizedSummary,
+    original_title: wasLocalized ? item.title : undefined,
+    original_summary: wasLocalized ? item.summary : undefined,
     original_url: item.url || null,
     published_at: safeDate(item.publishedAt),
     imported_at: new Date().toISOString(),
-    category: inferCategory(item.title, item.summary, item.sourceName),
-    tags: inferTags(item.title, item.summary, item.sourceName),
+    category: inferCategory(localizedTitle, localizedSummary, item.sourceName),
+    tags: inferTags(localizedTitle, localizedSummary, item.sourceName),
     is_china_stock_relevant: relevance.isRelevant,
     relevance_reason: relevance.reason,
     dedupe_key: buildDedupeKey(item.title, item.summary),
@@ -352,6 +381,80 @@ async function fetchText(url: string) {
   } catch {
     return fetchTextViaPowerShell(url);
   }
+}
+
+async function translateToSimplifiedChinese(text: string) {
+  const trimmed = text.trim();
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  const protectedTerms = [
+    "Nvidia",
+    "TSMC",
+    "AI",
+    "A股",
+    "港股",
+    "ETF",
+    "IPO",
+    "CPO",
+    "GPU",
+    "CPU",
+    "Reuters",
+    "Bloomberg",
+    "Financial Times",
+    "WSJ",
+    "SCMP",
+  ];
+
+  let prepared = trimmed;
+  const placeholderMap = new Map<string, string>();
+  protectedTerms.forEach((term, index) => {
+    const placeholder = `ZXTERM${index}ZX`;
+    const pattern = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
+    if (pattern.test(prepared)) {
+      prepared = prepared.replace(pattern, placeholder);
+      placeholderMap.set(placeholder, term);
+    }
+  });
+
+  const translateUrl =
+    "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=zh-CN&dt=t&q=" +
+    encodeURIComponent(prepared);
+
+  try {
+    const { stdout } = await execFileAsync("curl", ["-s", translateUrl], {
+      maxBuffer: 10 * 1024 * 1024,
+      encoding: "utf8",
+    });
+    const parsed = JSON.parse(stdout) as unknown[];
+    const segments = Array.isArray(parsed[0]) ? (parsed[0] as unknown[]) : [];
+    const translated = segments
+      .map((segment) => (Array.isArray(segment) && typeof segment[0] === "string" ? segment[0] : ""))
+      .join("")
+      .trim();
+
+    let restored = translated || trimmed;
+    for (const [placeholder, term] of placeholderMap.entries()) {
+      restored = restored.replace(new RegExp(placeholder, "g"), term);
+    }
+
+    return cleanupLocalizedChinese(restored);
+  } catch {
+    return trimmed;
+  }
+}
+
+function cleanupLocalizedChinese(text: string) {
+  return text
+    .replace(/\s+/g, " ")
+    .replace(/\b(Bloomberg|Reuters|Financial Times|WSJ|SCMP)\b\.?/g, "")
+    .replace(/路透中文网/g, "路透")
+    .replace(/\s*-\s*/g, " ")
+    .replace(/[ ]+([，。！？；：])/g, "$1")
+    .replace(/([，。！？；：]){2,}/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 async function fetchTextViaPowerShell(url: string) {

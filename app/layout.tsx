@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Link className="brand-title" href="/">
                   高盛内参（香港）
                 </Link>
-                <div className="brand-subtitle">公开标题流、精选预览流与中国股票直接影响筛选，聚焦更值得追踪的全球市场线索。</div>
+                <div className="brand-subtitle">围绕中国资产定价主线，汇总全球公开信息、提炼可交易线索，并按影响强度优先呈现。</div>
               </div>
             </div>
             <nav className="top-nav" aria-label="主导航">

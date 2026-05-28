@@ -4,3 +4,4 @@ tmp
 content/generated
 tesseract-cache
 tsconfig.tsbuildinfo
+.vercel
