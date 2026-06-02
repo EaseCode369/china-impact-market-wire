@@ -18,6 +18,24 @@ const marketNotes = [
   },
 ];
 
+const featuredTopics = [
+  {
+    title: "面向专业客户的公开信息研究",
+    summary: "围绕港股、A股、海外市场和产业链变量，建立可持续追踪的信息框架。",
+    label: "研究方法",
+  },
+  {
+    title: "高盛内参客户区",
+    summary: "客户审核通过后，可进入内参区查看中国股票影响流、国际来源聚合和策略库入口。",
+    label: "客户入口",
+  },
+  {
+    title: "独立香港顾问机构口径",
+    summary: "本站以独立市场研究顾问身份运营，不代表 Goldman Sachs 集团或其关联实体。",
+    label: "品牌声明",
+  },
+];
+
 const serviceCards = [
   "公开信息研究与主题梳理",
   "中国资产定价线索监测",
@@ -30,30 +48,50 @@ const insightBullets = ["全球公开标题流聚合", "中国股票直接影响
 export default function HomePage() {
   return (
     <main>
-      <section className="public-hero" id="home">
-        <div className="public-hero-inner">
-          <div className="public-hero-copy">
-            <span className="brand-kicker hero-kicker">Hong Kong Market Research</span>
-            <h1 className="public-hero-title">香港高盛市场研究</h1>
-            <p className="hero-copy">
-              立足香港，面向专业投资人、企业与家族办公室，提供公开信息研究、跨市场观察与中国资产定价线索梳理。
-              我们以独立顾问机构口径运营，不代表 Goldman Sachs 集团或其关联实体。
-            </p>
-            <div className="hero-actions">
-              <Link className="button-link" href="/insights">
-                进入高盛内参
-              </Link>
-              <Link className="button-link secondary" href="#services">
-                查看服务领域
-              </Link>
+      <section className="market-strip" aria-label="服务摘要">
+        <div className="market-strip-inner">
+          <span>香港市场研究</span>
+          <span>公开信息研究</span>
+          <span>中国资产定价线索</span>
+          <span>客户审核制内参</span>
+          <span>独立顾问机构</span>
+        </div>
+      </section>
+
+      <section className="portal-shell" id="home">
+        <div className="portal-main">
+          <article className="lead-story">
+            <div className="lead-media" aria-hidden="true" />
+            <div className="lead-body">
+              <p className="brand-kicker">Hong Kong Market Research</p>
+              <h1 className="lead-title">香港高盛市场研究</h1>
+              <p className="lead-copy">
+                立足香港，面向专业投资人、企业与家族办公室，提供公开信息研究、跨市场观察与中国资产定价线索梳理。
+              </p>
+              <div className="lead-actions">
+                <Link className="button-link" href="/insights">
+                  进入高盛内参
+                </Link>
+                <Link className="button-link secondary" href="#services">
+                  查看服务领域
+                </Link>
+              </div>
             </div>
-            <div className="hero-badges">
-              <span className="tag">香港市场研究与资产配置顾问</span>
-              <span className="tag">公开信息研究</span>
-              <span className="tag">中国资产定价线索</span>
-            </div>
+          </article>
+
+          <div className="topic-grid">
+            {featuredTopics.map((topic) => (
+              <article className="topic-card" key={topic.title}>
+                <span>{topic.label}</span>
+                <h2>{topic.title}</h2>
+                <p>{topic.summary}</p>
+              </article>
+            ))}
           </div>
-          <aside className="public-hero-panel">
+        </div>
+
+        <aside className="portal-side">
+          <section className="side-panel insight-entry">
             <div className="panel-label">高盛内参</div>
             <h2>客户专属市场观察入口</h2>
             <p>以公开来源为基础，压缩重复转载和情绪化噪声，优先呈现可能影响中国资产定价的关键信息。</p>
@@ -62,8 +100,23 @@ export default function HomePage() {
                 <span key={item}>{item}</span>
               ))}
             </div>
-          </aside>
-        </div>
+            <Link className="text-link panel-link" href="/insights">
+              登录后进入
+            </Link>
+          </section>
+
+          <section className="side-panel compact-list">
+            <div className="section-heading compact-heading">
+              <div>
+                <p className="brand-kicker">Notice</p>
+                <h2 className="section-title">重要声明</h2>
+              </div>
+            </div>
+            <p>
+              本站以独立顾问机构口径运营，不代表 Goldman Sachs 集团或其关联实体。站内内容仅用于研究讨论。
+            </p>
+          </section>
+        </aside>
       </section>
 
       <section className="page-shell public-section" id="about">
@@ -163,15 +216,31 @@ export default function HomePage() {
 
       <footer className="public-footer">
         <div className="page-shell public-footer-inner">
-          <div>
-            <div className="brand-title">香港高盛市场研究</div>
+          <section>
+            <h2>香港高盛市场研究</h2>
             <p>独立香港市场研究与资产配置顾问机构。</p>
-          </div>
-          <p>
-            免责声明：本站内容基于公开信息整理，仅用于研究讨论，不构成证券、基金、保险或任何金融产品的购买建议。
-            本站与 Goldman Sachs 集团及其关联实体无隶属、授权或代理关系。
-          </p>
+          </section>
+          <section>
+            <h3>公司信息</h3>
+            <Link href="/#about">关于我们</Link>
+            <Link href="/#services">服务领域</Link>
+            <Link href="/#market-watch">市场观察</Link>
+            <Link href="/#contact">联系我们</Link>
+          </section>
+          <section>
+            <h3>客户入口</h3>
+            <Link href="/insights">高盛内参</Link>
+            <Link href="/login">客户登录</Link>
+            <Link href="/signup">申请注册</Link>
+            <Link href="/reports">策略库</Link>
+          </section>
+          <section>
+            <h3>法律信息</h3>
+            <p>本站内容基于公开信息整理，仅用于研究讨论，不构成任何金融产品的购买建议。</p>
+            <p>本站与 Goldman Sachs 集团及其关联实体无隶属、授权或代理关系。</p>
+          </section>
         </div>
+        <div className="footer-bottom">© 2026 香港高盛市场研究。客户申请请通过站内注册入口提交。</div>
       </footer>
     </main>
   );
