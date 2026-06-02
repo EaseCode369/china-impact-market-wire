@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { getAuthState, getDefaultRedirectByStatus } from "@/lib/auth";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { getSiteUrl } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function getFormValue(formData: FormData, field: string) {
@@ -69,6 +70,9 @@ export async function signupAction(formData: FormData) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      emailRedirectTo: `${getSiteUrl()}/auth/callback?next=/pending`,
+    },
   });
 
   if (error) {

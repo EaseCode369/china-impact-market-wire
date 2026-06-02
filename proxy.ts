@@ -5,6 +5,7 @@ import { getSupabaseConfig, isSupabaseConfigured } from "@/lib/supabase/config";
 
 const PUBLIC_PATHS = new Set(["/login", "/signup"]);
 const STATUS_PATHS = new Set(["/pending", "/disabled"]);
+const AUTH_CALLBACK_PATH = "/auth/callback";
 
 function getProtectedAppPath(pathname: string) {
   if (pathname === "/") {
@@ -26,6 +27,10 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const response = NextResponse.next();
   const { url, anonKey } = getSupabaseConfig();
+
+  if (pathname === AUTH_CALLBACK_PATH) {
+    return response;
+  }
 
   if (!url || !anonKey) {
     return response;
