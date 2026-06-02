@@ -52,7 +52,10 @@ export default async function SourcePage({ params }: SourcePageProps) {
                 返回国际来源聚合页
               </Link>
               <Link className="button-link secondary" href="/">
-                返回首页
+                返回官网首页
+              </Link>
+              <Link className="button-link secondary" href="/insights">
+                返回高盛内参
               </Link>
             </div>
           </div>

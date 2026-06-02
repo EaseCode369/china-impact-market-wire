@@ -5,3 +5,5 @@ content/generated
 tesseract-cache
 tsconfig.tsbuildinfo
 .vercel
+.env.local
+.env*.local

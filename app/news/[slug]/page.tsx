@@ -66,7 +66,10 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               <span className="button-link secondary">当前条目没有外部原文链接</span>
             )}
             <Link className="button-link secondary" href="/">
-              返回首页
+              返回官网首页
+            </Link>
+            <Link className="button-link secondary" href="/insights">
+              返回高盛内参
             </Link>
           </div>
         </article>
