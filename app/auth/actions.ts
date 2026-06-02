@@ -4,8 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { getAuthState, getDefaultRedirectByStatus } from "@/lib/auth";
-import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { getSiteUrl } from "@/lib/supabase/config";
+import { getSiteUrl, isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function getFormValue(formData: FormData, field: string) {
@@ -14,6 +13,10 @@ function getFormValue(formData: FormData, field: string) {
 
 function buildErrorRedirect(pathname: string, message: string) {
   return `${pathname}?error=${encodeURIComponent(message)}`;
+}
+
+function buildMessageRedirect(pathname: string, message: string) {
+  return `${pathname}?message=${encodeURIComponent(message)}`;
 }
 
 export async function loginAction(formData: FormData) {
@@ -90,7 +93,7 @@ export async function signupAction(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/pending?message=注册成功，账号已提交审核。");
+  redirect(buildMessageRedirect("/pending", "注册成功，账号已提交审核。"));
 }
 
 export async function logoutAction() {
@@ -100,5 +103,5 @@ export async function logoutAction() {
   }
 
   revalidatePath("/", "layout");
-  redirect("/login?message=您已安全退出。");
+  redirect(buildMessageRedirect("/login", "您已安全退出。"));
 }

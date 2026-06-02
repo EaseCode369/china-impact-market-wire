@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   const next = getSafeNext(requestUrl.searchParams.get("next"));
 
   if (!isSupabaseConfigured()) {
-    return NextResponse.redirect(new URL("/login?message=Supabase 尚未配置完成。", requestUrl.origin));
+    return NextResponse.redirect(new URL(`/login?message=${encodeURIComponent("Supabase 尚未配置完成。")}`, requestUrl.origin));
   }
 
   if (!code) {
@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return NextResponse.redirect(new URL("/login?message=邮箱已验证，请登录。", requestUrl.origin));
+    return NextResponse.redirect(new URL(`/login?message=${encodeURIComponent("邮箱已验证，请登录。")}`, requestUrl.origin));
   }
 
   const { data: profile } = await supabase.from("profiles").select("status").eq("id", user.id).maybeSingle<{ status: "pending" | "approved" | "disabled" }>();
