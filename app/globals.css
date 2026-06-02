@@ -115,10 +115,10 @@ img {
 }
 
 .header-brand-photo {
-  width: 90px;
-  height: auto;
+  width: 58px;
+  height: 58px;
   border-radius: 4px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -304,10 +304,11 @@ img {
 .lead-media {
   min-height: 300px;
   background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.42)),
-    url("/brand/header-brand-photo.jpg");
-  background-size: cover;
+    linear-gradient(180deg, rgba(248, 250, 252, 0.86), rgba(241, 245, 249, 0.94)),
+    url("/brand/seal-hk-logo.jpg");
+  background-size: min(72%, 420px) auto;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .lead-body {

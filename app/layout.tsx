@@ -27,7 +27,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                   className="header-brand-mark header-brand-photo"
                   height={98}
                   priority
-                  src="/brand/header-brand-photo.jpg"
+                  src="/brand/seal-hk-logo.jpg"
                   width={150}
                 />
               </div>
