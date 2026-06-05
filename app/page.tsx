@@ -43,6 +43,63 @@ const serviceCards = [
   "企业战略与投资者沟通支持",
 ];
 
+const domesticSourceLinks = [
+  {
+    name: "华尔街见闻",
+    href: "https://wallstreetcn.com/",
+    note: "宏观、市场与全球资产快讯入口",
+    status: "内参监测",
+  },
+  {
+    name: "第一财经",
+    href: "https://www.yicai.com/",
+    note: "股市、政策、产业与公司新闻",
+    status: "内参监测",
+  },
+  {
+    name: "21财经",
+    href: "https://www.21jingji.com/",
+    note: "资本市场、公司与宏观观察",
+    status: "内参监测",
+  },
+  {
+    name: "证券时报网",
+    href: "https://www.stcn.com/",
+    note: "证券市场、上市公司与政策资讯",
+    status: "内参监测",
+  },
+  {
+    name: "联合早报",
+    href: "https://www.zaobao.com/",
+    note: "中国、亚洲与国际时事参考",
+    status: "外链参考",
+  },
+  {
+    name: "澎湃新闻",
+    href: "https://www.thepaper.cn/",
+    note: "时政、经济与社会公共议题",
+    status: "外链参考",
+  },
+  {
+    name: "金十数据",
+    href: "https://www.jin10.com/",
+    note: "全球宏观、商品与金融快讯",
+    status: "外链参考",
+  },
+  {
+    name: "财新网",
+    href: "https://www.caixin.com/",
+    note: "深度财经报道与政策背景",
+    status: "外链参考",
+  },
+  {
+    name: "大智慧",
+    href: "https://www.gw.com.cn/",
+    note: "市场数据与投资资讯参考",
+    status: "外链参考",
+  },
+];
+
 const insightBullets = ["全球公开标题流聚合", "中国股票直接影响筛选", "来源权重与重复项压缩", "客户审核后访问"];
 
 export default function HomePage() {
@@ -160,6 +217,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="page-shell public-section" id="sources">
+        <div className="section-heading">
+          <div>
+            <p className="brand-kicker">Source Directory</p>
+            <h2 className="section-title">国内金融信息源</h2>
+          </div>
+          <div className="section-caption">公开官网仅提供权威来源入口；客户区按影响股市规则筛选公开标题流。</div>
+        </div>
+        <div className="source-link-grid">
+          {domesticSourceLinks.map((source) => (
+            <a className="source-link-card" href={source.href} key={source.name} rel="noopener noreferrer" target="_blank">
+              <div className="source-link-meta">
+                <span>{source.status}</span>
+              </div>
+              <h3>{source.name}</h3>
+              <p>{source.note}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="page-shell public-section" id="market-watch">
         <div className="content-grid">
           <div className="content-panel">
@@ -224,6 +302,7 @@ export default function HomePage() {
             <h3>公司信息</h3>
             <Link href="/#about">关于我们</Link>
             <Link href="/#services">服务领域</Link>
+            <Link href="/#sources">信息源</Link>
             <Link href="/#market-watch">市场观察</Link>
             <Link href="/#contact">联系我们</Link>
           </section>

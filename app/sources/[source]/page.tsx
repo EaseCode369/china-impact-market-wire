@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getInternationalSourceStatuses, getPostsBySource } from "@/lib/content";
+import { getActiveSourceStatuses, getPostsBySource } from "@/lib/content";
 
 type SourcePageProps = {
   params: Promise<{ source: string }>;
@@ -16,14 +16,14 @@ function formatDate(dateString: string) {
 }
 
 export async function generateStaticParams() {
-  return getInternationalSourceStatuses().map((source) => ({ source: encodeURIComponent(source.name) }));
+  return getActiveSourceStatuses().map((source) => ({ source: encodeURIComponent(source.name) }));
 }
 
 export default async function SourcePage({ params }: SourcePageProps) {
   const { source } = await params;
   const sourceName = decodeURIComponent(source);
   const posts = getPostsBySource(sourceName);
-  const status = getInternationalSourceStatuses().find((item) => item.name === sourceName);
+  const status = getActiveSourceStatuses().find((item) => item.name === sourceName);
 
   return (
     <main className="page-shell">
@@ -40,16 +40,16 @@ export default async function SourcePage({ params }: SourcePageProps) {
 
         {posts.length === 0 ? (
           <div className="empty-state">
-            <p>当前这个国际来源还没有成功生成可展示条目，所以这里不再返回 404。</p>
+            <p>当前这个来源还没有成功生成可展示条目，所以这里不再返回 404。</p>
             <p>
               {status
                 ? `当前状态：${status.hasData ? "已有数据" : "暂未抓到数据"}。`
                 : "当前状态：未找到对应来源配置。"}
             </p>
-            <p>我们已经把国际来源入口改成聚合页，并在继续排查这个来源的抓取链路。</p>
+            <p>我们已经把来源入口改成聚合页，并在继续排查这个来源的抓取链路。</p>
             <div className="detail-actions">
               <Link className="button-link secondary" href="/sources">
-                返回国际来源聚合页
+                返回来源聚合页
               </Link>
               <Link className="button-link secondary" href="/">
                 返回官网首页

@@ -50,6 +50,8 @@ const sourceFetchers: Record<string, () => Promise<RawItem[]>> = {
   ft: crawlFt,
   wsj: crawlWsj,
   wallstreetcn: crawlWallstreetcn,
+  yicai: crawlYicai,
+  "21jingji": crawl21Jingji,
   scmp: crawlScmp,
   cls: crawlCls,
   stcn: crawlStcn,
@@ -161,35 +163,33 @@ async function crawlWsj(): Promise<RawItem[]> {
 }
 
 async function crawlWallstreetcn(): Promise<RawItem[]> {
-  const html = await fetchText("https://wallstreetcn.com/rss");
-  const $ = cheerio.load(html, { xmlMode: true });
+  const html = await fetchText("https://wallstreetcn.com/");
+  return parseListingLinks(html, {
+    baseUrl: "https://wallstreetcn.com",
+    sourceId: "wallstreetcn",
+    sourceName: "华尔街见闻",
+    hrefPattern: /\/(?:articles|livenews)\/\d+/,
+  });
+}
 
-  return $("item")
-    .slice(0, CRAWLER_LIMIT)
-    .map((_, element) => {
-      const title = decode($(element).find("title").first().text().trim());
-      const url = $(element).find("link").first().text().trim();
-      const description = decode($(element).find("description").first().text().trim());
+async function crawlYicai(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.yicai.com/");
+  return parseListingLinks(html, {
+    baseUrl: "https://www.yicai.com",
+    sourceId: "yicai",
+    sourceName: "第一财经",
+    hrefPattern: /\/(?:news|brief)\/\d+\.html/,
+  });
+}
 
-      if (!title || !url) {
-        return null;
-      }
-
-      const summary = summarizeText(description, 2, 180) || makeHeadlineSummary("华尔街见闻");
-      const publishedAt = $(element).find("pubDate").first().text().trim() || new Date().toISOString();
-
-      return {
-        sourceId: "wallstreetcn",
-        sourceName: "华尔街见闻",
-        title,
-        summary,
-        url,
-        publishedAt,
-        contentLevel: description ? "teaser" : "headline",
-      };
-    })
-    .get()
-    .filter(Boolean) as RawItem[];
+async function crawl21Jingji(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.21jingji.com/");
+  return parseListingLinks(html, {
+    baseUrl: "https://www.21jingji.com",
+    sourceId: "21jingji",
+    sourceName: "21财经",
+    hrefPattern: /\/article\/\d+\/[a-z]+\/[a-f0-9]+\.html/,
+  });
 }
 
 async function crawlScmp(): Promise<RawItem[]> {
@@ -352,9 +352,84 @@ function parseStandardRss(xml: string, sourceId: string, sourceName: string) {
     .filter(Boolean) as RawItem[];
 }
 
+function parseListingLinks(
+  html: string,
+  options: {
+    baseUrl: string;
+    sourceId: string;
+    sourceName: string;
+    hrefPattern: RegExp;
+  },
+) {
+  const $ = cheerio.load(html);
+  const items: RawItem[] = [];
+  const seen = new Set<string>();
+
+  $("a[href]")
+    .toArray()
+    .forEach((element) => {
+      if (items.length >= CRAWLER_LIMIT * 2) {
+        return;
+      }
+
+      const link = $(element);
+      const href = link.attr("href")?.trim();
+      if (!href || !options.hrefPattern.test(href)) {
+        return;
+      }
+
+      const url = new URL(href, options.baseUrl).toString();
+      if (seen.has(url)) {
+        return;
+      }
+
+      const rawTitle =
+        decode(link.attr("title")?.trim() || link.find("img").attr("alt")?.trim() || link.text().replace(/\s+/g, " ").trim());
+      const title = cleanListingTitle(rawTitle);
+      const nearbyText = link.parent().text().replace(/\s+/g, " ").trim();
+      const summary = summarizeText(nearbyText, 2, 160) || makeHeadlineSummary(options.sourceName);
+
+      if (!title || title.length < 6) {
+        return;
+      }
+
+      seen.add(url);
+      items.push({
+        sourceId: options.sourceId,
+        sourceName: options.sourceName,
+        title,
+        summary,
+        url,
+        publishedAt: inferDateFromUrlOrText(url, nearbyText),
+        contentLevel: summary === makeHeadlineSummary(options.sourceName) ? "headline" : "teaser",
+      });
+    });
+
+  return items;
+}
+
+function cleanListingTitle(title: string) {
+  return title
+    .replace(/\s+/g, " ")
+    .split(/\s*[|｜]\s*/)[0]
+    .replace(/^【([^】]+)】\s*/, "$1")
+    .trim()
+    .slice(0, 80);
+}
+
 function descriptionToSummary(descriptionHtml: string, fallbackSourceName: string) {
   const plainText = descriptionToPlainText(descriptionHtml);
   return summarizeText(plainText, 2, 180) || makeHeadlineSummary(fallbackSourceName);
+}
+
+function inferDateFromUrlOrText(url: string, text: string) {
+  const dateFromUrl = url.match(/\/(20\d{2})(\d{2})(\d{2})\//);
+  if (dateFromUrl) {
+    const [, year, month, day] = dateFromUrl;
+    return new Date(Number(year), Number(month) - 1, Number(day), 12, 0, 0).toISOString();
+  }
+
+  return parseCnTime(text);
 }
 
 function descriptionToPlainText(descriptionHtml: string) {

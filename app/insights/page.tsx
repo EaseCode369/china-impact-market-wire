@@ -29,7 +29,7 @@ export default function InsightsPage() {
             <h1 className="hero-title">高盛内参</h1>
             <p className="hero-copy">
               围绕中国资产定价主线，汇总全球公开信息、提炼可交易线索，并按影响强度优先呈现。
-              覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、财联社与证券时报等公开来源。
+              覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、第一财经、21财经、财联社与证券时报等公开来源。
             </p>
             <div className="hero-badges">
               <span className="tag">客户内参区</span>

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-import { getInternationalSourceStatuses, getPostsBySource } from "@/lib/content";
+import { getActiveSourceStatuses, getPostsBySource } from "@/lib/content";
 
 export default function SourcesIndexPage() {
-  const sources = getInternationalSourceStatuses();
+  const sources = getActiveSourceStatuses();
   const posts = sources.flatMap((source) => getPostsBySource(source.name)).slice(0, 12);
   const availableCount = sources.filter((source) => source.hasData).length;
 
@@ -12,16 +12,16 @@ export default function SourcesIndexPage() {
       <section className="content-panel">
         <div className="section-heading">
           <div>
-            <p className="brand-kicker">International Sources</p>
-            <h1 className="section-title">国际来源聚合页</h1>
+            <p className="brand-kicker">Source Map</p>
+            <h1 className="section-title">来源聚合页</h1>
           </div>
           <div className="section-caption">
-            已配置 {sources.length} 个国际来源，当前抓到 {availableCount} 个来源的数据。
+            已配置 {sources.length} 个监测来源，当前抓到 {availableCount} 个来源的数据。
           </div>
         </div>
 
         <div className="news-card-summary" style={{ marginBottom: 20 }}>
-          这里展示的是“对中国故事、中国股票、港股、产业链和政策面有影响”的国际公开标题流。
+          这里展示的是“对中国故事、中国股票、港股、产业链和政策面有影响”的公开标题流。
           如果某个来源暂时没有数据，不再返回 404，而是明确展示当前抓取状态。
         </div>
 
@@ -29,7 +29,7 @@ export default function SourcesIndexPage() {
           {sources.map((source) => (
             <Link href={`/sources/${encodeURIComponent(source.name)}`} key={source.id} className="news-card">
               <div className="news-card-meta">
-                <span className="meta-chip">{source.group === "global_media" ? "国际媒体" : "香港/区域媒体"}</span>
+                <span className="meta-chip">{formatSourceGroup(source.group)}</span>
                 <span>{source.name}</span>
                 <span>{source.hasData ? "已抓到数据" : "暂未抓到数据"}</span>
               </div>
@@ -48,12 +48,12 @@ export default function SourcesIndexPage() {
         <div className="content-panel">
           <div className="section-heading">
             <div>
-              <p className="brand-kicker">Latest International Items</p>
-              <h2 className="section-title">国际来源最新条目</h2>
+              <p className="brand-kicker">Latest Source Items</p>
+              <h2 className="section-title">来源最新条目</h2>
             </div>
           </div>
           {posts.length === 0 ? (
-            <div className="empty-state">当前国际来源还没有成功落库的条目。我们已经把入口改成聚合页，同时正在逐个修复抓取链路。</div>
+            <div className="empty-state">当前来源还没有成功落库的条目。我们已经把入口改成聚合页，同时正在逐个修复抓取链路。</div>
           ) : (
             <div className="news-list">
               {posts.map((post) => (
@@ -73,4 +73,19 @@ export default function SourcesIndexPage() {
       </section>
     </main>
   );
+}
+
+function formatSourceGroup(group: string) {
+  switch (group) {
+    case "global_media":
+      return "国际媒体";
+    case "hk_media":
+      return "香港/区域";
+    case "china_media":
+      return "国内财经";
+    case "strategy_feed":
+      return "策略源";
+    default:
+      return "公开来源";
+  }
 }

@@ -46,7 +46,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                     高盛内参
                   </Link>
                   <Link className="nav-pill" href="/sources">
-                    国际来源
+                    来源地图
                   </Link>
                   <Link className="nav-pill" href="/reports">
                     策略库预留

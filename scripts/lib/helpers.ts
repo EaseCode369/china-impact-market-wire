@@ -7,30 +7,30 @@ import slugify from "slugify";
 import type { ContentLevel, GeneratedCollection, NewsPost } from "@/lib/content-schema";
 
 const categoryKeywords: Array<{ category: string; keywords: string[] }> = [
-  { category: "宏观", keywords: ["gdp", "央行", "美联储", "财政", "人民币", "经济", "关税", "通胀"] },
-  { category: "市场", keywords: ["a股", "港股", "etf", "成交额", "涨停", "板块", "资金", "指数"] },
-  { category: "科技", keywords: ["芯片", "半导体", "ai", "机器人", "算力", "光模块", "电池"] },
+  { category: "宏观", keywords: ["gdp", "央行", "美联储", "财政", "人民币", "经济", "关税", "通胀", "发改委", "出口"] },
+  { category: "市场", keywords: ["a股", "港股", "中概股", "etf", "成交额", "涨停", "板块", "资金", "指数", "恒生", "两融", "ipo"] },
+  { category: "科技", keywords: ["芯片", "半导体", "ai", "机器人", "算力", "光模块", "电池", "cpo"] },
   { category: "能源", keywords: ["煤炭", "光伏", "储能", "原油", "绿电", "锂电", "天然气"] },
-  { category: "公司", keywords: ["财报", "业绩", "净利润", "分红", "上市公司", "董事长"] },
+  { category: "公司", keywords: ["财报", "业绩", "净利润", "分红", "上市公司", "董事长", "减持", "增持", "回购", "并购", "定增"] },
   { category: "国际", keywords: ["美国", "伊朗", "中东", "和谈", "停火", "日韩", "欧盟"] },
 ];
 
 const chinaRelevantRules: Array<{ reason: string; keywords: string[] }> = [
   {
     reason: "命中中国股票市场关键词",
-    keywords: ["a股", "港股", "中概股", "北交所", "科创板", "创业板", "沪深", "恒生", "a-share", "hang seng"],
+    keywords: ["a股", "港股", "中概股", "北交所", "科创板", "创业板", "沪深", "恒生", "两融", "etf", "ipo", "a-share", "hang seng"],
   },
   {
     reason: "命中中国宏观与政策关键词",
-    keywords: ["中国", "央行", "人民币", "财政", "地产", "出口", "关税", "降准", "降息", "监管", "国办", "证监会"],
+    keywords: ["中国", "央行", "人民币", "财政", "地产", "出口", "关税", "降准", "降息", "监管", "国办", "证监会", "发改委", "财政部"],
   },
   {
     reason: "命中产业链与行业关键词",
-    keywords: ["半导体", "新能源", "ai", "医药", "消费", "券商", "银行", "光伏", "锂电", "稀土", "算力", "芯片"],
+    keywords: ["半导体", "新能源", "ai", "医药", "消费", "券商", "银行", "光伏", "锂电", "稀土", "算力", "芯片", "机器人", "cpo"],
   },
   {
     reason: "命中上市公司与财报关键词",
-    keywords: ["财报", "并购", "减持", "回购", "上市公司", "业绩", "分红", "融资", "增持", "ipo"],
+    keywords: ["财报", "并购", "减持", "回购", "上市公司", "业绩", "分红", "融资", "增持", "ipo", "定增"],
   },
 ];
 
@@ -125,7 +125,7 @@ export function normalizeTitle(title: string) {
     .toLowerCase()
     .replace(/【[^】]+】/g, " ")
     .replace(/（附名单）|附名单|快看|突发|重磅|标题流|preview/gi, " ")
-    .replace(/\b(reuters|bloomberg|financial times|ft|wall street journal|wsj|scmp|华尔街见闻|财联社|证券时报)\b/gi, " ")
+    .replace(/\b(reuters|bloomberg|financial times|ft|wall street journal|wsj|scmp|华尔街见闻|财联社|证券时报|第一财经|21财经)\b/gi, " ")
     .replace(/\d{1,2}月\d{1,2}日|\d{4}年\d{1,2}月\d{1,2}日/g, " ")
     .replace(/[“”"'‘’·:：!！?？,，.。;；()（）\[\]{}]/g, " ")
     .replace(/\s+/g, " ")

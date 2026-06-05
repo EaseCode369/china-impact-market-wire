@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-02T23:09:36.532Z",
-  "total": 45,
-  "external": 45,
-  "chinaRelevantCount": 45,
+  "generatedAt": "2026-06-05T14:38:34.369Z",
+  "total": 40,
+  "external": 40,
+  "chinaRelevantCount": 19,
   "dedupedCount": 0,
   "activeSources": [
     "Reuters",
@@ -10,6 +10,8 @@
     "Financial Times",
     "WSJ",
     "华尔街见闻",
+    "第一财经",
+    "21财经",
     "SCMP",
     "财联社",
     "证券时报"
@@ -19,5 +21,5 @@
     "大智慧",
     "Wind"
   ],
-  "lastSuccessfulRunAt": "2026-06-02T23:09:36.533Z"
+  "lastSuccessfulRunAt": "2026-06-05T14:38:34.369Z"
 }
