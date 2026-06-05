@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-05T14:38:34.369Z",
-  "total": 40,
-  "external": 40,
-  "chinaRelevantCount": 19,
+  "generatedAt": "2026-06-05T23:09:01.393Z",
+  "total": 183,
+  "external": 183,
+  "chinaRelevantCount": 143,
   "dedupedCount": 0,
   "activeSources": [
     "Reuters",
@@ -13,13 +13,14 @@
     "第一财经",
     "21财经",
     "SCMP",
-    "财联社",
-    "证券时报"
+    "证券时报",
+    "东方财富",
+    "澎湃新闻"
   ],
   "pausedSources": [
-    "东方财富",
+    "财联社",
     "大智慧",
     "Wind"
   ],
-  "lastSuccessfulRunAt": "2026-06-05T14:38:34.369Z"
+  "lastSuccessfulRunAt": "2026-06-05T23:09:01.393Z"
 }

@@ -18,9 +18,10 @@ export const SOURCE_CONFIGS: SourceConfig[] = [
   { id: "yicai", displayName: "第一财经", sourceGroup: "china_media", fetchMode: "listing", priority: 78, isActive: true },
   { id: "21jingji", displayName: "21财经", sourceGroup: "china_media", fetchMode: "listing", priority: 76, isActive: true },
   { id: "scmp", displayName: "SCMP", sourceGroup: "hk_media", fetchMode: "rss", priority: 80, isActive: true },
-  { id: "cls", displayName: "财联社", sourceGroup: "china_media", fetchMode: "listing", priority: 72, isActive: true },
+  { id: "cls", displayName: "财联社", sourceGroup: "china_media", fetchMode: "listing", priority: 72, isActive: false },
   { id: "stcn", displayName: "证券时报", sourceGroup: "china_media", fetchMode: "article", priority: 68, isActive: true },
-  { id: "eastmoney", displayName: "东方财富", sourceGroup: "china_media", fetchMode: "listing", priority: 52, isActive: false },
+  { id: "eastmoney", displayName: "东方财富", sourceGroup: "china_media", fetchMode: "article", priority: 66, isActive: true },
+  { id: "thepaper", displayName: "澎湃新闻", sourceGroup: "china_media", fetchMode: "article", priority: 58, isActive: true },
   { id: "dzh", displayName: "大智慧", sourceGroup: "china_media", fetchMode: "article", priority: 48, isActive: false },
   { id: "wind", displayName: "Wind", sourceGroup: "strategy_feed", fetchMode: "article", priority: 0, isActive: false },
 ];

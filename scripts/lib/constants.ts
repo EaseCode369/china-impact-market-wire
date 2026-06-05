@@ -8,4 +8,4 @@ export const GENERATED_DIR = path.join(process.cwd(), "content", "generated");
 export const TMP_DIR = path.join(process.cwd(), "tmp");
 export const OCR_CACHE_DIR = path.join(process.cwd(), "tesseract-cache");
 
-export const CRAWLER_LIMIT = 8;
+export const CRAWLER_LIMIT = 18;

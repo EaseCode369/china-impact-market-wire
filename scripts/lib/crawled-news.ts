@@ -38,6 +38,13 @@ type LocalizedRawItem = RawItem & {
   localizedSummary?: string;
 };
 
+type ArticleSummaryOptions = {
+  titleSelectors: string[];
+  summarySelectors: string[];
+  dateSelectors?: string[];
+  maxItems?: number;
+};
+
 type GenerateOptions = {
   limit?: number;
   sourceIds?: string[];
@@ -55,6 +62,8 @@ const sourceFetchers: Record<string, () => Promise<RawItem[]>> = {
   scmp: crawlScmp,
   cls: crawlCls,
   stcn: crawlStcn,
+  eastmoney: crawlEastmoney,
+  thepaper: crawlThepaper,
 };
 
 export async function generateCrawledNews(options: GenerateOptions = {}) {
@@ -68,6 +77,12 @@ export async function generateCrawledNews(options: GenerateOptions = {}) {
       return fetcher();
     }),
   );
+
+  settled.forEach((result, index) => {
+    if (result.status === "rejected") {
+      console.warn(`Skipping source ${activeSources[index]?.displayName ?? "unknown"}: ${result.reason}`);
+    }
+  });
 
   const merged = settled.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
   const localizedItems = await Promise.all(merged.map((item) => localizeRawItem(item)));
@@ -163,32 +178,75 @@ async function crawlWsj(): Promise<RawItem[]> {
 }
 
 async function crawlWallstreetcn(): Promise<RawItem[]> {
-  const html = await fetchText("https://wallstreetcn.com/");
-  return parseListingLinks(html, {
+  const html = await fetchTextWithCurlFallback("https://wallstreetcn.com/", "/articles/");
+  if (process.env.DEBUG_CRAWLER) {
+    console.log(`wallstreetcn html length: ${html.length}, has articles: ${html.includes("/articles/")}`);
+  }
+  const items = parseListingLinks(html, {
     baseUrl: "https://wallstreetcn.com",
     sourceId: "wallstreetcn",
     sourceName: "华尔街见闻",
     hrefPattern: /\/(?:articles|livenews)\/\d+/,
   });
+  if (process.env.DEBUG_CRAWLER) {
+    console.log(`wallstreetcn listing items: ${items.length}`);
+  }
+
+  return enrichWithArticleSummaries(items, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      "meta[property='og:description']",
+      "meta[name='description']",
+      "article p",
+      "[class*='article'] p",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", "[class*='time']", "[class*='date']"],
+  });
 }
 
 async function crawlYicai(): Promise<RawItem[]> {
   const html = await fetchText("https://www.yicai.com/");
-  return parseListingLinks(html, {
+  const items = parseListingLinks(html, {
     baseUrl: "https://www.yicai.com",
     sourceId: "yicai",
     sourceName: "第一财经",
     hrefPattern: /\/(?:news|brief)\/\d+\.html/,
   });
+
+  return enrichWithArticleSummaries(items, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      ".intro",
+      "meta[name='description']",
+      "meta[property='og:description']",
+      ".m-txt #multi-text p",
+      "#multi-text p",
+      ".m-txt p",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", ".time", ".date"],
+  });
 }
 
 async function crawl21Jingji(): Promise<RawItem[]> {
   const html = await fetchText("https://www.21jingji.com/");
-  return parseListingLinks(html, {
+  const items = parseListingLinks(html, {
     baseUrl: "https://www.21jingji.com",
     sourceId: "21jingji",
     sourceName: "21财经",
     hrefPattern: /\/article\/\d+\/[a-z]+\/[a-f0-9]+\.html/,
+  });
+
+  return enrichWithArticleSummaries(items, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      "meta[name='description']",
+      "meta[property='og:description']",
+      ".content p",
+      ".article-content p",
+      ".detail-content p",
+      "[class*='content'] p",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", "[class*='time']", "[class*='date']"],
   });
 }
 
@@ -200,7 +258,7 @@ async function crawlCls(): Promise<RawItem[]> {
   const html = await fetchText("https://www.cls.cn/telegraph");
   const $ = cheerio.load(html);
 
-  return $(".telegraph-content-box")
+  const items = $(".telegraph-content-box")
     .slice(0, CRAWLER_LIMIT)
     .map((_, element) => {
       const box = $(element);
@@ -227,6 +285,19 @@ async function crawlCls(): Promise<RawItem[]> {
     })
     .get()
     .filter(Boolean) as RawItem[];
+  if (process.env.DEBUG_CRAWLER) {
+    console.log(`cls listing items: ${items.length}`);
+  }
+
+  if (items.length > 0) {
+    return items;
+  }
+
+  return crawlGoogleNewsSource(
+    "cls",
+    "财联社",
+    "site:cls.cn (A股 OR 港股 OR 财报 OR 央行 OR 证监会 OR AI OR 半导体 OR 机器人 OR 光伏)",
+  );
 }
 
 async function crawlStcn(): Promise<RawItem[]> {
@@ -282,6 +353,57 @@ async function crawlStcn(): Promise<RawItem[]> {
   }
 
   return items;
+}
+
+async function crawlEastmoney(): Promise<RawItem[]> {
+  const html = await fetchText("https://finance.eastmoney.com/");
+  const items = parseListingLinks(html, {
+    baseUrl: "https://finance.eastmoney.com",
+    sourceId: "eastmoney",
+    sourceName: "东方财富",
+    hrefPattern: /https?:\/\/finance\.eastmoney\.com\/a\/20\d+\.html|\/a\/20\d+\.html/,
+  });
+
+  return enrichWithArticleSummaries(items, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      "meta[name='description']",
+      "meta[property='og:description']",
+      "#ContentBody p",
+      ".txtinfos p",
+      "#ContentBody",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", ".time", ".source"],
+  });
+}
+
+async function crawlThepaper(): Promise<RawItem[]> {
+  const pages = await Promise.all([
+    fetchText("https://www.thepaper.cn/channel_25951"),
+    fetchText("https://www.thepaper.cn/list_25434"),
+  ]);
+  const items = pages.flatMap((html) =>
+    parseListingLinks(html, {
+      baseUrl: "https://www.thepaper.cn",
+      sourceId: "thepaper",
+      sourceName: "澎湃新闻",
+      hrefPattern: /\/newsDetail_forward_\d+/,
+    }),
+  );
+  const uniqueItems = dedupeRawItems(items).filter((item) =>
+    inferChinaStockRelevance(item.title, item.summary).isRelevant,
+  );
+
+  return enrichWithArticleSummaries(uniqueItems, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      "meta[name='description']",
+      "meta[property='og:description']",
+      "[class*='content'] p",
+      "[class*='news_txt'] p",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", "[class*='time']", "[class*='date']"],
+  });
 }
 
 async function crawlGoogleNewsSource(sourceId: string, sourceName: string, query: string) {
@@ -364,6 +486,7 @@ function parseListingLinks(
   const $ = cheerio.load(html);
   const items: RawItem[] = [];
   const seen = new Set<string>();
+  let matchedHrefCount = 0;
 
   $("a[href]")
     .toArray()
@@ -374,11 +497,16 @@ function parseListingLinks(
 
       const link = $(element);
       const href = link.attr("href")?.trim();
-      if (!href || !options.hrefPattern.test(href)) {
+      if (!href) {
         return;
       }
 
       const url = new URL(href, options.baseUrl).toString();
+      if (!options.hrefPattern.test(href) && !options.hrefPattern.test(url)) {
+        return;
+      }
+      matchedHrefCount += 1;
+
       if (seen.has(url)) {
         return;
       }
@@ -387,7 +515,7 @@ function parseListingLinks(
         decode(link.attr("title")?.trim() || link.find("img").attr("alt")?.trim() || link.text().replace(/\s+/g, " ").trim());
       const title = cleanListingTitle(rawTitle);
       const nearbyText = link.parent().text().replace(/\s+/g, " ").trim();
-      const summary = summarizeText(nearbyText, 2, 160) || makeHeadlineSummary(options.sourceName);
+      const summary = cleanListingSummary(nearbyText, title, options.sourceName);
 
       if (!title || title.length < 6) {
         return;
@@ -405,7 +533,103 @@ function parseListingLinks(
       });
     });
 
+  if (process.env.DEBUG_CRAWLER) {
+    console.log(`${options.sourceName} matched hrefs: ${matchedHrefCount}, parsed items: ${items.length}`);
+  }
+
   return items;
+}
+
+async function enrichWithArticleSummaries(items: RawItem[], options: ArticleSummaryOptions) {
+  const enriched: RawItem[] = [];
+  const targetItems = dedupeRawItems(items).slice(0, options.maxItems ?? CRAWLER_LIMIT);
+
+  for (const item of targetItems) {
+    try {
+      const html = item.url.includes("wallstreetcn.com")
+        ? await fetchTextWithCurlFallback(item.url, "og:title")
+        : await fetchText(item.url);
+      const $ = cheerio.load(html);
+      const parsedTitle = cleanArticleTitle(pickFirstText($, options.titleSelectors));
+      const title = isGenericArticleTitle(parsedTitle, item.sourceName) ? item.title : parsedTitle || item.title;
+      const summaryText = pickCombinedText($, options.summarySelectors);
+      const parsedSummary = cleanArticleSummary(summaryText, title, item.sourceName);
+      const summary =
+        parsedSummary === makeHeadlineSummary(item.sourceName) && item.summary
+          ? item.summary
+          : parsedSummary;
+      const publishedAtText = options.dateSelectors ? pickFirstText($, options.dateSelectors) : "";
+
+      enriched.push({
+        ...item,
+        title,
+        summary,
+        publishedAt: publishedAtText ? parseCnTime(publishedAtText) : item.publishedAt,
+        contentLevel: summary === makeHeadlineSummary(item.sourceName) ? item.contentLevel : "summary",
+      });
+    } catch {
+      enriched.push(item);
+    }
+  }
+
+  return enriched;
+}
+
+function dedupeRawItems(items: RawItem[]) {
+  const seen = new Set<string>();
+  const deduped: RawItem[] = [];
+
+  for (const item of items) {
+    const key = item.url || item.title;
+    if (!key || seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    deduped.push(item);
+  }
+
+  return deduped;
+}
+
+function pickFirstText($: cheerio.CheerioAPI, selectors: string[]) {
+  for (const selector of selectors) {
+    const selected = $(selector).first();
+    const text = selector.startsWith("meta")
+      ? selected.attr("content")?.trim()
+      : selected.text().replace(/\s+/g, " ").trim();
+    if (text) {
+      return decode(text);
+    }
+  }
+
+  return "";
+}
+
+function pickCombinedText($: cheerio.CheerioAPI, selectors: string[]) {
+  const parts: string[] = [];
+
+  for (const selector of selectors) {
+    const selected = $(selector);
+    const texts = selector.startsWith("meta")
+      ? [selected.first().attr("content")?.trim() ?? ""]
+      : selected
+          .slice(0, 5)
+          .map((_, element) => $(element).text().replace(/\s+/g, " ").trim())
+          .get();
+
+    for (const text of texts) {
+      const cleaned = decode(text).replace(/\s+/g, " ").trim();
+      if (cleaned && !parts.some((part) => part.includes(cleaned) || cleaned.includes(part))) {
+        parts.push(cleaned);
+      }
+    }
+
+    if (parts.join("").length >= 260) {
+      break;
+    }
+  }
+
+  return parts.join(" ");
 }
 
 function cleanListingTitle(title: string) {
@@ -413,8 +637,50 @@ function cleanListingTitle(title: string) {
     .replace(/\s+/g, " ")
     .split(/\s*[|｜]\s*/)[0]
     .replace(/^【([^】]+)】\s*/, "$1")
+    .replace(/^推荐/u, "")
     .trim()
     .slice(0, 80);
+}
+
+function cleanArticleTitle(title: string) {
+  return cleanListingTitle(
+    title
+      .replace(/_.*$/u, "")
+      .replace(/\s*[-_]\s*(第一财经|21财经|东方财富网|证券时报|澎湃新闻|The Paper).*$/iu, ""),
+  );
+}
+
+function isGenericArticleTitle(title: string, sourceName: string) {
+  const normalized = title.replace(/\s+/g, "").toLowerCase();
+  const normalizedSource = sourceName.replace(/\s+/g, "").toLowerCase();
+  return !normalized || normalized === normalizedSource || normalized.length < 6 || /^20\d{2}[/-]\d{1,2}[/-]\d{1,2}$/.test(normalized);
+}
+
+function cleanListingSummary(text: string, title: string, sourceName: string) {
+  const cleaned = text
+    .replace(/\d{1,2}:\d{2}(?::\d{2})?/g, " ")
+    .replace(new RegExp(escapeRegExp(title), "g"), " ")
+    .replace(/\s*[|｜]\s*/g, "。")
+    .replace(/\s+/g, " ")
+    .trim();
+  const summary = summarizeText(cleaned, 2, 170);
+  return summary && summary !== title ? summary : makeHeadlineSummary(sourceName);
+}
+
+function cleanArticleSummary(text: string, title: string, sourceName: string) {
+  const cleaned = text
+    .replace(new RegExp(escapeRegExp(title), "g"), " ")
+    .replace(/责任编辑[:：].*$/u, "")
+    .replace(/举报|反馈|收藏本文|分享到/u, " ")
+    .replace(/【\s*】/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const summary = summarizeText(cleaned, 2, 220);
+  return summary && summary !== title ? summary : makeHeadlineSummary(sourceName);
+}
+
+function escapeRegExp(text: string) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function descriptionToSummary(descriptionHtml: string, fallbackSourceName: string) {
@@ -444,6 +710,7 @@ async function fetchText(url: string) {
         "user-agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
         accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
       },
       cache: "no-store",
     });
@@ -455,6 +722,39 @@ async function fetchText(url: string) {
     return response.text();
   } catch {
     return fetchTextViaPowerShell(url);
+  }
+}
+
+async function fetchTextWithCurlFallback(url: string, expectedText: string) {
+  const html = await fetchText(url);
+  if (html.includes(expectedText)) {
+    return html;
+  }
+
+  try {
+    const { stdout } = await execFileAsync(
+      "curl",
+      [
+        "-L",
+        "-s",
+        "-A",
+        "Mozilla/5.0",
+        url,
+      ],
+      {
+        maxBuffer: 20 * 1024 * 1024,
+        encoding: "utf8",
+      },
+    );
+    if (process.env.DEBUG_CRAWLER) {
+      console.log(`curl fallback for ${url}: ${stdout.length}, has expected: ${stdout.includes(expectedText)}`);
+    }
+    return stdout || html;
+  } catch {
+    if (process.env.DEBUG_CRAWLER) {
+      console.log(`curl fallback failed for ${url}`);
+    }
+    return html;
   }
 }
 
