@@ -18,11 +18,31 @@ const categoryKeywords: Array<{ category: string; keywords: string[] }> = [
 const chinaRelevantRules: Array<{ reason: string; keywords: string[] }> = [
   {
     reason: "命中中国股票市场关键词",
-    keywords: ["a股", "港股", "中概股", "北交所", "科创板", "创业板", "沪深", "恒生", "两融", "etf", "ipo", "a-share", "hang seng"],
+    keywords: [
+      "a股",
+      "港股",
+      "中概股",
+      "北交所",
+      "科创板",
+      "创业板",
+      "沪深",
+      "恒生",
+      "两融",
+      "etf",
+      "ipo",
+      "a-share",
+      "hang seng",
+      "股市",
+      "股票",
+      "美股",
+      "纳指",
+      "标普",
+      "半导体指数",
+    ],
   },
   {
     reason: "命中中国宏观与政策关键词",
-    keywords: ["中国", "央行", "人民币", "财政", "地产", "出口", "关税", "降准", "降息", "监管", "国办", "证监会", "发改委", "财政部"],
+    keywords: ["央行", "人民币", "财政", "地产", "出口", "关税", "降准", "降息", "证监会", "发改委", "财政部", "金融监管", "贷款", "利率", "汇率"],
   },
   {
     reason: "命中产业链与行业关键词",
@@ -39,6 +59,78 @@ const negativeChinaRelevantKeywords = [
   "莫桑比克",
   "联合国总部",
   "纯海外",
+  "天安门",
+  "六四",
+  "周年纪念",
+  "承认真相",
+  "历史真相",
+  "人权",
+  "制裁古巴",
+  "外交部答问",
+  "台湾总统表示",
+  "旅行禁令",
+  "议员赴台",
+  "海上边界谈判",
+  "南海海域对峙",
+];
+
+const investmentContextKeywords = [
+  "a股",
+  "港股",
+  "中概股",
+  "北交所",
+  "科创板",
+  "创业板",
+  "沪深",
+  "恒生",
+  "etf",
+  "ipo",
+  "股市",
+  "股票",
+  "美股",
+  "纳指",
+  "标普",
+  "道指",
+  "半导体指数",
+  "央行",
+  "人民币",
+  "汇率",
+  "利率",
+  "财政",
+  "地产",
+  "出口",
+  "关税",
+  "降准",
+  "降息",
+  "证监会",
+  "发改委",
+  "金融监管",
+  "半导体",
+  "新能源",
+  "ai",
+  "医药",
+  "消费",
+  "券商",
+  "银行",
+  "光伏",
+  "锂电",
+  "稀土",
+  "算力",
+  "芯片",
+  "机器人",
+  "cpo",
+  "财报",
+  "并购",
+  "减持",
+  "回购",
+  "上市公司",
+  "业绩",
+  "分红",
+  "融资",
+  "增持",
+  "定增",
+  "营收",
+  "净利润",
 ];
 
 export function ensureDir(dirPath: string) {
@@ -101,16 +193,20 @@ export function inferTags(title: string, summary: string, sourceName: string) {
 
 export function inferChinaStockRelevance(title: string, summary: string) {
   const text = normalizeText(`${title} ${summary}`).toLowerCase();
-  const matched = chinaRelevantRules.find((rule) =>
-    rule.keywords.some((keyword) => text.includes(keyword.toLowerCase())),
-  );
-
-  if (!matched) {
+  if (shouldExcludeSensitiveNews(title, summary)) {
     return { isRelevant: false, reason: null as string | null };
   }
 
-  const blocked = negativeChinaRelevantKeywords.some((keyword) => text.includes(keyword.toLowerCase()));
-  if (blocked && !text.includes("中国") && !text.includes("a股") && !text.includes("港股")) {
+  const hasInvestmentContext = investmentContextKeywords.some((keyword) => includesKeyword(text, keyword));
+  if (!hasInvestmentContext) {
+    return { isRelevant: false, reason: null as string | null };
+  }
+
+  const matched = chinaRelevantRules.find((rule) =>
+    rule.keywords.some((keyword) => includesKeyword(text, keyword)),
+  );
+
+  if (!matched) {
     return { isRelevant: false, reason: null as string | null };
   }
 
@@ -118,6 +214,21 @@ export function inferChinaStockRelevance(title: string, summary: string) {
     isRelevant: true,
     reason: matched.reason,
   };
+}
+
+export function shouldExcludeSensitiveNews(title: string, summary: string) {
+  const text = normalizeText(`${title} ${summary}`).toLowerCase();
+  return negativeChinaRelevantKeywords.some((keyword) => includesKeyword(text, keyword));
+}
+
+function includesKeyword(text: string, keyword: string) {
+  const normalizedKeyword = keyword.toLowerCase();
+  if (/^[a-z0-9.+-]+$/i.test(normalizedKeyword)) {
+    const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`(^|[^a-z0-9])${escaped}([^a-z0-9]|$)`, "i").test(text);
+  }
+
+  return text.includes(normalizedKeyword);
 }
 
 export function normalizeTitle(title: string) {

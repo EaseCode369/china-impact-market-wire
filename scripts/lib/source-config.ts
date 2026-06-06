@@ -14,6 +14,7 @@ export const SOURCE_CONFIGS: SourceConfig[] = [
   { id: "bloomberg", displayName: "Bloomberg", sourceGroup: "global_media", fetchMode: "rss", priority: 95, isActive: true },
   { id: "ft", displayName: "Financial Times", sourceGroup: "global_media", fetchMode: "rss", priority: 92, isActive: true },
   { id: "wsj", displayName: "WSJ", sourceGroup: "global_media", fetchMode: "rss", priority: 90, isActive: true },
+  { id: "zaobao", displayName: "联合早报", sourceGroup: "hk_media", fetchMode: "article", priority: 84, isActive: true },
   { id: "wallstreetcn", displayName: "华尔街见闻", sourceGroup: "china_media", fetchMode: "listing", priority: 82, isActive: true },
   { id: "yicai", displayName: "第一财经", sourceGroup: "china_media", fetchMode: "listing", priority: 78, isActive: true },
   { id: "21jingji", displayName: "21财经", sourceGroup: "china_media", fetchMode: "listing", priority: 76, isActive: true },

@@ -5,7 +5,7 @@ import * as cheerio from "cheerio";
 import { decode } from "html-entities";
 
 import type { ContentLevel, NewsPost } from "@/lib/content-schema";
-import { CRAWLER_LIMIT } from "@/scripts/lib/constants";
+import { CRAWLER_LIMIT, CRAWLER_LOOKBACK_HOURS } from "@/scripts/lib/constants";
 import {
   buildDedupeKey,
   createSlug,
@@ -15,6 +15,7 @@ import {
   makeHeadlineSummary,
   safeDate,
   shouldLocalizeToSimplifiedChinese,
+  shouldExcludeSensitiveNews,
   stableId,
   summarizeText,
   writeCollection,
@@ -56,6 +57,7 @@ const sourceFetchers: Record<string, () => Promise<RawItem[]>> = {
   bloomberg: crawlBloomberg,
   ft: crawlFt,
   wsj: crawlWsj,
+  zaobao: crawlZaobao,
   wallstreetcn: crawlWallstreetcn,
   yicai: crawlYicai,
   "21jingji": crawl21Jingji,
@@ -85,14 +87,21 @@ export async function generateCrawledNews(options: GenerateOptions = {}) {
   });
 
   const merged = settled.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
-  const localizedItems = await Promise.all(merged.map((item) => localizeRawItem(item)));
+  const effectiveSince = options.since ?? new Date(Date.now() - CRAWLER_LOOKBACK_HOURS * 60 * 60 * 1000).toISOString();
+  const localizedItems = await Promise.all(
+    merged
+      .filter((item) => !shouldExcludeSensitiveNews(item.title, item.summary))
+      .map((item) => localizeRawItem(item)),
+  );
   const posts = localizedItems
     .map((item) => createNewsPost(item))
+    .filter((post) => !shouldExcludeSensitiveNews(post.title, post.summary))
+    .filter((post) => post.is_china_stock_relevant)
     .filter((post) => {
-      if (!options.since) {
+      if (!effectiveSince) {
         return true;
       }
-      return +new Date(post.published_at) >= +new Date(options.since);
+      return +new Date(post.published_at) >= +new Date(effectiveSince);
     })
     .sort((a, b) => +new Date(b.published_at) - +new Date(a.published_at))
     .slice(0, options.limit ?? CRAWLER_LIMIT * Math.max(activeSources.length, 1));
@@ -154,11 +163,11 @@ function createNewsPost(item: LocalizedRawItem): NewsPost {
 }
 
 async function crawlReuters(): Promise<RawItem[]> {
-  return crawlGoogleNewsSource("reuters", "Reuters", "site:reuters.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
+  return crawlGoogleNewsSource("reuters", "Reuters", "site:reuters.com (China stocks OR Hong Kong stocks OR yuan OR tariff OR A-share OR AI OR semiconductor OR IPO)");
 }
 
 async function crawlBloomberg(): Promise<RawItem[]> {
-  return crawlGoogleNewsSource("bloomberg", "Bloomberg", "site:bloomberg.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
+  return crawlGoogleNewsSource("bloomberg", "Bloomberg", "site:bloomberg.com (China stocks OR Hong Kong stocks OR yuan OR tariff OR A-share OR AI OR semiconductor OR IPO)");
 }
 
 async function crawlFt(): Promise<RawItem[]> {
@@ -170,11 +179,43 @@ async function crawlFt(): Promise<RawItem[]> {
     return filteredDirectItems.slice(0, CRAWLER_LIMIT);
   }
 
-  return crawlGoogleNewsSource("ft", "Financial Times", "site:ft.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
+  return crawlGoogleNewsSource("ft", "Financial Times", "site:ft.com (China stocks OR Hong Kong stocks OR yuan OR tariff OR A-share OR AI OR semiconductor OR IPO)");
 }
 
 async function crawlWsj(): Promise<RawItem[]> {
-  return crawlGoogleNewsSource("wsj", "WSJ", "site:wsj.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
+  return crawlGoogleNewsSource("wsj", "WSJ", "site:wsj.com (China OR Hong Kong OR yuan OR tariff OR A-share OR AI OR semiconductor OR IPO)");
+}
+
+async function crawlZaobao(): Promise<RawItem[]> {
+  const html = await fetchText("https://www.zaobao.com/finance");
+  const items = parseListingLinks(html, {
+    baseUrl: "https://www.zaobao.com",
+    sourceId: "zaobao",
+    sourceName: "联合早报",
+    hrefPattern: /\/finance\/(?:china|world|singapore)\/story20\d+-\d+/,
+  }).filter((item) => inferChinaStockRelevance(item.title, item.summary).isRelevant);
+
+  const enriched = await enrichWithArticleSummaries(items, {
+    titleSelectors: ["h1", "meta[property='og:title']", "title"],
+    summarySelectors: [
+      "meta[name='description']",
+      "meta[property='og:description']",
+      "article p",
+      "[class*='article'] p",
+      "[class*='content'] p",
+    ],
+    dateSelectors: ["meta[property='article:published_time']", "time", "[class*='time']", "[class*='date']"],
+  });
+
+  if (enriched.length > 0) {
+    return enriched;
+  }
+
+  return crawlGoogleNewsSource(
+    "zaobao",
+    "联合早报",
+    "site:zaobao.com/finance (China OR Hong Kong OR stock OR market OR yuan OR AI OR semiconductor OR IPO)",
+  );
 }
 
 async function crawlWallstreetcn(): Promise<RawItem[]> {
@@ -251,7 +292,7 @@ async function crawl21Jingji(): Promise<RawItem[]> {
 }
 
 async function crawlScmp(): Promise<RawItem[]> {
-  return crawlGoogleNewsSource("scmp", "SCMP", "site:scmp.com (China OR Hong Kong OR yuan OR tariff OR A-share OR Taiwan)");
+  return crawlGoogleNewsSource("scmp", "SCMP", "site:scmp.com (China stocks OR Hong Kong stocks OR yuan OR tariff OR A-share OR AI OR semiconductor OR IPO)");
 }
 
 async function crawlCls(): Promise<RawItem[]> {
@@ -407,7 +448,7 @@ async function crawlThepaper(): Promise<RawItem[]> {
 }
 
 async function crawlGoogleNewsSource(sourceId: string, sourceName: string, query: string) {
-  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:7d`)}&hl=en-US&gl=US&ceid=US:en`;
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:2d`)}&hl=en-US&gl=US&ceid=US:en`;
   const xml = await fetchText(rssUrl);
   const items = parseGoogleNewsRss(xml, sourceId, sourceName);
   return items
@@ -689,7 +730,7 @@ function descriptionToSummary(descriptionHtml: string, fallbackSourceName: strin
 }
 
 function inferDateFromUrlOrText(url: string, text: string) {
-  const dateFromUrl = url.match(/\/(20\d{2})(\d{2})(\d{2})\//);
+  const dateFromUrl = url.match(/\/(20\d{2})(\d{2})(\d{2})\//) || url.match(/story(20\d{2})(\d{2})(\d{2})/);
   if (dateFromUrl) {
     const [, year, month, day] = dateFromUrl;
     return new Date(Number(year), Number(month) - 1, Number(day), 12, 0, 0).toISOString();

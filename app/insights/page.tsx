@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getAllPosts, getRelevantPosts, getSiteStats, getSourcesByGroup } from "@/lib/content";
+import { getRelevantPosts, getSiteStats, getSourcesByGroup } from "@/lib/content";
 
 function formatDate(dateString: string) {
   return new Intl.DateTimeFormat("zh-CN", {
@@ -13,12 +13,11 @@ function formatDate(dateString: string) {
 }
 
 export default function InsightsPage() {
-  const posts = getAllPosts();
   const relevantPosts = getRelevantPosts();
   const stats = getSiteStats();
   const sourceGroups = getSourcesByGroup();
-  const featuredPosts = relevantPosts.slice(0, 10);
-  const latestPosts = posts.slice(0, 6);
+  const featuredPosts = relevantPosts;
+  const latestPosts = relevantPosts.slice(0, 8);
 
   return (
     <main className="page-shell">
@@ -29,7 +28,7 @@ export default function InsightsPage() {
             <h1 className="hero-title">高盛内参</h1>
             <p className="hero-copy">
               围绕中国资产定价主线，汇总全球公开信息、提炼可交易线索，并按影响强度优先呈现。
-              覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、华尔街见闻、第一财经、21财经、财联社与证券时报等公开来源。
+              覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、联合早报、华尔街见闻、第一财经、21财经、证券时报等公开来源。
             </p>
             <div className="hero-badges">
               <span className="tag">客户内参区</span>
@@ -67,9 +66,9 @@ export default function InsightsPage() {
           <div className="section-heading">
             <div>
               <p className="brand-kicker">Direct Impact</p>
-              <h2 className="section-title">直接影响中国股票</h2>
+              <h2 className="section-title">中国资产影响信息流</h2>
             </div>
-            <div className="section-caption">默认按影响相关性、来源权重与发布时间综合排序。</div>
+            <div className="section-caption">展示本次生成的全部相关资讯，默认按影响相关性、来源权重与发布时间综合排序。</div>
           </div>
 
           {featuredPosts.length === 0 ? (
@@ -131,7 +130,7 @@ export default function InsightsPage() {
             <div className="section-heading">
               <div>
                 <p className="brand-kicker">Latest Feed</p>
-                <h2 className="section-title">全部资讯速览</h2>
+                <h2 className="section-title">相关资讯速览</h2>
               </div>
             </div>
             <div className="quick-list">
