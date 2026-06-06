@@ -24,21 +24,21 @@ export default function InsightsPage() {
       <section className="hero hero-brand">
         <div className="hero-grid hero-grid-brand">
           <div>
-            <span className="brand-kicker hero-kicker">Goldman Sachs HK Reference</span>
-            <h1 className="hero-title">高盛内参</h1>
+            <span className="brand-kicker hero-kicker">Goldman Sachs HK News</span>
+            <h1 className="hero-title">高盛资讯</h1>
             <p className="hero-copy">
-              围绕中国资产定价主线，汇总全球公开信息、提炼可交易线索，并按影响强度优先呈现。
+              围绕中国资产定价主线，抓取公开财经新闻、生成短摘要，并按影响强度优先呈现。
               覆盖 Reuters、Bloomberg、Financial Times、WSJ、SCMP、联合早报、华尔街见闻、第一财经、21财经、证券时报等公开来源。
             </p>
             <div className="hero-badges">
-              <span className="tag">客户内参区</span>
+              <span className="tag">公开资讯流</span>
               <span className="tag">中国资产定价线索</span>
             </div>
           </div>
           <aside className="metric-panel metric-panel-brand">
             <div className="metric-panel-header">
               <Image
-                alt="高盛内参（香港）品牌章"
+                alt="高盛资讯（香港）品牌章"
                 className="seal-mark seal-mark-image"
                 height={120}
                 priority

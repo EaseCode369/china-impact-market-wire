@@ -7,8 +7,8 @@ import { logoutAction } from "@/app/auth/actions";
 import { getAuthState } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "香港高盛市场研究",
-  description: "独立香港市场研究与资产配置顾问官网，提供公开信息研究与高盛内参客户区。",
+  title: "香港高盛研究院",
+  description: "独立香港研究机构官网，提供高盛资讯、客户内参和研究报告提炼。",
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -32,24 +32,24 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 />
               </div>
               <div className="brand-copy">
-                <span className="brand-kicker">Goldman Sachs HK Reference</span>
+                <span className="brand-kicker">Hong Kong Goldman Research Institute</span>
                 <Link className="brand-title" href="/">
-                  香港高盛市场研究
+                  香港高盛研究院
                 </Link>
-                <div className="brand-subtitle">独立香港市场研究与资产配置顾问，聚焦公开信息研究与中国资产定价线索。</div>
+                <div className="brand-subtitle">独立香港研究机构，聚焦公开资讯、主题内参和高质量研报提炼。</div>
               </div>
             </div>
             <nav className="top-nav" aria-label="主导航">
               {isApproved ? (
                 <>
                   <Link className="nav-pill" href="/insights">
+                    高盛资讯
+                  </Link>
+                  <Link className="nav-pill" href="/briefing">
                     高盛内参
                   </Link>
-                  <Link className="nav-pill" href="/sources">
-                    来源地图
-                  </Link>
                   <Link className="nav-pill" href="/reports">
-                    策略库预留
+                    高盛研究
                   </Link>
                 </>
               ) : (
@@ -57,20 +57,17 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                   <Link className="nav-pill" href="/#home">
                     首页
                   </Link>
-                  <Link className="nav-pill" href="/#about">
-                    关于我们
-                  </Link>
-                  <Link className="nav-pill" href="/#services">
-                    服务领域
-                  </Link>
                   <Link className="nav-pill" href="/insights">
+                    高盛资讯
+                  </Link>
+                  <Link className="nav-pill" href="/briefing">
                     高盛内参
                   </Link>
-                  <Link className="nav-pill" href="/#market-watch">
-                    市场观察
+                  <Link className="nav-pill" href="/reports">
+                    高盛研究
                   </Link>
-                  <Link className="nav-pill" href="/#contact">
-                    联系我们
+                  <Link className="nav-pill" href="/#about">
+                    关于我们
                   </Link>
                 </>
               )}

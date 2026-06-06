@@ -16,7 +16,7 @@ function getProtectedAppPath(pathname: string) {
     return false;
   }
 
-  return pathname === "/insights" || pathname.startsWith("/news/") || pathname.startsWith("/sources") || pathname.startsWith("/reports");
+  return pathname.startsWith("/briefing") || pathname.startsWith("/reports");
 }
 
 export async function proxy(request: NextRequest) {
@@ -57,7 +57,7 @@ export async function proxy(request: NextRequest) {
     if (getProtectedAppPath(pathname) || STATUS_PATHS.has(pathname)) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = "/login";
-      redirectUrl.searchParams.set("message", pathname === "/insights" ? "请先登录后访问高盛内参。" : "请先登录后再访问站内内容。");
+      redirectUrl.searchParams.set("message", pathname.startsWith("/briefing") ? "请先登录后访问高盛内参。" : "请先登录后访问高盛研究。");
       return NextResponse.redirect(redirectUrl);
     }
 
@@ -76,14 +76,14 @@ export async function proxy(request: NextRequest) {
   }
 
   if (status === "disabled") {
-    if (pathname !== "/disabled") {
+    if (getProtectedAppPath(pathname) && pathname !== "/disabled") {
       return NextResponse.redirect(new URL("/disabled", request.url));
     }
 
     return response;
   }
 
-  if (pathname !== "/pending") {
+  if (getProtectedAppPath(pathname) && pathname !== "/pending") {
     return NextResponse.redirect(new URL("/pending", request.url));
   }
 

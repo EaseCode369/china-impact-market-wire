@@ -55,7 +55,7 @@ export default async function SourcePage({ params }: SourcePageProps) {
                 返回官网首页
               </Link>
               <Link className="button-link secondary" href="/insights">
-                返回高盛内参
+                返回高盛资讯
               </Link>
             </div>
           </div>

@@ -69,7 +69,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               返回官网首页
             </Link>
             <Link className="button-link secondary" href="/insights">
-              返回高盛内参
+              返回高盛资讯
             </Link>
           </div>
         </article>

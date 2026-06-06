@@ -2,116 +2,80 @@ import Link from "next/link";
 
 const marketNotes = [
   {
-    title: "中国资产定价线索",
-    summary: "跟踪宏观政策、产业链变化、港股流动性与海外资金风险偏好，将公开信息转化为可追踪的研究主题。",
+    title: "公开资讯摘要",
+    summary: "高盛资讯保留单篇新闻的标题、短摘要、来源和原文入口，帮助客户快速筛选每日增量。",
+    tag: "News",
+  },
+  {
+    title: "主题内参判断",
+    summary: "高盛内参围绕一个主题整合多篇公开文章，输出一篇有结论、有脉络、有投资含义的客户文章。",
+    tag: "Briefing",
+  },
+  {
+    title: "研报提炼研究",
+    summary: "高盛研究面向高质量研报进行结构化提炼，后续可替换为你提供的真实研报内容。",
     tag: "Research",
-  },
-  {
-    title: "香港市场顾问服务",
-    summary: "为企业、家族办公室与专业投资人提供市场观察、资产配置讨论和公开信息研究支持。",
-    tag: "Advisory",
-  },
-  {
-    title: "跨市场事件跟踪",
-    summary: "围绕美股、港股、A股、商品与利率变量，筛选可能影响中国资产价格的高价值增量。",
-    tag: "Markets",
   },
 ];
 
 const featuredTopics = [
   {
-    title: "面向专业客户的公开信息研究",
-    summary: "围绕港股、A股、海外市场和产业链变量，建立可持续追踪的信息框架。",
-    label: "研究方法",
+    title: "高盛资讯",
+    summary: "公开新闻摘要流，直接抓取单篇财经新闻并生成短摘要，适合快速扫读。",
+    label: "公开访问",
   },
   {
-    title: "高盛内参客户区",
-    summary: "客户审核通过后，可进入内参区查看中国股票影响流、国际来源聚合和策略库入口。",
-    label: "客户入口",
+    title: "高盛内参",
+    summary: "围绕单一主题整合多篇公开文章，输出一篇完整判断，降低客户阅读成本。",
+    label: "客户专属",
   },
   {
-    title: "独立香港顾问机构口径",
-    summary: "本站以独立市场研究顾问身份运营，不代表 Goldman Sachs 集团或其关联实体。",
-    label: "品牌声明",
+    title: "高盛研究",
+    summary: "对高质量研报进行提炼、改写和结构化展示，形成投资人可读版本。",
+    label: "客户专属",
   },
 ];
 
 const serviceCards = [
-  "公开信息研究与主题梳理",
-  "中国资产定价线索监测",
-  "港股与跨境市场观察",
-  "企业战略与投资者沟通支持",
+  "公开资讯摘要与筛选",
+  "中国资产主题内参",
+  "高质量研报提炼",
+  "投资人沟通材料支持",
 ];
 
-const domesticSourceLinks = [
+const productEntries = [
   {
-    name: "华尔街见闻",
-    href: "https://wallstreetcn.com/",
-    note: "宏观、市场与全球资产快讯入口",
-    status: "内参监测",
+    title: "高盛资讯",
+    summary: "抓取公开财经新闻，保留标题、摘要、来源和原文入口，适合快速扫读。",
+    href: "/insights",
+    tag: "公开",
   },
   {
-    name: "第一财经",
-    href: "https://www.yicai.com/",
-    note: "股市、政策、产业与公司新闻",
-    status: "内参监测",
+    title: "高盛内参",
+    summary: "按主题聚合多篇公开文章，整理成一篇完整判断，降低客户阅读成本。",
+    href: "/briefing",
+    tag: "客户专属",
   },
   {
-    name: "21财经",
-    href: "https://www.21jingji.com/",
-    note: "资本市场、公司与宏观观察",
-    status: "内参监测",
-  },
-  {
-    name: "证券时报网",
-    href: "https://www.stcn.com/",
-    note: "证券市场、上市公司与政策资讯",
-    status: "内参监测",
-  },
-  {
-    name: "联合早报",
-    href: "https://www.zaobao.com/",
-    note: "中国、亚洲与国际时事参考",
-    status: "外链参考",
-  },
-  {
-    name: "澎湃新闻",
-    href: "https://www.thepaper.cn/",
-    note: "时政、经济与社会公共议题",
-    status: "外链参考",
-  },
-  {
-    name: "金十数据",
-    href: "https://www.jin10.com/",
-    note: "全球宏观、商品与金融快讯",
-    status: "外链参考",
-  },
-  {
-    name: "财新网",
-    href: "https://www.caixin.com/",
-    note: "深度财经报道与政策背景",
-    status: "外链参考",
-  },
-  {
-    name: "大智慧",
-    href: "https://www.gw.com.cn/",
-    note: "市场数据与投资资讯参考",
-    status: "外链参考",
+    title: "高盛研究",
+    summary: "对高质量研报进行提炼、改写和结构化展示，形成投资人可读版本。",
+    href: "/reports",
+    tag: "客户专属",
   },
 ];
 
-const insightBullets = ["全球公开标题流聚合", "中国股票直接影响筛选", "来源权重与重复项压缩", "客户审核后访问"];
+const insightBullets = ["单篇资讯摘要", "主题深度内参", "研报提炼研究", "客户审核访问"];
 
 export default function HomePage() {
   return (
     <main>
       <section className="market-strip" aria-label="服务摘要">
         <div className="market-strip-inner">
-          <span>香港市场研究</span>
-          <span>公开信息研究</span>
-          <span>中国资产定价线索</span>
-          <span>客户审核制内参</span>
-          <span>独立顾问机构</span>
+          <span>香港研究机构</span>
+          <span>高盛资讯</span>
+          <span>高盛内参</span>
+          <span>高盛研究</span>
+          <span>独立顾问口径</span>
         </div>
       </section>
 
@@ -120,17 +84,17 @@ export default function HomePage() {
           <article className="lead-story">
             <div className="lead-media" aria-hidden="true" />
             <div className="lead-body">
-              <p className="brand-kicker">Hong Kong Market Research</p>
-              <h1 className="lead-title">香港高盛市场研究</h1>
+              <p className="brand-kicker">Hong Kong Research Institute</p>
+              <h1 className="lead-title">香港高盛研究院</h1>
               <p className="lead-copy">
-                立足香港，面向专业投资人、企业与家族办公室，提供公开信息研究、跨市场观察与中国资产定价线索梳理。
+                立足香港，面向专业投资人、企业与家族办公室，提供公开资讯摘要、主题内参和高质量研报提炼。
               </p>
               <div className="lead-actions">
                 <Link className="button-link" href="/insights">
-                  进入高盛内参
+                  进入高盛资讯
                 </Link>
-                <Link className="button-link secondary" href="#services">
-                  查看服务领域
+                <Link className="button-link secondary" href="/briefing">
+                  查看高盛内参
                 </Link>
               </div>
             </div>
@@ -149,16 +113,16 @@ export default function HomePage() {
 
         <aside className="portal-side">
           <section className="side-panel insight-entry">
-            <div className="panel-label">高盛内参</div>
-            <h2>客户专属市场观察入口</h2>
-            <p>以公开来源为基础，压缩重复转载和情绪化噪声，优先呈现可能影响中国资产定价的关键信息。</p>
+            <div className="panel-label">产品分区</div>
+            <h2>资讯、内参、研究分层交付</h2>
+            <p>公开资讯用于快速扫读；内参负责主题判断；研究页承载研报提炼，三个入口分别解决不同阅读场景。</p>
             <div className="insight-bullet-grid">
               {insightBullets.map((item) => (
                 <span key={item}>{item}</span>
               ))}
             </div>
             <Link className="text-link panel-link" href="/insights">
-              登录后进入
+              查看高盛资讯
             </Link>
           </section>
 
@@ -169,9 +133,7 @@ export default function HomePage() {
                 <h2 className="section-title">重要声明</h2>
               </div>
             </div>
-            <p>
-              本站以独立顾问机构口径运营，不代表 Goldman Sachs 集团或其关联实体。站内内容仅用于研究讨论。
-            </p>
+            <p>本站以独立顾问机构口径运营，不代表 Goldman Sachs 集团或其关联实体。站内内容仅用于研究讨论。</p>
           </section>
         </aside>
       </section>
@@ -182,14 +144,14 @@ export default function HomePage() {
             <p className="brand-kicker">About Us</p>
             <h2 className="section-title">专注香港与中国资产的独立研究顾问</h2>
           </div>
-          <div className="section-caption">官网公开展示，公司介绍与客户内参分区管理。</div>
+          <div className="section-caption">官网公开展示，公司介绍与客户内容分区管理。</div>
         </div>
         <div className="public-news-grid">
           {marketNotes.map((note) => (
             <article className="news-card public-feature-card" key={note.title}>
               <div className="news-card-meta">
                 <span className="meta-chip">{note.tag}</span>
-                <span>公开信息研究</span>
+                <span>内容产品</span>
               </div>
               <h3 className="news-card-title">{note.title}</h3>
               <p className="news-card-summary">{note.summary}</p>
@@ -203,9 +165,7 @@ export default function HomePage() {
           <div>
             <p className="brand-kicker">Services</p>
             <h2 className="section-title">服务领域</h2>
-            <p className="detail-summary">
-              我们不把报价看板作为官网核心内容；重点放在研究判断、信息结构化和客户沟通支持。
-            </p>
+            <p className="detail-summary">我们不把外部链接或报价看板作为官网核心内容；重点放在信息结构化、主题判断和投资人沟通支持。</p>
           </div>
           <div className="service-list">
             {serviceCards.map((item) => (
@@ -217,23 +177,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="page-shell public-section" id="sources">
+      <section className="page-shell public-section" id="products">
         <div className="section-heading">
           <div>
-            <p className="brand-kicker">Source Directory</p>
-            <h2 className="section-title">国内金融信息源</h2>
+            <p className="brand-kicker">Products</p>
+            <h2 className="section-title">三类内容产品</h2>
           </div>
-          <div className="section-caption">公开官网仅提供权威来源入口；客户区按影响股市规则筛选公开标题流。</div>
+          <div className="section-caption">不展示外部网站入口，重点呈现香港高盛研究院自己的内容交付层级。</div>
         </div>
         <div className="source-link-grid">
-          {domesticSourceLinks.map((source) => (
-            <a className="source-link-card" href={source.href} key={source.name} rel="noopener noreferrer" target="_blank">
+          {productEntries.map((entry) => (
+            <Link className="source-link-card" href={entry.href} key={entry.title}>
               <div className="source-link-meta">
-                <span>{source.status}</span>
+                <span>{entry.tag}</span>
               </div>
-              <h3>{source.name}</h3>
-              <p>{source.note}</p>
-            </a>
+              <h3>{entry.title}</h3>
+              <p>{entry.summary}</p>
+            </Link>
           ))}
         </div>
       </section>
@@ -254,7 +214,7 @@ export default function HomePage() {
                   <span>港股流动性</span>
                 </div>
                 <h3 className="news-card-title">从资金流向、政策预期与海外风险偏好中寻找港股定价线索。</h3>
-                <p className="news-card-summary">公开官网仅展示研究方向，高盛内参客户区承载更细的来源地图和资讯条目。</p>
+                <p className="news-card-summary">公开官网展示研究方向，高盛资讯承载新闻摘要流，高盛内参承载主题判断。</p>
               </article>
               <article className="news-card">
                 <div className="news-card-meta">
@@ -262,7 +222,7 @@ export default function HomePage() {
                   <span>产业链</span>
                 </div>
                 <h3 className="news-card-title">围绕 AI、半导体、消费、地产与金融板块持续跟踪跨市场影响。</h3>
-                <p className="news-card-summary">用华尔街见闻式的信息密度呈现研究入口，重点保留公司官网与客户内参的清晰分区。</p>
+                <p className="news-card-summary">高盛研究面向研报提炼，帮助投资人快速抓住行业驱动、盈利模式和风险点。</p>
               </article>
             </div>
           </div>
@@ -271,9 +231,9 @@ export default function HomePage() {
             <div className="content-panel">
               <p className="brand-kicker">Client Area</p>
               <h2 className="section-title">高盛内参</h2>
-              <p className="news-card-summary">客户审核通过后，可访问中国股票影响流、国际来源聚合页和策略库预留入口。</p>
+              <p className="news-card-summary">客户审核通过后，可查看中国房价等主题内参，以及后续按主题扩展的深度文章。</p>
               <div className="detail-actions">
-                <Link className="button-link" href="/insights">
+                <Link className="button-link" href="/briefing">
                   进入内参
                 </Link>
               </div>
@@ -295,23 +255,24 @@ export default function HomePage() {
       <footer className="public-footer">
         <div className="page-shell public-footer-inner">
           <section>
-            <h2>香港高盛市场研究</h2>
-            <p>独立香港市场研究与资产配置顾问机构。</p>
+            <h2>香港高盛研究院</h2>
+            <p>独立香港研究与资产配置顾问机构。</p>
           </section>
           <section>
             <h3>公司信息</h3>
             <Link href="/#about">关于我们</Link>
             <Link href="/#services">服务领域</Link>
-            <Link href="/#sources">信息源</Link>
+            <Link href="/#products">内容产品</Link>
             <Link href="/#market-watch">市场观察</Link>
             <Link href="/#contact">联系我们</Link>
           </section>
           <section>
             <h3>客户入口</h3>
-            <Link href="/insights">高盛内参</Link>
+            <Link href="/insights">高盛资讯</Link>
+            <Link href="/briefing">高盛内参</Link>
+            <Link href="/reports">高盛研究</Link>
             <Link href="/login">客户登录</Link>
             <Link href="/signup">申请注册</Link>
-            <Link href="/reports">策略库</Link>
           </section>
           <section>
             <h3>法律信息</h3>
@@ -319,7 +280,7 @@ export default function HomePage() {
             <p>本站与 Goldman Sachs 集团及其关联实体无隶属、授权或代理关系。</p>
           </section>
         </div>
-        <div className="footer-bottom">© 2026 香港高盛市场研究。客户申请请通过站内注册入口提交。</div>
+        <div className="footer-bottom">© 2026 香港高盛研究院。客户申请请通过站内注册入口提交。</div>
       </footer>
     </main>
   );

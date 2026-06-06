@@ -13,7 +13,7 @@ export default function SourcesIndexPage() {
         <div className="section-heading">
           <div>
             <p className="brand-kicker">Source Map</p>
-            <h1 className="section-title">来源聚合页</h1>
+            <h1 className="section-title">高盛资讯来源</h1>
           </div>
           <div className="section-caption">
             已配置 {sources.length} 个监测来源，当前抓到 {availableCount} 个来源的数据。
@@ -21,7 +21,7 @@ export default function SourcesIndexPage() {
         </div>
 
         <div className="news-card-summary" style={{ marginBottom: 20 }}>
-          这里展示的是“对中国故事、中国股票、港股、产业链和政策面有影响”的公开标题流。
+          这里展示的是高盛资讯当前监测到的公开财经来源。
           如果某个来源暂时没有数据，不再返回 404，而是明确展示当前抓取状态。
         </div>
 

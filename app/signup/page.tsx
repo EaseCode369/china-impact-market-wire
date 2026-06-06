@@ -21,9 +21,9 @@ export default async function SignupPage({ searchParams }: SignupPageProps) {
       <section className="auth-card">
         <div className="auth-copy">
           <p className="brand-kicker">New Client Signup</p>
-          <h1 className="auth-title">注册客户账号，审核通过后进入高盛内参</h1>
+          <h1 className="auth-title">注册客户账号，审核通过后进入客户专区</h1>
           <p className="auth-description">
-            第一版采用邮箱加密码注册。提交成功后，账号默认进入待审核状态；你可以在 Supabase 后台手动批准客户，再允许其查看内参内容。
+            第一版采用邮箱加密码注册。提交成功后，账号默认进入待审核状态；你可以在 Supabase 后台手动批准客户，再允许其查看高盛内参与高盛研究。
           </p>
         </div>
 
