@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getRelevantPosts, getSiteStats, getSourcesByGroup } from "@/lib/content";
+import { getRelevantPosts, getSiteStats, getTopics } from "@/lib/content";
 
 function formatDate(dateString: string) {
   return new Intl.DateTimeFormat("zh-CN", {
@@ -15,7 +15,7 @@ function formatDate(dateString: string) {
 export default function InsightsPage() {
   const relevantPosts = getRelevantPosts();
   const stats = getSiteStats();
-  const sourceGroups = getSourcesByGroup();
+  const topics = getTopics();
   const featuredPosts = relevantPosts;
   const latestPosts = relevantPosts.slice(0, 8);
 
@@ -33,6 +33,14 @@ export default function InsightsPage() {
             <div className="hero-badges">
               <span className="tag">公开资讯流</span>
               <span className="tag">中国资产定价线索</span>
+            </div>
+            <div className="topic-nav" aria-label="财经栏目">
+              {topics.slice(0, 8).map((topic) => (
+                <Link className="topic-nav-link" href={`/topics/${topic.slug}`} key={topic.id}>
+                  {topic.name}
+                  <span>{topic.count}</span>
+                </Link>
+              ))}
             </div>
           </div>
           <aside className="metric-panel metric-panel-brand">
@@ -103,26 +111,24 @@ export default function InsightsPage() {
           <div className="content-panel">
             <div className="section-heading">
               <div>
-                <p className="brand-kicker">Source Groups</p>
-                <h2 className="section-title">来源地图</h2>
+                <p className="brand-kicker">Columns</p>
+                <h2 className="section-title">财经栏目</h2>
               </div>
             </div>
             <div className="source-groups">
-              {sourceGroups.map((group) => (
-                <section key={group.group} className="source-group-block">
-                  <div className="source-group-title">{formatGroupLabel(group.group)}</div>
-                  <div className="source-list">
-                    {group.sources.map((source) => (
-                      <Link href={`/sources/${source.slug}`} key={source.name}>
-                        <div className="source-name">{source.name}</div>
-                        <div className="source-count">
-                          {source.count} 条内容 · 相关 {source.chinaRelevantCount} 条
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              ))}
+              <section className="source-group-block">
+                <div className="source-group-title">按主题浏览</div>
+                <div className="source-list">
+                  {topics.map((topic) => (
+                    <Link href={`/topics/${topic.slug}`} key={topic.id}>
+                      <div className="source-name">{topic.name}</div>
+                      <div className="source-count">
+                        {topic.count} 条相关内容 · {topic.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
             </div>
           </div>
 
@@ -148,21 +154,4 @@ export default function InsightsPage() {
       </section>
     </main>
   );
-}
-
-function formatGroupLabel(group: string) {
-  switch (group) {
-    case "global_media":
-      return "国际高价值公开标题流";
-    case "hk_media":
-      return "香港与区域媒体";
-    case "china_media":
-      return "中国补充资讯源";
-    case "strategy_feed":
-      return "策略与机构源";
-    case "local_pdf":
-      return "本地导入";
-    default:
-      return group;
-  }
 }

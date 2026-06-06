@@ -727,6 +727,39 @@ img {
   margin-top: 18px;
 }
 
+.topic-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.topic-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.topic-nav-link span {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.topic-nav-link:hover,
+.topic-nav-link.is-active {
+  border-color: rgba(37, 99, 235, 0.32);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 .tag {
   padding: 7px 10px;
   border-radius: 4px;

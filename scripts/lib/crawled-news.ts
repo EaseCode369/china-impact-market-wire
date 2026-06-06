@@ -754,6 +754,7 @@ async function fetchText(url: string) {
         "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
       },
       cache: "no-store",
+      signal: AbortSignal.timeout(15000),
     });
 
     if (!response.ok) {
@@ -874,6 +875,10 @@ function cleanupLocalizedChinese(text: string) {
 }
 
 async function fetchTextViaPowerShell(url: string) {
+  if (process.platform !== "win32") {
+    return "";
+  }
+
   const script = `
 $ProgressPreference = 'SilentlyContinue'
 $response = Invoke-WebRequest -Uri '${url.replace(/'/g, "''")}' -UseBasicParsing -TimeoutSec 30

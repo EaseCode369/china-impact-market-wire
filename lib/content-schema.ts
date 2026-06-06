@@ -41,6 +41,14 @@ export type SourceSummary = {
   chinaRelevantCount: number;
 };
 
+export type TopicSummary = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  count: number;
+};
+
 export type SiteSummary = {
   generatedAt: string;
   total: number;
