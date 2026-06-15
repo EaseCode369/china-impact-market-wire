@@ -1,12 +1,22 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { GeneratedCollection, InternationalSourceStatus, NewsPost, SiteSummary, SourceSummary, TopicSummary } from "@/lib/content-schema";
+import type {
+  GeneratedCollection,
+  InternationalSourceStatus,
+  LiveFeedCollection,
+  LiveFeedItem,
+  NewsPost,
+  SiteSummary,
+  SourceSummary,
+  TopicSummary,
+} from "@/lib/content-schema";
 import { getActiveSourceConfigs, getInternationalSourceConfigs } from "@/scripts/lib/source-config";
 
 const generatedDir = path.join(process.cwd(), "content", "generated");
 const postsPath = path.join(generatedDir, "posts.json");
 const summaryPath = path.join(generatedDir, "summary.json");
+const liveFeedPath = path.join(generatedDir, "live-feed.json");
 
 const topicConfigs: Array<Omit<TopicSummary, "count"> & { keywords: string[] }> = [
   {
@@ -82,6 +92,13 @@ const emptySummary: SiteSummary = {
   activeSources: [],
   pausedSources: [],
   lastSuccessfulRunAt: new Date(0).toISOString(),
+};
+
+const emptyLiveFeed: LiveFeedCollection = {
+  generatedAt: new Date(0).toISOString(),
+  count: 0,
+  items: [],
+  warnings: [],
 };
 
 export function getAllPosts(): NewsPost[] {
@@ -233,6 +250,14 @@ export function getSiteStats() {
   };
 }
 
+export function getLiveFeed(): LiveFeedCollection {
+  return readLiveFeed();
+}
+
+export function getLiveFeedItems(): LiveFeedItem[] {
+  return readLiveFeed().items;
+}
+
 function readCollection(): GeneratedCollection {
   if (!fs.existsSync(postsPath)) {
     return emptyCollection;
@@ -256,5 +281,18 @@ function readSummary(): SiteSummary {
     return JSON.parse(raw) as SiteSummary;
   } catch {
     return emptySummary;
+  }
+}
+
+function readLiveFeed(): LiveFeedCollection {
+  if (!fs.existsSync(liveFeedPath)) {
+    return emptyLiveFeed;
+  }
+
+  try {
+    const raw = fs.readFileSync(liveFeedPath, "utf8");
+    return JSON.parse(raw) as LiveFeedCollection;
+  } catch {
+    return emptyLiveFeed;
   }
 }

@@ -45,6 +45,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                   <Link className="nav-pill" href="/">
                     首页
                   </Link>
+                  <Link className="nav-pill" href="/insights">
+                    公开资讯筛选
+                  </Link>
+                  <Link className="nav-pill" href="/live">
+                    7×24
+                  </Link>
                   <Link className="nav-pill" href="/briefing">
                     高盛内参
                   </Link>
@@ -56,6 +62,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 <>
                   <Link className="nav-pill" href="/#home">
                     首页
+                  </Link>
+                  <Link className="nav-pill" href="/insights">
+                    公开资讯筛选
+                  </Link>
+                  <Link className="nav-pill" href="/live">
+                    7×24
                   </Link>
                   <Link className="nav-pill" href="/briefing">
                     高盛内参

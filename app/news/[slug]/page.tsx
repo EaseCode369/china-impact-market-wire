@@ -68,8 +68,8 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
             <Link className="button-link secondary" href="/">
               返回官网首页
             </Link>
-            <Link className="button-link secondary" href="/#market-feed">
-              返回官网资讯流
+            <Link className="button-link secondary" href="/insights">
+              返回公开资讯筛选
             </Link>
           </div>
         </article>

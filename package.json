@@ -10,7 +10,10 @@
     "typecheck": "tsc --noEmit",
     "generate:local-news": "tsx scripts/generate-local-news.ts",
     "generate:crawled-news": "tsx scripts/generate-crawled-news.ts",
-    "generate:all": "tsx scripts/generate-all.ts"
+    "generate:all": "tsx scripts/generate-all.ts",
+    "live:login": "tsx scripts/live-login.ts",
+    "live:generate": "tsx scripts/generate-live-feed.ts",
+    "live:publish": "tsx scripts/publish-live-feed.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
@@ -30,6 +33,7 @@
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.2.4",
     "tsx": "^4.20.6",
+    "playwright": "^1.61.0",
     "typescript": "^5.9.3"
   }
 }

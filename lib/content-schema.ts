@@ -68,3 +68,27 @@ export type InternationalSourceStatus = {
   chinaRelevantCount: number;
   hasData: boolean;
 };
+
+export type LiveFeedItem = {
+  id: string;
+  dedupe_key: string;
+  source_type: "x";
+  source_name: string;
+  handle: string;
+  profile_url: string;
+  original_url: string | null;
+  original_text: string;
+  title: string;
+  summary: string;
+  published_at: string;
+  imported_at: string;
+  tags: string[];
+  category: string;
+};
+
+export type LiveFeedCollection = {
+  generatedAt: string;
+  count: number;
+  items: LiveFeedItem[];
+  warnings: string[];
+};
