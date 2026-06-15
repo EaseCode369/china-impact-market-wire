@@ -12,8 +12,8 @@ export default function SourcesIndexPage() {
       <section className="content-panel">
         <div className="section-heading">
           <div>
-            <p className="brand-kicker">Source Map</p>
-            <h1 className="section-title">高盛资讯来源</h1>
+            <p className="brand-kicker">Source Records</p>
+            <h1 className="section-title">公开资讯来源记录</h1>
           </div>
           <div className="section-caption">
             已配置 {sources.length} 个监测来源，当前抓到 {availableCount} 个来源的数据。
@@ -21,7 +21,7 @@ export default function SourcesIndexPage() {
         </div>
 
         <div className="news-card-summary" style={{ marginBottom: 20 }}>
-          这里展示的是高盛资讯当前监测到的公开财经来源。
+          这里展示的是官网市场资讯当前监测到的公开财经来源记录。
           如果某个来源暂时没有数据，不再返回 404，而是明确展示当前抓取状态。
         </div>
 

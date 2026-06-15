@@ -92,7 +92,7 @@ export const getAuthState = cache(async (): Promise<AuthState> => {
 export function getDefaultRedirectByStatus(status: ProfileStatus) {
   switch (status) {
     case "approved":
-      return "/insights";
+      return "/";
     case "disabled":
       return "/disabled";
     case "pending":

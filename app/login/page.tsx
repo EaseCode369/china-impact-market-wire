@@ -23,7 +23,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           <p className="brand-kicker">Client Access</p>
           <h1 className="auth-title">登录后进入客户专区</h1>
           <p className="auth-description">
-            高盛资讯公开可看；高盛内参与高盛研究采用客户审核机制。注册成功后，账号会先进入人工审核；只有审核通过的客户，才能查看客户专属内容。
+            官网市场资讯公开可看；高盛内参与高盛研究采用客户审核机制。注册成功后，账号会先进入人工审核；只有审核通过的客户，才能查看客户专属内容。
           </p>
         </div>
 

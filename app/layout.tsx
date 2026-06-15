@@ -7,8 +7,8 @@ import { logoutAction } from "@/app/auth/actions";
 import { getAuthState } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "香港高盛研究院",
-  description: "独立香港研究机构官网，提供高盛资讯、客户内参和研究报告提炼。",
+  title: "香港高盛投资集团",
+  description: "立足香港，面向亚太地区的投资机构、企业与家族办公室，提供资讯、内参和高质量研报服务。",
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -32,18 +32,18 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 />
               </div>
               <div className="brand-copy">
-                <span className="brand-kicker">Hong Kong Goldman Research Institute</span>
+                <span className="brand-kicker">Hong Kong Goldman Investment Group</span>
                 <Link className="brand-title" href="/">
-                  香港高盛研究院
+                  香港高盛投资集团
                 </Link>
-                <div className="brand-subtitle">独立香港研究机构，聚焦公开资讯、主题内参和高质量研报提炼。</div>
+                <div className="brand-subtitle">立足香港，面向亚太地区的投资机构、企业与家族办公室。</div>
               </div>
             </div>
             <nav className="top-nav" aria-label="主导航">
               {isApproved ? (
                 <>
-                  <Link className="nav-pill" href="/insights">
-                    高盛资讯
+                  <Link className="nav-pill" href="/">
+                    首页
                   </Link>
                   <Link className="nav-pill" href="/briefing">
                     高盛内参
@@ -56,9 +56,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 <>
                   <Link className="nav-pill" href="/#home">
                     首页
-                  </Link>
-                  <Link className="nav-pill" href="/insights">
-                    高盛资讯
                   </Link>
                   <Link className="nav-pill" href="/briefing">
                     高盛内参

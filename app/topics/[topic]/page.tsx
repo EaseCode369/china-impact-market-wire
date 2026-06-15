@@ -35,7 +35,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <section className="content-panel">
         <div className="section-heading">
           <div>
-            <p className="brand-kicker">Goldman Sachs HK News</p>
+            <p className="brand-kicker">Market Columns</p>
             <h1 className="section-title">{topic.name}</h1>
           </div>
           <div className="section-caption">
@@ -53,8 +53,8 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </div>
 
         <div className="detail-actions">
-          <Link className="button-link secondary" href="/insights">
-            返回高盛资讯
+          <Link className="button-link secondary" href="/#market-feed">
+            返回官网资讯流
           </Link>
         </div>
 

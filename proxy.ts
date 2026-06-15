@@ -69,7 +69,7 @@ export async function proxy(request: NextRequest) {
 
   if (status === "approved") {
     if (PUBLIC_PATHS.has(pathname) || STATUS_PATHS.has(pathname)) {
-      return NextResponse.redirect(new URL("/insights", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
 
     return response;
