@@ -73,6 +73,7 @@ export type LiveFeedItem = {
   id: string;
   dedupe_key: string;
   source_type: "x";
+  summary_engine?: "deepseek" | "fallback" | "source";
   source_name: string;
   handle: string;
   profile_url: string;

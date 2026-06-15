@@ -12,6 +12,7 @@
     "generate:crawled-news": "tsx scripts/generate-crawled-news.ts",
     "generate:all": "tsx scripts/generate-all.ts",
     "live:login": "tsx scripts/live-login.ts",
+    "live:login:chrome": "tsx scripts/live-login-chrome.ts",
     "live:generate": "tsx scripts/generate-live-feed.ts",
     "live:publish": "tsx scripts/publish-live-feed.ts"
   },
