@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.goldman.livefeed.hourly</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/scripts/run-live-publish.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/tmp/live-launchd.out.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/tmp/live-launchd.err.log</string>
+  </dict>
+</plist>

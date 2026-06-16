@@ -545,10 +545,10 @@ async function summarizeEnglishTweetWithDeepSeek(tweet: PreparedTweet, warnings:
               "",
               "要求：",
               "1. 标题像财经终端快讯，不要照抄英文原句，不要使用营销口吻。",
-              "2. summary 用简体中文，最多两句，先说发生了什么，再说这条内容更偏产品演示、公司表态、行业观察还是业务进展。",
-              "3. 如果内容主要是产品演示或品牌表达，就明确写出来，不要硬说成行业重大新闻。",
+              "2. summary 用简体中文，最多两句，只提炼对读者有信息量的内容，直接说发生了什么、意味着什么。",
+              "3. 不要在末尾追加“该内容属于业务进展披露 / 行业观察 / 产品演示 / 公司表态 / 个人观点”之类的分类总结句。",
               "4. 除非原文明确出现 launch、release、announce、roll out 等信息，否则不要写成“上线”“发布”“正式推出”“落地”。",
-              "5. 如果只是功能展示、用户体验或转发评论，优先使用“展示”“演示”“车主称”“用户分享”“提到”等表述。",
+              "5. 如果只是功能展示、用户体验或转发评论，优先使用“展示”“演示”“车主称”“用户分享”“提到”等表述，但不要写空泛评价。",
               "6. tags 返回 1 到 3 个中文短标签。",
               "7. 只输出 JSON，不要输出其他解释。",
               "",
@@ -608,7 +608,7 @@ function parseLocalizedContent(content: string): LocalizedLiveContent | null {
       tags?: unknown;
     };
     const title = normalizeChineseSentence(typeof parsed.title === "string" ? parsed.title : "");
-    const summary = normalizeChineseSentence(typeof parsed.summary === "string" ? parsed.summary : "", true);
+    const summary = stripBoilerplateSummary(normalizeChineseSentence(typeof parsed.summary === "string" ? parsed.summary : "", true));
     const tags = Array.isArray(parsed.tags)
       ? parsed.tags
           .filter((item): item is string => typeof item === "string")
@@ -654,6 +654,19 @@ function normalizeChineseSentence(text: string, allowLonger = false) {
 
   const sliced = cleaned.slice(0, allowLonger ? 140 : 32).trim();
   return allowLonger ? ensureChinesePunctuation(sliced) : sliced.replace(/[。！？.!?]+$/g, "");
+}
+
+function stripBoilerplateSummary(text: string) {
+  return ensureChinesePunctuation(
+    normalizeText(text)
+      .replace(/([。；])\s*该内容(?:主要)?(?:为|属|属于)[^。；!?！？]{0,40}[。；]?$/u, "$1")
+      .replace(/([。；])\s*该消息(?:主要)?(?:为|属|属于)[^。；!?！？]{0,40}[。；]?$/u, "$1")
+      .replace(/([。；])\s*内容(?:主要)?(?:为|属|属于)[^。；!?！？]{0,40}[。；]?$/u, "$1")
+      .replace(/([。；])\s*(?:这|该)并非[^。；!?！？]{0,40}[。；]?$/u, "$1")
+      .replace(/([。；])\s*(?:属|属于)[^。；!?！？]{0,24}(?:披露|观察|演示|表态|观点)[^。；!?！？]{0,20}[。；]?$/u, "$1")
+      .replace(/[；。]\s*$/u, "")
+      .trim(),
+  );
 }
 
 async function mapWithConcurrency<T, R>(items: T[], limit: number, worker: (item: T, index: number) => Promise<R>) {
