@@ -7,11 +7,23 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/scripts/run-live-publish.sh</string>
+      <string>/bin/zsh</string>
+      <string>-lc</string>
+      <string>'/Users/eric/Documents/Codex/Goldman news/11.1-----/scripts/run-live-publish.sh'</string>
     </array>
 
     <key>WorkingDirectory</key>
     <string>/Users/eric/Documents/Codex/Goldman news/11.1-----</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+      <key>HOME</key>
+      <string>/Users/eric</string>
+      <key>SHELL</key>
+      <string>/bin/zsh</string>
+    </dict>
 
     <key>RunAtLoad</key>
     <true/>
