@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-16T05:43:50.530Z",
-  "count": 170,
+  "generatedAt": "2026-06-16T05:47:49.984Z",
+  "count": 171,
   "items": [
     {
       "id": "c39253f1d83ee3820b7c77293782fa65f7b5fd92",
@@ -957,6 +957,27 @@
       "category": "半导体行业"
     },
     {
+      "id": "6668f723df21b1bd654fe3c14f16d96ad3314116",
+      "dedupe_key": "tradealpha:587149",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 美国最高法院驳回塔塔公司对商业秘密案中1.68亿美元赔偿裁决的上诉",
+      "title": "RTRS - 美国最高法院驳回塔塔公司对商业秘密案中1.",
+      "summary": "RTRS - 美国最高法院驳回塔塔公司对商业秘密案中1.68亿美元赔偿裁决的上诉。",
+      "published_at": "2026-06-15T13:42:48.000Z",
+      "imported_at": "2026-06-16T05:47:49.539Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "很重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
       "id": "ce162a069560774ad8cdbe991f446127b8dc190f",
       "dedupe_key": "tradealpha:587144",
       "source_type": "tradealpha",
@@ -969,7 +990,7 @@
       "title": "6月15日讯，牛津经济研究院的Ben May和Bridget Payne在报告中表示，尽管未来可能还会遇到波折，但美伊协议降低了石油库存持续下降",
       "summary": "6月15日讯，牛津经济研究院的Ben May和Bridget Payne在报告中表示，尽管未来可能还会遇到波折，但美伊协议降低了石油库存持续下降并最终引发全球能源价格飙升、进而导致经济衰退的风险。不过他们表示，这并不自动意味着流经霍尔木兹海峡的石油量会比此前预期的增加得更快。\"我们原本就假设通过霍尔木兹海峡的航运将在7月底恢复。尽管如此，我们目前的短期油价预测看起来仍然偏高。\"他们补充说，由于霍尔木兹海峡重开很可能有助于降低通胀，但对经济增长的提振作用有限，因此这一消息进一步强化了他们的观点，即美联储和英国央行不会加息，而那些已经完成加息的其他央行也不会再次加息。",
       "published_at": "2026-06-15T13:40:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.060Z",
+      "imported_at": "2026-06-16T05:47:49.539Z",
       "tags": [
         "国内",
         "市场与货币",
@@ -990,7 +1011,7 @@
       "title": "RTRS - 美国最高法院驳回了梅西百货关于向被解雇的罢工员工支付补偿金的申诉",
       "summary": "RTRS - 美国最高法院驳回了梅西百货关于向被解雇的罢工员工支付补偿金的申诉。",
       "published_at": "2026-06-15T13:39:24.000Z",
-      "imported_at": "2026-06-16T05:43:50.060Z",
+      "imported_at": "2026-06-16T05:47:49.539Z",
       "tags": [
         "路透社",
         "政策",
@@ -1011,7 +1032,7 @@
       "title": "RTRS - 更新版 1-更新 1-随着SpaceX上市重塑太空行业估值，德国OHB计划注资5亿欧元",
       "summary": "RTRS - 更新版 1-更新 1-随着SpaceX上市重塑太空行业估值，德国OHB计划注资5亿欧元。",
       "published_at": "2026-06-15T13:39:01.000Z",
-      "imported_at": "2026-06-16T05:43:50.060Z",
+      "imported_at": "2026-06-16T05:47:49.539Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1032,7 +1053,7 @@
       "title": "RTRS - 更新 1-空客首席执行官在启用新生产线之际抨击欧洲监管成本",
       "summary": "RTRS - 更新 1-空客首席执行官在启用新生产线之际抨击欧洲监管成本。",
       "published_at": "2026-06-15T13:36:32.000Z",
-      "imported_at": "2026-06-16T05:43:50.060Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1053,7 +1074,7 @@
       "title": "美伊达成谅解备忘录，美国油气概念股普跌，埃克森美孚石油(XOM.",
       "summary": "美伊达成谅解备忘录，美国油气概念股普跌，埃克森美孚石油(XOM.N)跌5.6%、雪佛龙(CVX.N)跌4.4%，西方石油(OXY.N)跌5.4%、康菲石油(COP.N)跌4.9%。",
       "published_at": "2026-06-15T13:35:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "国内",
         "市场与货币",
@@ -1074,7 +1095,7 @@
       "title": "地缘利好推升金银，霍尔木兹海峡能否如约\"解封\"？",
       "summary": "地缘利好推升金银，霍尔木兹海峡能否如约\"解封\"？金价反弹趋势能否持续？",
       "published_at": "2026-06-15T13:25:04.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "国内",
         "市场与货币",
@@ -1095,7 +1116,7 @@
       "title": "欧盟委员会主席冯德莱恩：伊朗必须从根本上改变其行为，欧盟才能解除对伊朗的任何制裁。",
       "summary": "欧盟委员会主席冯德莱恩：伊朗必须从根本上改变其行为，欧盟才能解除对伊朗的任何制裁。",
       "published_at": "2026-06-15T13:25:04.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1116,7 +1137,7 @@
       "title": "RTRS - 美国5月工业生产较前月增长0.",
       "summary": "RTRS - 美国5月工业生产较前月增长0.1%(预估为增长0.2%)。",
       "published_at": "2026-06-15T13:15:19.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "市场与货币",
@@ -1137,7 +1158,7 @@
       "title": "RTRS - 世界银行旗下的国际金融公司（IFC）通过一笔5.",
       "summary": "RTRS - 世界银行旗下的国际金融公司（IFC）通过一笔5.09亿美元的交易，大力推进证券化进程。",
       "published_at": "2026-06-15T13:13:40.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "政策",
@@ -1158,7 +1179,7 @@
       "title": "RTRS - 热门话题-Datadog股价上涨；",
       "summary": "RTRS - 热门话题-Datadog股价上涨；Truist将评级上调至买入。",
       "published_at": "2026-06-15T13:10:26.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "公司",
@@ -1179,7 +1200,7 @@
       "title": "RTRS - 路透调查：经济学家预计瑞士央行今年将维持零利率，明年料也如此",
       "summary": "RTRS - 路透调查：经济学家预计瑞士央行今年将维持零利率，明年料也如此。",
       "published_at": "2026-06-15T13:10:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "市场与货币",
@@ -1200,7 +1221,7 @@
       "title": "美国总统特朗普：船只开始从霍尔木兹海峡出发。",
       "summary": "美国总统特朗普：船只开始从霍尔木兹海峡出发。其中许多装载着石油。它们正沿着南部\"高速公路\"（Highway）航行，该航线完全安全、可靠且畅通无阻。其他航行区域同样可供通行。",
       "published_at": "2026-06-15T13:10:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1221,7 +1242,7 @@
       "title": "RTRS - 伊朗表示，黎巴嫩是与美国达成和平协议不可或缺的一部分",
       "summary": "RTRS - 伊朗表示，黎巴嫩是与美国达成和平协议不可或缺的一部分。",
       "published_at": "2026-06-15T13:04:49.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "政治军事",
@@ -1242,7 +1263,7 @@
       "title": "RTRS - 未来资产就SpaceX首次公开募股配售失败一事向投资者致歉",
       "summary": "RTRS - 未来资产就SpaceX首次公开募股配售失败一事向投资者致歉。",
       "published_at": "2026-06-15T13:04:38.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1263,7 +1284,7 @@
       "title": "RTRS - 热门话题-Neumora因放弃抗抑郁药研发而股价暴跌",
       "summary": "RTRS - 热门话题-Neumora因放弃抗抑郁药研发而股价暴跌。",
       "published_at": "2026-06-15T12:53:31.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "公司",
@@ -1284,7 +1305,7 @@
       "title": "RTRS - 美国股市-受伊朗核协议乐观情绪及油价下跌提振，华尔街股市料将高开",
       "summary": "RTRS - 美国股市-受伊朗核协议乐观情绪及油价下跌提振，华尔街股市料将高开。",
       "published_at": "2026-06-15T12:52:22.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "市场与货币",
@@ -1305,7 +1326,7 @@
       "title": "RTRS - 更新版 1-消息人士称，英伟达将通过发行美国债券筹集200亿美元",
       "summary": "RTRS - 更新版 1-消息人士称，英伟达将通过发行美国债券筹集200亿美元。",
       "published_at": "2026-06-15T12:46:07.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1326,7 +1347,7 @@
       "title": "乌克兰官员与美国总统将在七国集团峰会期间举行会晤。",
       "summary": "乌克兰官员与美国总统将在七国集团峰会期间举行会晤。",
       "published_at": "2026-06-15T12:45:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1347,7 +1368,7 @@
       "title": "RTRS - 瑞典瓦邓福尔公司选定罗尔斯·罗伊斯SMR公司负责核电项目",
       "summary": "RTRS - 瑞典瓦邓福尔公司选定罗尔斯·罗伊斯SMR公司负责核电项目。",
       "published_at": "2026-06-15T12:41:16.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "政策",
@@ -1368,7 +1389,7 @@
       "title": "RTRS - 数据简报-全球制药企业斥资数十亿美元以扩大在美国的市场份额",
       "summary": "RTRS - 数据简报-全球制药企业斥资数十亿美元以扩大在美国的市场份额。",
       "published_at": "2026-06-15T12:41:09.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "政策",
@@ -1389,7 +1410,7 @@
       "title": "6月15日讯，据伊朗媒体15日报道，伊朗外交部发言人当天表示，核谈判和解除制裁将在60天内开始。",
       "summary": "6月15日讯，据伊朗媒体15日报道，伊朗外交部发言人当天表示，核谈判和解除制裁将在60天内开始。（新华社）。",
       "published_at": "2026-06-15T12:40:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1410,7 +1431,7 @@
       "title": "伊朗塔斯尼姆通讯社援引知情人士消息称，美军必须在最终协议达成后30天内撤离伊朗附近地区。",
       "summary": "伊朗塔斯尼姆通讯社援引知情人士消息称，美军必须在最终协议达成后30天内撤离伊朗附近地区。",
       "published_at": "2026-06-15T12:40:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1431,7 +1452,7 @@
       "title": "黎巴嫩真主党：伊朗协议是以色列完全撤退的前奏。",
       "summary": "黎巴嫩真主党：伊朗协议是以色列完全撤退的前奏。",
       "published_at": "2026-06-15T12:35:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1452,7 +1473,7 @@
       "title": "RTRS - 热门话题-Fiserv股价下跌；",
       "summary": "RTRS - 热门话题-Fiserv股价下跌；乔治亚科普洛斯被任命为首席执行官。",
       "published_at": "2026-06-15T12:31:56.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1473,7 +1494,7 @@
       "title": "RTRS - 安克创新 300866.",
       "summary": "RTRS - 安克创新 300866.SZ称同意公司首次公开发行境外上市外资股并在香港联交所上市事宜的相关事项。",
       "published_at": "2026-06-15T12:30:06.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1494,7 +1515,7 @@
       "title": "6月15日讯，据伊朗媒体15日报道，伊朗外交部发言人巴加埃当天表示，伊朗将在\"特定时期内\"负责霍尔木兹海峡安全通行管理，并将对相关航运服务收取费",
       "summary": "6月15日讯，据伊朗媒体15日报道，伊朗外交部发言人巴加埃当天表示，伊朗将在\"特定时期内\"负责霍尔木兹海峡安全通行管理，并将对相关航运服务收取费用。（新华社）。",
       "published_at": "2026-06-15T12:30:04.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1515,7 +1536,7 @@
       "title": "美国副总统万斯：预计伊朗各方代表将全员出席周五的签署仪式。",
       "summary": "美国副总统万斯：预计伊朗各方代表将全员出席周五的签署仪式。",
       "published_at": "2026-06-15T12:30:04.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1536,7 +1557,7 @@
       "title": "RTRS - 美国纽约联邦储备银行6月制造业指数为+5.",
       "summary": "RTRS - 美国纽约联邦储备银行6月制造业指数为+5.70(预估为+14.00)。",
       "published_at": "2026-06-15T12:30:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "市场与货币",
@@ -1557,7 +1578,7 @@
       "title": "RTRS - Spyre称，其肠道疾病药物在中期试验中显示出减轻炎症的效果",
       "summary": "RTRS - Spyre称，其肠道疾病药物在中期试验中显示出减轻炎症的效果。",
       "published_at": "2026-06-15T12:26:59.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1578,7 +1599,7 @@
       "title": "美国副总统万斯：霍尔木兹海峡将长期开放。",
       "summary": "美国副总统万斯：霍尔木兹海峡将长期开放。预计霍尔木兹海峡将在长期内免费通行。",
       "published_at": "2026-06-15T12:25:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1599,7 +1620,7 @@
       "title": "黎巴嫩真主党：协议中包含黎巴嫩反映了伊朗致力于确保停止战争和维护黎巴嫩权益的承诺。",
       "summary": "黎巴嫩真主党：协议中包含黎巴嫩反映了伊朗致力于确保停止战争和维护黎巴嫩权益的承诺。",
       "published_at": "2026-06-15T12:25:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1620,7 +1641,7 @@
       "title": "伊朗外交部发言人巴加埃：美国有义务履行协议规定的承诺；",
       "summary": "伊朗外交部发言人巴加埃：美国有义务履行协议规定的承诺；若未能履行，德黑兰将采取对等措施。",
       "published_at": "2026-06-15T12:25:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1641,7 +1662,7 @@
       "title": "声明显示，黎巴嫩真主党欢迎美伊谅解备忘录。",
       "summary": "声明显示，黎巴嫩真主党欢迎美伊谅解备忘录。",
       "published_at": "2026-06-15T12:25:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1662,7 +1683,7 @@
       "title": "伊朗外交部发言人巴加埃：德黑兰将与阿曼及其他国家协调，采取措施确保霍尔木兹海峡的安全通行；",
       "summary": "伊朗外交部发言人巴加埃：德黑兰将与阿曼及其他国家协调，采取措施确保霍尔木兹海峡的安全通行；此举将针对特定时间，并与美国自身的承诺相对应。",
       "published_at": "2026-06-15T12:20:04.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1707,7 +1728,7 @@
       "title": "RTRS - 以色列埃尔阿尔航空与埃隆·马斯克旗下的星链公司签署高速互联网合作协议",
       "summary": "RTRS - 以色列埃尔阿尔航空与埃隆·马斯克旗下的星链公司签署高速互联网合作协议。",
       "published_at": "2026-06-15T12:18:34.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1728,7 +1749,7 @@
       "title": "RTRS - 美国运通将以7亿美元收购猫途鹰旗下的餐厅预订平台TheFork",
       "summary": "RTRS - 美国运通将以7亿美元收购猫途鹰旗下的餐厅预订平台TheFork。",
       "published_at": "2026-06-15T12:17:36.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1749,7 +1770,7 @@
       "title": "欧盟理事会批准对俄罗斯的新制裁。",
       "summary": "欧盟理事会批准对俄罗斯的新制裁。",
       "published_at": "2026-06-15T12:15:03.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1770,7 +1791,7 @@
       "title": "RTRS - 热门话题-Elicio Therapeutics股价暴跌，因胰腺癌疫苗未达试验主要目标",
       "summary": "RTRS - 热门话题-Elicio Therapeutics股价暴跌，因胰腺癌疫苗未达试验主要目标。",
       "published_at": "2026-06-15T12:08:38.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1791,7 +1812,7 @@
       "title": "RTRS - Salesforce将以约36亿美元收购Fin",
       "summary": "RTRS - Salesforce将以约36亿美元收购Fin。",
       "published_at": "2026-06-15T12:06:36.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -1812,7 +1833,7 @@
       "title": "RTRS - Neumora Therapeutics 两项后期试验失败后停用抗抑郁药",
       "summary": "RTRS - Neumora Therapeutics 两项后期试验失败后停用抗抑郁药。",
       "published_at": "2026-06-15T12:04:43.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1833,7 +1854,7 @@
       "title": "Congressman Tom Cole is a Tremendous Champion for Oklahoma's 4th Congres",
       "summary": "Congressman Tom Cole is a Tremendous Champion for Oklahoma's 4th Congressional District!As the Chairman of the POWERFUL House Appropriations Committee, Tom knows the America First Policies required to Create GREAT Jobs, Cut Taxes and Regulations, and Champion our Nation's Golden Age. He is fighting tirelessly to Advance American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment.Tom Cole has my Complete and Total Endorsement for Re-Election. Election Day for the Republican Primary is Tuesday, June 16th. GET OUT AND VOTE FOR TOM — HE WILL NEVER LET YOU DOWN!Find your Voting Location here 国会议员汤姆·科尔是俄克拉荷马州第四国会选区当之无愧的荣耀捍卫者！作为众议院拨款委员会这位举足轻重的主席，汤姆深谙实现美国至上的政策之道：创造海量优质工作岗位、大幅削减税收法规、引领国家步入最伟大时代。他正为提升美国能源统治力、坚守边境安全、壮大军队与退伍军人体系、捍卫饱受冲击的宪法第二修正案而不懈奋斗。 汤姆·科尔获得我毫无保留的连任支持。共和党初选定于6月16日星期二举行。请务必前往投票站支持汤姆——他绝不会让你失望！ 在此查找投票地点。",
       "published_at": "2026-06-15T12:00:26.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "Trump Truth",
         "政治军事",
@@ -1854,7 +1875,7 @@
       "title": "伊朗外交部发言人巴加埃：过去四个小时的事态发展表明，伊朗与美国已敲定一份谅解备忘录，旨在结束由美国及犹太复国主义政权针对伊朗在包括黎巴嫩在内的所",
       "summary": "伊朗外交部发言人巴加埃：过去四个小时的事态发展表明，伊朗与美国已敲定一份谅解备忘录，旨在结束由美国及犹太复国主义政权针对伊朗在包括黎巴嫩在内的所有战线上发动的战争。",
       "published_at": "2026-06-15T11:55:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1875,7 +1896,7 @@
       "title": "伊朗外交部发言人巴加埃：在前往瑞士与美国签署协议之前，已将地区访问列入议程。",
       "summary": "伊朗外交部发言人巴加埃：在前往瑞士与美国签署协议之前，已将地区访问列入议程。",
       "published_at": "2026-06-15T11:55:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.542Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1896,7 +1917,7 @@
       "title": "伊朗外交部发言人巴加埃：尊重黎巴嫩的主权和领土完整是与美国达成的临时协议的一部分。",
       "summary": "伊朗外交部发言人巴加埃：尊重黎巴嫩的主权和领土完整是与美国达成的临时协议的一部分。",
       "published_at": "2026-06-15T11:55:05.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.542Z",
       "tags": [
         "国内",
         "政治军事",
@@ -1917,7 +1938,7 @@
       "title": "RTRS - 马士基对美伊协议表示欢迎，但中东业务暂无变化",
       "summary": "RTRS - 马士基对美伊协议表示欢迎，但中东业务暂无变化。",
       "published_at": "2026-06-15T11:54:33.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -1938,7 +1959,7 @@
       "title": "RTRS - 热门话题-福克斯股价暴跌，此前该公司以220亿美元收购流媒体平台Roku",
       "summary": "RTRS - 热门话题-福克斯股价暴跌，此前该公司以220亿美元收购流媒体平台Roku。",
       "published_at": "2026-06-15T11:52:23.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.542Z",
       "tags": [
         "路透社",
         "公司",
@@ -3147,7 +3168,7 @@
       "title": "Sadly, if you import people from Third World Countries, you quickly beco",
       "summary": "Sadly, if you import people from Third World Countries, you quickly become a Third World Country — And there's not a thing you can do about it. MAKE AMERICA GREAT AGAIN! President DONALD J. TRUMP 令人悲哀的是，如果您引进来自第三世界国家的人口，您很快也会沦为第三世界国家——对此您别无他法。让美国再次伟大！唐纳德·J·特朗普总统。",
       "published_at": "2026-06-15T05:11:01.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "Trump Truth",
         "政治军事",
@@ -3168,7 +3189,7 @@
       "title": "【标题-Salesforce将以约36亿美元收购AI代理平台Fin-路透社】 【正文】 Salesforce于周一表示，已签署协议以约36亿美元",
       "summary": "【标题-Salesforce将以约36亿美元收购AI代理平台Fin-路透社】 【正文】 Salesforce于周一表示，已签署协议以约36亿美元收购自主AI代理平台Fin。此次交易将强化Salesforce的Agentforce平台，科技公司竞相在企业部署基于使用的自主数字员工。交易完成后，Salesforce与Fin将扩展在客户服务中部署AI代理的选项，\"使客户能将其与现有系统整合\"。Fin开发了AI客户代理，处理live chat、email、WhatsApp、SMS、phone和Slack中的支持问题。该交易预计在Salesforce 2027财年第四季度完成，不会改变公司预测和资本回报计划。 https://www.reuters.com/business/salesforce-buy-fin-about-36-billion-2026-06-15/。",
       "published_at": "2026-06-15T04:39:48.000Z",
-      "imported_at": "2026-06-16T05:43:50.061Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -3189,7 +3210,7 @@
       "title": "【日本首相支持搁置的西西里大桥计划凸显日企投资-路透社】 罗马，6月15日（路透社）- 日本首相高市早苗周一表示，鉴于日本企业的参与，她希望拖延",
       "summary": "【日本首相支持搁置的西西里大桥计划凸显日企投资-路透社】 罗马，6月15日（路透社）- 日本首相高市早苗周一表示，鉴于日本企业的参与，她希望拖延已久的墨西拿海峡大桥项目能尽快启动，以展示双边合作。该计划在意大利西西里墨西拿与本土之间建造3.7公里（2.3英里）的桥梁，由Eurolink财团主导，成员包括意大利最大建筑集团Webuild、日本IHI及西班牙Sacyr。但该项目因环保担忧和地震风险争议已停滞多年。 2012年，该项目在政府紧缩政策下暂停，导致财团提出7亿欧元（8.11亿美元）赔偿诉讼，仅当工程重启时方可撤诉。\"我衷心希望由日本企业参与的墨西拿海峡大桥项目，能成为象征两国经济合作的标志性工程，\"高市在访问罗马时表示。她与意大利总理梅洛尼在出席G7峰会前于17世纪Doria Pamphili别墅会晤后共同作出此声明。 梅洛尼政府认为改善交通对提振意大利欠发达的南部经济至关重要。目前西西里与本土仅靠车辆轮渡连接。然而这项耗资约135亿欧元的工程暂难开工。意大利审计法院去年以涉嫌违反欧盟竞争规则及原2005年招标价仅38亿欧元为由拒绝批准。上周罗马检察官还启动了针对该桥的腐败调查，再度引发项目推进质疑。 （汇率：1美元=0.8613欧元） 罗马记者Angelo Amante报道；东京记者Tim Kelly补充报道；Susan Fenton编辑 https://www.reuters.com/business/japan-pm-backs-troubled-sicily-bridge-plan-highlighting-japanese-investment-2026-06-15/。",
       "published_at": "2026-06-15T04:37:38.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "路透社",
         "政治军事",
@@ -3210,7 +3231,7 @@
       "title": "【Salesforce拟36亿美元收购AI客户服务公司Fin-彭博】 Salesforce Inc.",
       "summary": "【Salesforce拟36亿美元收购AI客户服务公司Fin-彭博】 Salesforce Inc. 已同意以约36亿美元收购开发人工智能客户代理的Fin公司，此举旨在为企业人工智能领域拓展新业务。Fin的旗舰产品AI Agent可通过聊天、电子邮件、WhatsApp、短信、电话和Slack处理客户咨询。Salesforce在周一声明中表示，该产品将补充其自有AI代理工具Agentforce。交易预计在Salesforce 2027财年第四季度完成。 这家软件巨头一直在推广其无需人工监督的AI工具Agentforce。AI是Salesforce应对外部开发者争夺市场份额的战略核心。截至当前，Agentforce已达成29,000笔交易，带动部分客户增加年度支出。但上月彭博新闻报道称，该产品实际能力与宣传存在差距。交易消息公布后，Salesforce股价在纽约盘前交易中上涨1.1%。 https://www.bloomberg.com/news/articles/2026-06-15/salesforce-to-buy-ai-customer-service-firm-fin-for-3-6-billion。",
       "published_at": "2026-06-15T04:34:16.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.540Z",
       "tags": [
         "彭博社",
         "超大型公司",
@@ -3231,7 +3252,7 @@
       "title": "【ASX承认其CHESS软件升级表述具有误导性并同意支付1450万美元罚款-路透社】 6月15日（路透社）- 澳大利亚证券交易所集团（ASX）于",
       "summary": "【ASX承认其CHESS软件升级表述具有误导性并同意支付1450万美元罚款-路透社】 6月15日（路透社）- 澳大利亚证券交易所集团（ASX）于周一承认在问题软件升级进展方面发表误导性声明，同时同意向联邦法院支付2050万澳元（约合1450万美元）的罚款待批准。该国企业监管机构澳大利亚证券与投资委员会（ASIC）于2024年8月起诉ASX，指控其在2022年对原定于2023年上线的清算所电子子登记系统（CHESS）项目发表的声明误导公众。 截至2021年末，ASX内部已将项目状态标记为\"红色\"，意味着交付时间存在重大风险。ASIC诉讼指出，在2022年2月交易更新前一周，ASX审计和风险管理委员会已被告知该项目的\"红色\"状态。在2022年2月10日宣布时任CEO多米尼克·史蒂文斯退休计划的公告中，该交易所仍宣称替换项目\"进展顺利\"。 MPC Markets总监Kai Chen表示：\"此次罚款虽标志着法律层面的解决，但在ASX面临真正竞争压力或通过系统交付展现实质性文化改革前，声誉折价和深层结构性问题将持续存在。\"因多次失败及巨额重新评估支出，ASX于2022年11月中止原CHESS项目。修订版CHESS清算系统的首版已于四月上线，预计2029年完成。 ASX股价收涨2.6%至50.46澳元，超过基准指数1.3%的涨幅。除罚款外，ASX还将支付300万澳元承担ASIC诉讼费用，该款项均需联邦法院批准。交易所表示，拟议罚金将在2026财年计提并列为非经常性重大项目，对ASIC法律费用的分担同样列为2026财年重大事项。（注：1澳元兑1.4136美元） https://www.reuters.com/world/asia-pacific/asx-admits-misleading-chess-software-upgrade-agrees-145-million-penalty-2026-06-15/。",
       "published_at": "2026-06-15T04:16:00.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "超大型公司",
@@ -3252,7 +3273,7 @@
       "title": "草案的七国集团声明点名\"人工智能潜在风险\"-彭博社 七国集团领导人们将\"进一步探讨人工智能带来的新机遇和潜在风险，尤其是在金融领域。",
       "summary": "草案的七国集团声明点名\"人工智能潜在风险\"-彭博社 七国集团领导人们将\"进一步探讨人工智能带来的新机遇和潜在风险，尤其是在金融领域。\"该内容源自彭博社获悉的一份可能修改的草案声明。 草案虽然避开了争议性议题，但集中讨论了人工智能议题，呼吁加强协调。与此同时，美国政府表明愿动用特殊权力强制人工智能开发方应对潜在安全威胁——尽管6月行政命令宣称不强迫服从。 在发现法布尔5（Fable 5）人工智能模型可能被\"越狱\"或绕过防护措施后，美国已下令安诺匹科公司（Anthropic PBC）禁止所有外国公民访问其最先进平台。草案同时声明：\"我们将持续努力提升金融体系对量子技术相关风险与机遇的应对能力。\" https://www.bloomberg.com/news/articles/2026-06-15/the-potential-risks-of-ai-singled-out-in-draft-g7-statement。",
       "published_at": "2026-06-15T04:10:46.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "彭博社",
         "政策",
@@ -3273,7 +3294,7 @@
       "title": "【加拿大Nuvei将以27.",
       "summary": "【加拿大Nuvei将以27.5亿美元收购Payoneer-路透社】 6月15日，加拿大金融科技企业Nuvei宣布将以约27.5亿美元现金收购跨境支付公司Payoneer (PAYO.O)，旨在扩展全球业务。Payoneer股东每股将获得7.40美元现金，较6月8日收盘价溢价约44%。据LSEG数据显示，Payoneer市值约为22.6亿美元。 该交易预计于2027年中完成，需Payoneer股东批准及监管许可。合并后公司预计年收入达30亿美元，年支付处理量超5000亿美元。Nuvei首席执行官菲尔·费耶表示：\"通过整合互补能力，我们将为企业提供更完整的规模化平台。\" Payoneer持有主要市场牌照，为企业提供跨境收付款及多币种交易管理服务，客户包括亚马逊、沃尔玛、易趣和爱彼迎等巨头。交易资金由蒙特利尔银行资本市场、加拿大皇家银行资本市场、巴克莱银行、瑞银集团和富国银行提供承诺融资。 高盛担任Nuvei首席财务顾问，巴克莱资本提供协助，Qatalyst Partners为Payoneer独家财务顾问。此前路透社曾报道双方已进入深入谈判阶段。 https://www.reuters.com/legal/transactional/canadas-nuvei-buy-payoneer-275-billion-cross-border-payments-push-2026-06-15/。",
       "published_at": "2026-06-15T04:02:26.000Z",
-      "imported_at": "2026-06-16T05:43:50.062Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "路透社",
         "公司",
@@ -3294,7 +3315,7 @@
       "title": "Congressman Frank Lucas is an incredible Representative for the wonderfu",
       "summary": "Congressman Frank Lucas is an incredible Representative for the wonderful people of Oklahoma's 3rd Congressional District!A Fifth Generation Oklahoman, and lifelong Farmer and Rancher, Frank is a strong and effective Voice for American Agriculture, and our amazing Farmers and Ranchers. In Congress, he is fighting tirelessly to Cut Taxes and Regulations, Promote MADE IN THE U.S.A., Champion American Energy DOMINANCE, Keep our Border SECURE, Strengthen our Military/Veterans, and Defend our always under siege Second Amendment.Frank Lucas has my Complete and Total Endorsement for Re-Election. Election Day for the Republican Primary is Tuesday, June 16th. GET OUT AND VOTE FOR FRANK — HE WILL NEVER LET YOU DOWN!Find your Voting Location here 国会议员弗兰克·卢卡斯是俄克拉荷马州第三国会选区杰出民众的杰出代表！这位第五代俄克拉荷马人、终生耕耘的农场主与牧场主，为美国农业及我们伟大的农业从业者发出了坚定而有力的声音。在国会中，他正不遗余力地推动减税降规、促进\"美国制造\"、捍卫美国能源主导地位、守护边境安全、强化军队/退伍军人保障，并坚决保卫饱受冲击的宪法第二修正案。弗兰克·卢卡斯获得本人毫无保留的连任支持。共和党初选定于6月16日星期二举行。请出门投票支持弗兰克——他永远不会让您失望！ 查询投票点请访问：[链接地址保留]。",
       "published_at": "2026-06-15T04:00:41.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.541Z",
       "tags": [
         "Trump Truth",
         "政治军事",
@@ -3315,7 +3336,7 @@
       "title": "Trump scores once-elusive peace deal with Iran, easing oil prices ahead",
       "summary": "Trump scores once-elusive peace deal with Iran, easing oil prices ahead of elections 特朗普同伊朗达成难以抗衡的和平协定，在选举将至之际为石油价格预期放助降一级风波。",
       "published_at": "2026-06-15T03:50:28.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.542Z",
       "tags": [
         "Trump Truth",
         "政治军事",
@@ -3336,7 +3357,7 @@
       "title": "【高盛在股权交易后将谷歌引入预付能源市场-彭博社】 高盛集团在为Alphabet（谷歌母公司）完成创纪录的850亿美元股权融资后，又在市政债券市",
       "summary": "【高盛在股权交易后将谷歌引入预付能源市场-彭博社】 高盛集团在为Alphabet（谷歌母公司）完成创纪录的850亿美元股权融资后，又在市政债券市场为这家科技巨头取得了一项鲜为人知的胜利。在预付能源债券结构中，公用事业公司可锁定未来数十年的低价天然气或电力，而作为金融中介参与的Alphabet等公司能够获得更低成本的资金和新投资者基础。去年高盛承销了这一快速增长领域逾40%的交易，预付能源债券发行规模同比飙升超过100%，达190亿美元。 在预付费交易中，企业扮演金融中介角色，将债券销售所得资金自由支配，同时定期支付款项以折价方式向公用事业公司提供能源。该交易模式的资金接收者包括亿万富翁Ken Griffin的对冲基金Citadel、日本野村控股等外资银行以及多家寿险公司。 支持者认为该交易使企业和消费者共同受益。高盛是这一结构的先驱，资深银行家Joseph Natioli负责该业务，但其他华尔街机构正在加速布局——摩根大通近期从高盛挖走银行家May Xing以拓展能源预付业务。投资者对该结构反应积极，约12亿美元的加州交易在出售后获得大量投资兴趣而上涨。 Income Research + Management投资组合经理Jeremy Holtz表示：\"企业通过在免税市场借款降低融资成本，公用事业及其客户也因此能以折扣价预付未来20至30年的天然气费用。\"今年3月，不动产投资信托公司Realty Income与高盛完成近7亿美元交易，成为首家采用该结构的REIT。其首席财务官Jonathan Pong指出，该交易比传统融资成本低10至15个基点，并强调未来将持续参与此类交易：\"这绝不是一次性交易，而是计划性的长期战略。\" https://www.bloomberg.com/news/articles/2026-06-15/goldman-brings-google-to-prepaid-energy-market-after-equity-deal。",
       "published_at": "2026-06-15T03:45:20.000Z",
-      "imported_at": "2026-06-16T05:43:50.063Z",
+      "imported_at": "2026-06-16T05:47:49.542Z",
       "tags": [
         "彭博社",
         "市场与货币",
