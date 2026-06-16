@@ -7,14 +7,10 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/bin/zsh</string>
-      <string>-lc</string>
-      <string>'/Users/eric/Documents/Codex/Goldman news/11.1-----/scripts/run-live-publish.sh'</string>
+      <string>/bin/sh</string>
+      <string>-c</string>
+      <string>LOG_FILE=/Users/eric/.goldman-news-live/tmp/live-hourly.log; echo \"[\$(date '+%Y-%m-%d %H:%M:%S')] launchd trigger\" &gt;&gt; \$LOG_FILE; X_HEADLESS=1 /opt/homebrew/bin/node /Users/eric/.goldman-news-live/node_modules/tsx/dist/cli.mjs /Users/eric/.goldman-news-live/scripts/publish-live-feed.ts &gt;&gt; \$LOG_FILE 2&gt;&amp;1; STATUS=\$?; echo \"[\$(date '+%Y-%m-%d %H:%M:%S')] live:publish exit code: \$STATUS\" &gt;&gt; \$LOG_FILE; exit 0</string>
     </array>
-
-    <key>WorkingDirectory</key>
-    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----</string>
-
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
@@ -30,11 +26,5 @@
 
     <key>StartInterval</key>
     <integer>3600</integer>
-
-    <key>StandardOutPath</key>
-    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/tmp/live-launchd.out.log</string>
-
-    <key>StandardErrorPath</key>
-    <string>/Users/eric/Documents/Codex/Goldman news/11.1-----/tmp/live-launchd.err.log</string>
   </dict>
 </plist>

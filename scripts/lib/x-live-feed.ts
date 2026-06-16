@@ -25,6 +25,7 @@ const X_REMOTE_DEBUG_PORT = Number(process.env.X_REMOTE_DEBUG_PORT ?? 9223);
 const X_REMOTE_DEBUG_URL = `http://127.0.0.1:${X_REMOTE_DEBUG_PORT}`;
 const RETENTION_HOURS = Number(process.env.LIVE_RETENTION_HOURS ?? 48);
 const LOOKBACK_MS = RETENTION_HOURS * 60 * 60 * 1000;
+const LIVE_MAX_ITEMS = Number(process.env.LIVE_MAX_ITEMS ?? 150);
 const MAX_TWEETS_PER_ACCOUNT = Number(process.env.X_MAX_TWEETS_PER_ACCOUNT ?? 4);
 const TRADE_ALPHA_PAGE_SIZE = Number(process.env.TRADE_ALPHA_PAGE_SIZE ?? 15);
 const TRADE_ALPHA_MAX_PAGES = Number(process.env.TRADE_ALPHA_MAX_PAGES ?? 4);
@@ -816,7 +817,7 @@ function mergeLiveItems(items: LiveFeedItem[]) {
   }
 
   const sorted = Array.from(kept.values()).sort((a, b) => +new Date(b.published_at) - +new Date(a.published_at));
-  return collapseNearDuplicateLiveItems(sorted);
+  return collapseNearDuplicateLiveItems(sorted).slice(0, LIVE_MAX_ITEMS);
 }
 
 function collapseNearDuplicateLiveItems(items: LiveFeedItem[]) {

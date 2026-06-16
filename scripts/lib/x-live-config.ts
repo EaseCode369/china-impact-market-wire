@@ -22,6 +22,7 @@ const rawAccounts: XLiveAccount[] = [
   { handle: "DanielNewmanUV", displayName: "Daniel Newman", categories: ["半导体行业"], tags: ["科技", "AI"] },
   { handle: "Beth_Kindig", displayName: "Beth Kindig", categories: ["半导体行业"], tags: ["AI", "美股科技"] },
   { handle: "crmiller1", displayName: "Chris Miller", categories: ["半导体行业"], tags: ["芯片战争", "半导体"] },
+  { handle: "aleabitoreddit", displayName: "Serenity", categories: ["半导体行业", "中国供应链"], tags: ["功率半导体", "AI数据中心", "台湾供应链"] },
   { handle: "catl_official", displayName: "CATL", categories: ["储能行业"], tags: ["储能", "电池"] },
   { handle: "Sungrow_Power", displayName: "Sungrow", categories: ["储能行业"], tags: ["储能", "逆变器"] },
   { handle: "BYDCompany", displayName: "BYD", categories: ["储能行业"], tags: ["新能源汽车", "电池"] },
