@@ -26,7 +26,7 @@ export default function InsightsPage() {
             <h1 className="hero-title">公开资讯筛选</h1>
             <p className="hero-copy">
               围绕中国资产定价主线，抓取公开财经新闻、生成短摘要，并按影响强度优先呈现。
-              本页面承载常规公开网站资讯；7×24 页面单独跟踪指定 X 平台账号。
+              本页面承载常规公开网站资讯；高盛内参页面单独跟踪指定 X 平台账号与快讯监控。
             </p>
             <div className="hero-badges">
               <span className="tag">公开资讯流</span>
@@ -51,7 +51,7 @@ export default function InsightsPage() {
             </div>
             <div className="metric-inline">
               <span>纳入监测来源 {stats.activeSources.length}</span>
-              <Link href="/live">查看 7×24</Link>
+              <Link href="/live">查看高盛内参</Link>
             </div>
           </aside>
         </div>

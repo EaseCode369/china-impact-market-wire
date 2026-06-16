@@ -38,10 +38,10 @@ export default function LivePage() {
     <main className="page-shell">
       <section className="hero live-hero">
         <div>
-          <p className="brand-kicker">X Platform Monitor</p>
-          <h1 className="hero-title">7×24</h1>
+          <p className="brand-kicker">Market Briefing Feed</p>
+          <h1 className="hero-title">高盛内参</h1>
           <p className="hero-copy">
-            聚合指定 X 平台账号动态与第三方快讯监控内容，形成可连续浏览的 7×24 信息流。Demo 阶段由本地 Mac 每小时抓取、提交 GitHub 并触发 Vercel 更新。
+            聚合指定 X 平台账号动态与第三方快讯监控内容，形成可连续浏览的公开快讯流。Demo 阶段由本地 Mac 定时抓取、提交 GitHub 并触发 Vercel 更新。
           </p>
           <div className="hero-badges">
             <span className="tag">最近 48 小时</span>
@@ -56,7 +56,7 @@ export default function LivePage() {
         <div className="live-main">
           {groups.length === 0 ? (
             <div className="empty-state">
-              当前还没有 7×24 快讯。请先在本机运行 `npm run live:generate`，抓取 X 平台与 TradeAlpha 快讯监控的最新内容。
+              当前还没有高盛内参快讯。请先在本机运行 `npm run live:generate`，抓取 X 平台与 TradeAlpha 快讯监控的最新内容。
             </div>
           ) : (
             groups.map(([day, items]) => (
@@ -103,7 +103,7 @@ export default function LivePage() {
           <div className="content-panel">
             <p className="brand-kicker">Status</p>
             <h2 className="section-title">抓取状态</h2>
-            <p className="news-card-summary">当前展示 {feed.count} 条 7×24 快讯。</p>
+            <p className="news-card-summary">当前展示 {feed.count} 条高盛内参快讯。</p>
             <p className="news-card-summary">最近生成时间：{formatDay(feed.generatedAt)} {formatTime(feed.generatedAt)}</p>
           </div>
 

@@ -25,7 +25,7 @@ export default async function DisabledPage() {
         <p className="brand-kicker">Access Disabled</p>
         <h1 className="auth-title">当前账号暂不可访问客户专属内容</h1>
         <p className="auth-description">
-          该账号已被设置为不可用状态，系统已阻止继续访问高盛内参与高盛研究。如需恢复，请在 Supabase 后台将 `profiles.status` 调整回
+          该账号已被设置为不可用状态，系统已阻止继续访问高盛研究及后续深度专题功能。如需恢复，请在 Supabase 后台将 `profiles.status` 调整回
           `approved`，再重新登录。
         </p>
 

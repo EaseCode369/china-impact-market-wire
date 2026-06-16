@@ -32,7 +32,7 @@ export default function ReportsPage() {
             <Link className="button-link" href="/">
               返回官网首页
             </Link>
-            <Link className="button-link secondary" href="/briefing">
+            <Link className="button-link secondary" href="/live">
               查看高盛内参
             </Link>
           </div>
@@ -47,7 +47,7 @@ export default function ReportsPage() {
           <div className="content-panel">
             <p className="brand-kicker">Client Area</p>
             <h2 className="section-title">客户专区</h2>
-            <p className="news-card-summary">你可以先通过官网首页查看公开资讯流，或进入高盛内参查看已发布的主题文章。</p>
+            <p className="news-card-summary">你可以先通过官网首页查看公开资讯流，或进入高盛内参查看最新公开快讯。</p>
           </div>
         </aside>
       </article>

@@ -30,7 +30,7 @@ export default async function PendingPage({ searchParams }: PendingPageProps) {
         <p className="brand-kicker">Pending Review</p>
         <h1 className="auth-title">账号已创建，正在等待审核开通</h1>
         <p className="auth-description">
-          当前账号状态为待审核。审核通过后，刷新页面或重新登录即可访问高盛内参与高盛研究。你可以在 Supabase 后台把该用户的 `status` 从
+          当前账号状态为待审核。审核通过后，刷新页面或重新登录即可访问高盛研究及后续深度专题功能。你可以在 Supabase 后台把该用户的 `status` 从
           `pending` 改为 `approved`。
         </p>
 

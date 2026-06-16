@@ -8,16 +8,10 @@ const marketNotes = [
     tag: "公开",
   },
   {
-    title: "7×24",
-    summary: "跟踪指定 X 平台账号的最新动态，提炼为中文快讯，适合快速浏览市场讨论的增量信息。",
-    href: "/live",
-    tag: "Demo",
-  },
-  {
     title: "高盛内参",
-    summary: "围绕重点主题整合多篇公开文章，输出有结论、有脉络、有投资含义的客户文章。",
-    href: "/briefing",
-    tag: "客户专属",
+    summary: "聚合指定 X 平台账号与快讯监控内容，形成可持续刷新的公开快讯流，适合快速浏览市场增量信息。",
+    href: "/live",
+    tag: "公开",
   },
   {
     title: "高盛研究",
@@ -27,7 +21,7 @@ const marketNotes = [
   },
 ];
 
-const serviceCards = ["公开资讯摘要与筛选", "7×24 快讯跟踪", "中国资产主题内参", "高质量研报提炼", "亚太投资机构服务", "投资人沟通材料支持"];
+const serviceCards = ["公开资讯摘要与筛选", "高盛内参快讯流", "深度专题功能预留", "高质量研报提炼", "亚太投资机构服务", "投资人沟通材料支持"];
 
 export default function HomePage() {
   return (
@@ -37,7 +31,7 @@ export default function HomePage() {
           <span>香港投资集团</span>
           <span>亚太机构服务</span>
           <span>公开资讯筛选</span>
-          <span>7×24 快讯</span>
+          <span>高盛内参快讯</span>
           <span>高质量研报服务</span>
         </div>
       </section>
@@ -52,10 +46,10 @@ export default function HomePage() {
               <p className="lead-copy">立足香港，面向亚太地区的投资机构、企业与家族办公室，提供资讯、内参和高质量研报服务。</p>
               <div className="lead-actions">
                 <Link className="button-link" href="/live">
-                  查看 7×24
+                  查看高盛内参
                 </Link>
-                <Link className="button-link secondary" href="/briefing">
-                  进入高盛内参
+                <Link className="button-link secondary" href="/insights">
+                  查看公开资讯
                 </Link>
               </div>
             </div>
@@ -76,11 +70,11 @@ export default function HomePage() {
           <section className="side-panel insight-entry">
             <div className="panel-label">Client Services</div>
             <h2>面向专业客户的资讯与研究服务</h2>
-            <p>官网主页面保持正式展示口径；市场资讯和 7×24 快讯进入独立页面，方便客户按场景浏览。</p>
+            <p>官网主页面保持正式展示口径；公开资讯与高盛内参快讯分开承载，方便客户按场景浏览。</p>
             <div className="insight-bullet-grid">
               <span>公开资讯筛选</span>
-              <span>7×24 X 平台快讯</span>
-              <span>客户主题内参</span>
+              <span>高盛内参快讯流</span>
+              <span>深度专题功能预留</span>
               <span>高盛研究预留</span>
             </div>
           </section>
@@ -103,10 +97,10 @@ export default function HomePage() {
             <p className="brand-kicker">About Us</p>
             <h2 className="section-title">立足香港，服务亚太专业客户</h2>
           </div>
-          <div className="section-caption">面向投资机构、企业与家族办公室，提供资讯筛选、主题内参和研究支持。</div>
+        <div className="section-caption">面向投资机构、企业与家族办公室，提供资讯筛选、主题内参和研究支持。</div>
         </div>
         <div className="public-news-grid">
-          {marketNotes.slice(0, 3).map((note) => (
+          {marketNotes.map((note) => (
             <Link className="news-card public-feature-card" href={note.href} key={note.title}>
               <div className="news-card-meta">
                 <span className="meta-chip">{note.tag}</span>
@@ -124,7 +118,7 @@ export default function HomePage() {
           <div>
             <p className="brand-kicker">Services</p>
             <h2 className="section-title">服务领域</h2>
-            <p className="detail-summary">公开页面负责资讯筛选与 7×24 快讯；客户专区承载主题内参和研究服务，重点放在信息结构化与投资人沟通支持。</p>
+            <p className="detail-summary">公开页面负责资讯筛选与高盛内参快讯；客户专区保留深度专题和研究服务，重点放在信息结构化与投资人沟通支持。</p>
           </div>
           <div className="service-list">
             {serviceCards.map((item) => (
@@ -141,13 +135,13 @@ export default function HomePage() {
           <div className="content-panel">
             <p className="brand-kicker">Market Access</p>
             <h2 className="section-title">公开市场入口</h2>
-            <p className="news-card-summary">公开资讯筛选用于查看已抓取财经新闻；7×24 用于查看指定 X 平台账号的最新动态提炼。</p>
+            <p className="news-card-summary">公开资讯筛选用于查看已抓取财经新闻；高盛内参用于查看指定 X 平台账号与快讯监控的最新动态。</p>
             <div className="detail-actions">
               <Link className="button-link" href="/insights">
                 公开资讯筛选
               </Link>
               <Link className="button-link secondary" href="/live">
-                7×24
+                高盛内参
               </Link>
             </div>
           </div>
@@ -156,10 +150,10 @@ export default function HomePage() {
             <div className="content-panel">
               <p className="brand-kicker">Client Area</p>
               <h2 className="section-title">客户专区</h2>
-              <p className="news-card-summary">审核通过的客户可访问高盛内参；高盛研究板块保留入口，后续逐步更新高质量研报提炼内容。</p>
+              <p className="news-card-summary">审核通过的客户可访问高盛研究；深度专题功能继续保留，后续再择机开放前端入口。</p>
               <div className="detail-actions">
-                <Link className="button-link" href="/briefing">
-                  进入高盛内参
+                <Link className="button-link" href="/reports">
+                  查看高盛研究
                 </Link>
                 <Link className="button-link secondary" href="/signup">
                   申请注册
@@ -185,7 +179,7 @@ export default function HomePage() {
           <section>
             <h3>公开入口</h3>
             <Link href="/insights">公开资讯筛选</Link>
-            <Link href="/live">7×24</Link>
+            <Link href="/live">高盛内参</Link>
             <Link href="/login">客户登录</Link>
             <Link href="/signup">申请注册</Link>
           </section>

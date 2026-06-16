@@ -49,9 +49,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                     公开资讯筛选
                   </Link>
                   <Link className="nav-pill" href="/live">
-                    7×24
-                  </Link>
-                  <Link className="nav-pill" href="/briefing">
                     高盛内参
                   </Link>
                   <Link className="nav-pill" href="/reports">
@@ -67,9 +64,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                     公开资讯筛选
                   </Link>
                   <Link className="nav-pill" href="/live">
-                    7×24
-                  </Link>
-                  <Link className="nav-pill" href="/briefing">
                     高盛内参
                   </Link>
                   <Link className="nav-pill" href="/reports">
