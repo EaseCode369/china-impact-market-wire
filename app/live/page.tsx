@@ -41,12 +41,13 @@ export default function LivePage() {
           <p className="brand-kicker">X Platform Monitor</p>
           <h1 className="hero-title">7×24</h1>
           <p className="hero-copy">
-            跟踪指定 X 平台账号的最新动态，并提炼为中文快讯。Demo 阶段由本地 Mac 每小时抓取、提交 GitHub 并触发 Vercel 更新。
+            聚合指定 X 平台账号动态与第三方快讯监控内容，形成可连续浏览的 7×24 信息流。Demo 阶段由本地 Mac 每小时抓取、提交 GitHub 并触发 Vercel 更新。
           </p>
           <div className="hero-badges">
             <span className="tag">最近 48 小时</span>
             <span className="tag">X 平台</span>
-            <span className="tag">中文提炼</span>
+            <span className="tag">TradeAlpha</span>
+            <span className="tag">快讯流</span>
           </div>
         </div>
       </section>
@@ -55,7 +56,7 @@ export default function LivePage() {
         <div className="live-main">
           {groups.length === 0 ? (
             <div className="empty-state">
-              当前还没有 7×24 快讯。请先在本机运行 `npm run live:login` 完成 X 登录，再运行 `npm run live:generate` 抓取指定账号最新动态。
+              当前还没有 7×24 快讯。请先在本机运行 `npm run live:generate`，抓取 X 平台与 TradeAlpha 快讯监控的最新内容。
             </div>
           ) : (
             groups.map(([day, items]) => (
@@ -68,7 +69,7 @@ export default function LivePage() {
                       <div className="live-dot" aria-hidden="true" />
                       <div className="live-card">
                         <div className="news-card-meta">
-                          <span className="meta-chip">@{item.handle}</span>
+                          <span className="meta-chip">{item.source_type === "x" ? `@${item.handle}` : item.source_name}</span>
                           <span>{item.category}</span>
                           <span>{item.source_name}</span>
                         </div>
@@ -82,7 +83,7 @@ export default function LivePage() {
                           ))}
                         </div>
                         <div className="live-links">
-                          <Link href={item.profile_url}>账号主页</Link>
+                          {item.source_type === "x" ? <Link href={item.profile_url}>账号主页</Link> : null}
                           {item.original_url ? (
                             <a href={item.original_url} rel="noreferrer" target="_blank">
                               原文

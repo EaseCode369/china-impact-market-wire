@@ -72,7 +72,7 @@ export type InternationalSourceStatus = {
 export type LiveFeedItem = {
   id: string;
   dedupe_key: string;
-  source_type: "x";
+  source_type: "x" | "tradealpha";
   summary_engine?: "deepseek" | "fallback" | "source";
   source_name: string;
   handle: string;

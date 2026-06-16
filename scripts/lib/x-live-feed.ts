@@ -26,6 +26,8 @@ const X_REMOTE_DEBUG_URL = `http://127.0.0.1:${X_REMOTE_DEBUG_PORT}`;
 const RETENTION_HOURS = Number(process.env.LIVE_RETENTION_HOURS ?? 48);
 const LOOKBACK_MS = RETENTION_HOURS * 60 * 60 * 1000;
 const MAX_TWEETS_PER_ACCOUNT = Number(process.env.X_MAX_TWEETS_PER_ACCOUNT ?? 4);
+const TRADE_ALPHA_PAGE_SIZE = Number(process.env.TRADE_ALPHA_PAGE_SIZE ?? 15);
+const TRADE_ALPHA_MAX_PAGES = Number(process.env.TRADE_ALPHA_MAX_PAGES ?? 4);
 const ACCOUNT_DELAY_MS = Number(process.env.X_ACCOUNT_DELAY_MS ?? 1600);
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY?.trim();
 const DEEPSEEK_BASE_URL = (process.env.DEEPSEEK_BASE_URL ?? "https://api.deepseek.com").replace(/\/$/, "");
@@ -33,6 +35,7 @@ const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL ?? "deepseek-chat";
 const DEEPSEEK_TIMEOUT_MS = Number(process.env.DEEPSEEK_TIMEOUT_MS ?? 45000);
 const DEEPSEEK_SUMMARY_CONCURRENCY = Math.max(1, Number(process.env.DEEPSEEK_SUMMARY_CONCURRENCY ?? 2));
 const LIVE_NEAR_DUPLICATE_HOURS = Number(process.env.LIVE_NEAR_DUPLICATE_HOURS ?? 18);
+const TRADE_ALPHA_API_BASE = process.env.TRADE_ALPHA_API_BASE ?? "https://api.lxaa.top/api/v1";
 
 const weakPersonalPatterns = [
   /\bmy kids?\b/i,
@@ -85,6 +88,16 @@ type RawTweet = {
   publishedAt: string | null;
 };
 
+type TradeAlphaNews = {
+  id: number;
+  datetime: string;
+  content: string;
+  level?: string | null;
+  source?: string | null;
+  category?: string | null;
+  created_at?: string | null;
+};
+
 type PreparedTweet = {
   account?: XLiveAccount;
   handle: string;
@@ -109,10 +122,13 @@ type GenerateLiveFeedOptions = {
 export async function generateLiveFeed(options: GenerateLiveFeedOptions = {}) {
   const existing = readLiveFeed();
   const warnings: string[] = [];
-  const rawTweets = await crawlXAccounts(options.accounts ?? X_LIVE_ACCOUNTS, {
-    headed: options.headed ?? process.env.X_HEADLESS !== "1",
-    warnings,
-  });
+  const [rawTweets, tradeAlphaItems] = await Promise.all([
+    crawlXAccounts(options.accounts ?? X_LIVE_ACCOUNTS, {
+      headed: options.headed ?? process.env.X_HEADLESS !== "1",
+      warnings,
+    }),
+    fetchTradeAlphaQuickNews(warnings),
+  ]);
   if (!DEEPSEEK_API_KEY) {
     warnings.push("未配置 DeepSeek API，英文内容将回退为本地规则提炼。");
   }
@@ -122,7 +138,7 @@ export async function generateLiveFeed(options: GenerateLiveFeedOptions = {}) {
   const preparedTweets = dedupePreparedTweets(rawTweets.map(prepareTweet))
     .filter((tweet) => isWithinRetention(tweet.publishedAt))
     .filter((tweet) => shouldKeepPreparedTweet(tweet));
-  const freshItems = await mapWithConcurrency(preparedTweets, DEEPSEEK_SUMMARY_CONCURRENCY, async (tweet) => {
+  const freshXItems = await mapWithConcurrency(preparedTweets, DEEPSEEK_SUMMARY_CONCURRENCY, async (tweet) => {
     const cached = existingMap.get(tweet.dedupeKey);
     if (cached && canReuseExistingItem(cached, tweet)) {
       return cached;
@@ -130,7 +146,10 @@ export async function generateLiveFeed(options: GenerateLiveFeedOptions = {}) {
 
     return createLiveFeedItem(tweet, warnings);
   });
-  const items = mergeLiveItems([...retainedExisting, ...freshItems]);
+  const freshTradeAlphaItems = tradeAlphaItems
+    .map(createTradeAlphaLiveFeedItem)
+    .filter((item) => isWithinRetention(item.published_at));
+  const items = mergeLiveItems([...retainedExisting, ...freshXItems, ...freshTradeAlphaItems]);
   const normalizedWarnings = Array.from(new Set(warnings));
 
   if (sameLiveContent(existing.items, items) && sameStringList(existing.warnings, normalizedWarnings)) {
@@ -148,6 +167,49 @@ export async function generateLiveFeed(options: GenerateLiveFeedOptions = {}) {
   fs.writeFileSync(LIVE_FEED_PATH, `${JSON.stringify(collection, null, 2)}\n`, "utf8");
 
   return collection;
+}
+
+async function fetchTradeAlphaQuickNews(warnings: string[]) {
+  try {
+    const pages = Array.from({ length: TRADE_ALPHA_MAX_PAGES }, (_, index) => index + 1);
+    const responses = await mapWithConcurrency(pages, 2, async (page) => {
+      const response = await fetch(`${TRADE_ALPHA_API_BASE}/news/search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Referer: "https://alpha.lxaa.top/",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+        },
+        body: JSON.stringify({
+          page,
+          page_size: TRADE_ALPHA_PAGE_SIZE,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const payload = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+        data?: {
+          news_list?: TradeAlphaNews[];
+        };
+      };
+
+      if (!payload.success) {
+        throw new Error(payload.message ?? "接口返回失败");
+      }
+
+      return payload.data?.news_list ?? [];
+    });
+
+    return responses.flat();
+  } catch (error) {
+    warnings.push(`TradeAlpha 快讯抓取失败：${error instanceof Error ? error.message : String(error)}`);
+    return [] as TradeAlphaNews[];
+  }
 }
 
 export function readLiveFeed(): LiveFeedCollection {
@@ -461,6 +523,58 @@ async function createLiveFeedItem(tweet: PreparedTweet, warnings: string[]): Pro
     tags,
     category: account?.categories[0] ?? "X平台",
   };
+}
+
+function createTradeAlphaLiveFeedItem(item: TradeAlphaNews): LiveFeedItem {
+  const publishedAt = safeIsoDate(item.datetime || item.created_at || new Date().toISOString());
+  const summaryText = cleanTradeAlphaText(item.content);
+  const originalText = summaryText;
+  const title = cleanTradeAlphaText(summarizeText(summaryText, 1, 72) || summaryText.slice(0, 72));
+  const summary = ensureChinesePunctuation(
+    cleanTradeAlphaText(summaryText)
+      .replace(/\s+/g, " ")
+      .trim(),
+  );
+  const dedupeKey = `tradealpha:${item.id}`;
+  const tags = Array.from(
+    new Set(
+      [item.source, item.category, item.level]
+        .filter((value): value is string => Boolean(value))
+        .map((value) => value.trim())
+        .filter(Boolean),
+    ),
+  ).slice(0, 6);
+
+  return {
+    id: stableId(dedupeKey),
+    dedupe_key: dedupeKey,
+    source_type: "tradealpha",
+    summary_engine: "source",
+    source_name: item.source?.trim() || "TradeAlpha",
+    handle: "TradeAlpha",
+    profile_url: "https://alpha.lxaa.top/#/home",
+    original_url: null,
+    original_text: originalText,
+    title,
+    summary,
+    published_at: publishedAt,
+    imported_at: new Date().toISOString(),
+    tags,
+    category: item.category?.trim() || "快讯监控",
+  };
+}
+
+function cleanTradeAlphaText(text: string) {
+  return normalizeText(text)
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&quot;/gi, '"')
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\s+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 function canReuseExistingItem(item: LiveFeedItem, tweet: PreparedTweet) {
@@ -815,6 +929,14 @@ function sameStringList(a: string[], b: string[]) {
 
 function isWithinRetention(dateString: string) {
   return +new Date(dateString) >= Date.now() - LOOKBACK_MS;
+}
+
+function safeIsoDate(dateLike: string) {
+  const date = new Date(dateLike);
+  if (Number.isNaN(date.getTime())) {
+    return new Date().toISOString();
+  }
+  return date.toISOString();
 }
 
 function stableId(seed: string) {

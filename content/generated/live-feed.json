@@ -1,7 +1,55 @@
 {
-  "generatedAt": "2026-06-16T01:28:01.295Z",
-  "count": 45,
+  "generatedAt": "2026-06-16T01:57:24.936Z",
+  "count": 103,
   "items": [
+    {
+      "id": "437f0075c5e2ee5650213c423d5898dbf1fba41f",
+      "dedupe_key": "x:Beth_Kindig:2066698101293801644",
+      "source_type": "x",
+      "summary_engine": "deepseek",
+      "source_name": "Beth Kindig",
+      "handle": "Beth_Kindig",
+      "profile_url": "https://x.com/Beth_Kindig",
+      "original_url": "https://x.com/Beth_Kindig/status/2066698101293801644",
+      "original_text": "UBS on Nvidia and AMD:\n\"On the latest $NVDA/ $AMD ramps, our latest reads (consistent with our models) is that NVDA Blackwell will dominate C2026 shipments with Rubin Ultra layering in into C4Q26.\nWhile for AMD Helios, we continue to expect motherboard shipments in Q4'26,",
+      "title": "瑞银：英伟达Blackwell主导2026年出货，AMD Hel",
+      "summary": "瑞银报告指出，英伟达Blackwell将主导2026年出货，Rubin Ultra于Q4叠加；AMD Helios主板预计Q4'26发货。",
+      "published_at": "2026-06-16T01:43:19.000Z",
+      "imported_at": "2026-06-16T01:53:56.760Z",
+      "tags": [
+        "AI",
+        "美股科技",
+        "半导体行业",
+        "英伟达",
+        "AMD",
+        "AI芯片"
+      ],
+      "category": "半导体行业"
+    },
+    {
+      "id": "2e167f5d09cac6ef4c298cc16db2036b8a5607fd",
+      "dedupe_key": "x:EnergyStorageNw:2066696658440929606",
+      "source_type": "x",
+      "summary_engine": "deepseek",
+      "source_name": "Energy Storage News",
+      "handle": "EnergyStorageNw",
+      "profile_url": "https://x.com/EnergyStorageNw",
+      "original_url": "https://x.com/energystoragenw/status/2066696658440929606",
+      "original_text": "Western Power begins work on 18 new community batteries in Western Australia http://dlvr.it/TT3XdW #energystorage",
+      "title": "西澳电力启动18个社区电池项目",
+      "summary": "Western Power在澳大利亚西部启动18个新社区电池的建设工作，旨在提升电网稳定性和可再生能源消纳能力。",
+      "published_at": "2026-06-16T01:37:35.000Z",
+      "imported_at": "2026-06-16T01:53:57.418Z",
+      "tags": [
+        "储能",
+        "行业新闻",
+        "储能行业",
+        "电池",
+        "社区电池",
+        "澳大利亚"
+      ],
+      "category": "储能行业"
+    },
     {
       "id": "b1a9b4cf14e075062d562051072bc356f3f62bce",
       "dedupe_key": "x:EnergyStorageNw:2066693296404275251",
@@ -743,6 +791,489 @@
       "category": "储能行业"
     },
     {
+      "id": "9c1884dc60175ac3c4c1d3cb1121f384eda212e9",
+      "dedupe_key": "tradealpha:586780",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【700亿美元抛售仅换来短暂喘息，日本或在夏季失守160防线】日本央行在4月底至5月初进行的700亿美元外汇卖出操作，实际上仅为东京方面争取到了短暂的喘息时间。日本当局已深切意识到，当前国际市场上美元正持续受到强烈追捧，而日元的实际利率仍深陷负值，且投机市场并未显现出极端做空日元的迹象。\n与此同时，过于频繁的外汇干预可能带来严重的制度风险，即导致日本最终失去国际货币基金组织认定的\"自由浮动\"货币体系标签。\n所有这些不利的基本面与制度约束，都指向美元兑日元汇率在今年夏季将继续保持强劲的买需支撑，不排除后市进一步向上测试162至163区域。在此背景下，未来唯一可能彻底改变游戏规则的契机，在于美国财政部直接参与针对美元兑日元的联合外汇干预。尽管目前这一举措的发生概率不大，但值得注意的是，美联储曾在1月份对美元兑日元汇率罕见地进行过利率检查。\n（上述观点来自荷兰国际银行于6月15日的研究，仅供参考）",
+      "title": "【700亿美元抛售仅换来短暂喘息，日本或在夏季失守160防线】日本央行在4月底至5月初进行的700亿美元外汇卖出操作，实际上仅为东京方面争取到了",
+      "summary": "【700亿美元抛售仅换来短暂喘息，日本或在夏季失守160防线】日本央行在4月底至5月初进行的700亿美元外汇卖出操作，实际上仅为东京方面争取到了短暂的喘息时间。日本当局已深切意识到，当前国际市场上美元正持续受到强烈追捧，而日元的实际利率仍深陷负值，且投机市场并未显现出极端做空日元的迹象。 与此同时，过于频繁的外汇干预可能带来严重的制度风险，即导致日本最终失去国际货币基金组织认定的\"自由浮动\"货币体系标签。 所有这些不利的基本面与制度约束，都指向美元兑日元汇率在今年夏季将继续保持强劲的买需支撑，不排除后市进一步向上测试162至163区域。在此背景下，未来唯一可能彻底改变游戏规则的契机，在于美国财政部直接参与针对美元兑日元的联合外汇干预。尽管目前这一举措的发生概率不大，但值得注意的是，美联储曾在1月份对美元兑日元汇率罕见地进行过利率检查。 （上述观点来自荷兰国际银行于6月15日的研究，仅供参考）。",
+      "published_at": "2026-06-15T09:50:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "4d8644d8b723f0e7db77da09e0970542d252680b",
+      "dedupe_key": "tradealpha:586777",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "6月15日讯，上海亚虹公告，公司于2026年6月15日收到控股股东海南宁生旅游集团有限公司的通知，控股股东正在筹划重大事项，该事项可能导致公司控制权发生变更。公司股票已于2026年6月15日停牌，由于该事项仍在讨论中，具有较大不确定性，公司申请自2026年6月16日开市起继续停牌，预计停牌时间不超过1个交易日。",
+      "title": "6月15日讯，上海亚虹公告，公司于2026年6月15日收到控股股东海南宁生旅游集团有限公司的通知，控股股东正在筹划重大事项，该事项可能导致公司控",
+      "summary": "6月15日讯，上海亚虹公告，公司于2026年6月15日收到控股股东海南宁生旅游集团有限公司的通知，控股股东正在筹划重大事项，该事项可能导致公司控制权发生变更。公司股票已于2026年6月15日停牌，由于该事项仍在讨论中，具有较大不确定性，公司申请自2026年6月16日开市起继续停牌，预计停牌时间不超过1个交易日。",
+      "published_at": "2026-06-15T09:50:03.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "国内",
+        "公司",
+        "很重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "eb50570d52ee16730795d0451abc67305e3b51f2",
+      "dedupe_key": "tradealpha:586782",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 信达证券 601059.SS称重大资产重组事项申请文件获得上海证券交易所受理",
+      "title": "RTRS - 信达证券 601059.",
+      "summary": "RTRS - 信达证券 601059.SS称重大资产重组事项申请文件获得上海证券交易所受理。",
+      "published_at": "2026-06-15T09:49:33.000Z",
+      "imported_at": "2026-06-16T01:57:24.765Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "6c761f5601983dc4d9dc05ee9364a5a21c8c182b",
+      "dedupe_key": "tradealpha:586762",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 热门话题-随着美伊达成协议，铜价上涨，铜矿股随之走高",
+      "title": "RTRS - 热门话题-随着美伊达成协议，铜价上涨，铜矿股随之走高",
+      "summary": "RTRS - 热门话题-随着美伊达成协议，铜价上涨，铜矿股随之走高。",
+      "published_at": "2026-06-15T09:40:38.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "cb2a1d55bb3ad3ba8d04ac7aecc93f5a077961d8",
+      "dedupe_key": "tradealpha:586755",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 由于对俄罗斯的担忧，以色列预计将获得来自欧洲的新防空订单",
+      "title": "RTRS - 由于对俄罗斯的担忧，以色列预计将获得来自欧洲的新防空订单",
+      "summary": "RTRS - 由于对俄罗斯的担忧，以色列预计将获得来自欧洲的新防空订单。",
+      "published_at": "2026-06-15T09:38:25.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "172f0e83f76e16a11a13735a663db5779398af58",
+      "dedupe_key": "tradealpha:586754",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 中国AI芯片商燧原科技60亿元科创板IPO获审议通过，科技企业接龙过会",
+      "title": "RTRS - 中国AI芯片商燧原科技60亿元科创板IPO获审议通过，科技企业接龙过会",
+      "summary": "RTRS - 中国AI芯片商燧原科技60亿元科创板IPO获审议通过，科技企业接龙过会。",
+      "published_at": "2026-06-15T09:36:44.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "6f73a7758182a95a166526ae2e6ee96daf1c6391",
+      "dedupe_key": "tradealpha:586756",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - LME清算所宣布优化保证金抵押品服务，提高离岸人民币等抵押品灵活性",
+      "title": "RTRS - LME清算所宣布优化保证金抵押品服务，提高离岸人民币等抵押品灵活性",
+      "summary": "RTRS - LME清算所宣布优化保证金抵押品服务，提高离岸人民币等抵押品灵活性。",
+      "published_at": "2026-06-15T09:36:31.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "b15d3f9c33e3a6dd0d49061f16948f322b213f22",
+      "dedupe_key": "tradealpha:586749",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "美伊达成和平协议导致油价下跌，邮轮运营商股价在盘前交易中上涨。挪威邮轮(NCLH.N)和皇家加勒比上涨4%，嘉年华邮轮(CCL.N)上涨约3%。",
+      "title": "美伊达成和平协议导致油价下跌，邮轮运营商股价在盘前交易中上涨。",
+      "summary": "美伊达成和平协议导致油价下跌，邮轮运营商股价在盘前交易中上涨。挪威邮轮(NCLH.N)和皇家加勒比上涨4%，嘉年华邮轮(CCL.N)上涨约3%。",
+      "published_at": "2026-06-15T09:35:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "cc4b7783035c3f8c220afda1fb3bd068c12dae9b",
+      "dedupe_key": "tradealpha:586746",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 《图表新闻》中国5月结售汇连13个月收获顺差，后续分红购汇可能造成扰动",
+      "title": "RTRS - 《图表新闻》中国5月结售汇连13个月收获顺差，后续分红购汇可能造成扰动",
+      "summary": "RTRS - 《图表新闻》中国5月结售汇连13个月收获顺差，后续分红购汇可能造成扰动。",
+      "published_at": "2026-06-15T09:32:54.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "50b0f0dccd444c066aa64c30f7f77beab5e6ef35",
+      "dedupe_key": "tradealpha:586747",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 阿联酋敦促全面落实美伊协议，强调霍尔木兹海峡航行自由",
+      "title": "RTRS - 阿联酋敦促全面落实美伊协议，强调霍尔木兹海峡航行自由",
+      "summary": "RTRS - 阿联酋敦促全面落实美伊协议，强调霍尔木兹海峡航行自由。",
+      "published_at": "2026-06-15T09:31:14.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "很重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "080cee892bc596aaacc0857863f8a566a7880398",
+      "dedupe_key": "tradealpha:586739",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "黎巴嫩总统奥恩：对将黎巴嫩的安全与稳定纳入旨在结束战争的美伊协议表示赞赏。",
+      "title": "黎巴嫩总统奥恩：对将黎巴嫩的安全与稳定纳入旨在结束战争的美伊协议表示赞赏。",
+      "summary": "黎巴嫩总统奥恩：对将黎巴嫩的安全与稳定纳入旨在结束战争的美伊协议表示赞赏。",
+      "published_at": "2026-06-15T09:30:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "国内",
+        "政治军事",
+        "很重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "6a5781f553ebddb77944c1f2f429bb3c2bf2bf03",
+      "dedupe_key": "tradealpha:586736",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "6月15日讯，Sparta Commodities研究主管Neil Crosby预计，在霍尔木兹海峡料将于周五重新开放之际，本周波斯湾的船舶交通将有所回升。不过，全面清理积压船只可能需要更长时间，因为有数百艘船只被困在海湾地区，而且扫雷行动预计需要一些时间。\"指望霍尔木兹海峡在一到两周内恢复全部通行流量是过于乐观的看法。\"关于潜在过境费的问题也仍未完全解决，这增加了围绕航线决策的不确定性。\"目前一些船东将对空载驶往阿拉伯湾感到犹豫，与此同时我们需要听取保险公司的意见，\"Crosby说。",
+      "title": "6月15日讯，Sparta Commodities研究主管Neil Crosby预计，在霍尔木兹海峡料将于周五重新开放之际，本周波斯湾的船舶交通",
+      "summary": "6月15日讯，Sparta Commodities研究主管Neil Crosby预计，在霍尔木兹海峡料将于周五重新开放之际，本周波斯湾的船舶交通将有所回升。不过，全面清理积压船只可能需要更长时间，因为有数百艘船只被困在海湾地区，而且扫雷行动预计需要一些时间。\"指望霍尔木兹海峡在一到两周内恢复全部通行流量是过于乐观的看法。\"关于潜在过境费的问题也仍未完全解决，这增加了围绕航线决策的不确定性。\"目前一些船东将对空载驶往阿拉伯湾感到犹豫，与此同时我们需要听取保险公司的意见，\"Crosby说。",
+      "published_at": "2026-06-15T09:25:03.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "d26cc4815e01860c6fb8395ec14f4ecc04fa11e5",
+      "dedupe_key": "tradealpha:586731",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 韩国混凝土卡车司机取消罢工，三星及海力士等半导体大厂松一口气",
+      "title": "RTRS - 韩国混凝土卡车司机取消罢工，三星及海力士等半导体大厂松一口气",
+      "summary": "RTRS - 韩国混凝土卡车司机取消罢工，三星及海力士等半导体大厂松一口气。",
+      "published_at": "2026-06-15T09:18:47.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "3000f559577fbd8c3434beab8637ea9f4d2d1e1b",
+      "dedupe_key": "tradealpha:586725",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 台湾央行：2025年对外资产总额达3兆2,670亿美元，年增9%并创历史新高",
+      "title": "RTRS - 台湾央行：2025年对外资产总额达3兆2,670亿美元，年增9%并创历史新高",
+      "summary": "RTRS - 台湾央行：2025年对外资产总额达3兆2,670亿美元，年增9%并创历史新高。",
+      "published_at": "2026-06-15T09:16:08.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "972bc3217a6cec8b2da3fa6dbf2045f5f2351382",
+      "dedupe_key": "tradealpha:586727",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 南方航空 600029.SS称5月载客人数同比降8.4%，货运及邮运量同比减少5.5%",
+      "title": "RTRS - 南方航空 600029.",
+      "summary": "RTRS - 南方航空 600029.SS称5月载客人数同比降8.4%，货运及邮运量同比减少5.5%。",
+      "published_at": "2026-06-15T09:15:27.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "bef7ad204b95de2738f125bf5a9ff2d6b57c80c2",
+      "dedupe_key": "tradealpha:586711",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 上海燧原科技股份有限公司科创板IPO获上市委会议通过--上交所",
+      "title": "RTRS - 上海燧原科技股份有限公司科创板IPO获上市委会议通过--上交所",
+      "summary": "RTRS - 上海燧原科技股份有限公司科创板IPO获上市委会议通过--上交所。",
+      "published_at": "2026-06-15T09:08:57.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "da2fdb403bed4c2deb9eeb3de21b5ef1c8d58ba4",
+      "dedupe_key": "tradealpha:586710",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 中金公司 601995.SS称重大资产重组事项申请文件获得上海证券交易所受理",
+      "title": "RTRS - 中金公司 601995.",
+      "summary": "RTRS - 中金公司 601995.SS称重大资产重组事项申请文件获得上海证券交易所受理。",
+      "published_at": "2026-06-15T09:07:57.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "e222ca899a351d8054769c7275ca9d21078ea53a",
+      "dedupe_key": "tradealpha:586708",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "6月15日讯，欧洲央行管委卡兹米尔周一表示，欧洲央行已经迈出了遏制价格压力的第一步，但越来越明显的是，仍需采取更多行动，欧洲央行上周四近三年来首次加息，试图在美以对伊发动战争所引发的能源成本飙升进一步蔓延至整个欧元区之前遏制通胀。卡兹米尔在文章中表示：\"现在不是自满和犹豫的时候。更高的能源成本很可能会持续存在，比许多人原先希望的时间更长。即便美国与伊朗刚刚宣布和平框架协议，中东地区所造成的损害也无法在一夜之间消除。\"他表示，如果欧洲央行不采取行动，能源价格上涨带来的第二轮效应将会显现。\"我们已经迈出了遏制中期价格压力的第一步，但任务尚未完成。根据当前掌握的信息，越来越明显的是，货币政策还有更多工作要做。\"",
+      "title": "6月15日讯，欧洲央行管委卡兹米尔周一表示，欧洲央行已经迈出了遏制价格压力的第一步，但越来越明显的是，仍需采取更多行动，欧洲央行上周四近三年来首",
+      "summary": "6月15日讯，欧洲央行管委卡兹米尔周一表示，欧洲央行已经迈出了遏制价格压力的第一步，但越来越明显的是，仍需采取更多行动，欧洲央行上周四近三年来首次加息，试图在美以对伊发动战争所引发的能源成本飙升进一步蔓延至整个欧元区之前遏制通胀。卡兹米尔在文章中表示：\"现在不是自满和犹豫的时候。更高的能源成本很可能会持续存在，比许多人原先希望的时间更长。即便美国与伊朗刚刚宣布和平框架协议，中东地区所造成的损害也无法在一夜之间消除。\"他表示，如果欧洲央行不采取行动，能源价格上涨带来的第二轮效应将会显现。\"我们已经迈出了遏制中期价格压力的第一步，但任务尚未完成。根据当前掌握的信息，越来越明显的是，货币政策还有更多工作要做。\"。",
+      "published_at": "2026-06-15T09:05:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "bc08ef5fd54e0efcfeb73a0b54bed39ab4161129",
+      "dedupe_key": "tradealpha:586709",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 合景泰富集团 1813.HK称与若干初始参与债权人订立了重组支持协议",
+      "title": "RTRS - 合景泰富集团 1813.",
+      "summary": "RTRS - 合景泰富集团 1813.HK称与若干初始参与债权人订立了重组支持协议。",
+      "published_at": "2026-06-15T09:04:45.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "8c41ba526da3e0ac94ac02f4050ecab4b74ac816",
+      "dedupe_key": "tradealpha:586697",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 中国石化称拟以5-10亿元回购A股股份，用于注销并减少注册资本",
+      "title": "RTRS - 中国石化称拟以5-10亿元回购A股股份，用于注销并减少注册资本",
+      "summary": "RTRS - 中国石化称拟以5-10亿元回购A股股份，用于注销并减少注册资本。",
+      "published_at": "2026-06-15T09:02:24.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
+      "id": "254982d0ec6e358e4cc21d3ec98107895a384872",
+      "dedupe_key": "tradealpha:586699",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 欧洲央行尚需采取更多措施来抑制通胀压力--管委卡日米尔",
+      "title": "RTRS - 欧洲央行尚需采取更多措施来抑制通胀压力--管委卡日米尔",
+      "summary": "RTRS - 欧洲央行尚需采取更多措施来抑制通胀压力--管委卡日米尔。",
+      "published_at": "2026-06-15T09:01:25.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "f2a0114ac259e49650651dc5a7dafcd47ca44148",
+      "dedupe_key": "tradealpha:586696",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 欧元区4月未经季节调整的贸易逆差为10亿欧元--统计局",
+      "title": "RTRS - 欧元区4月未经季节调整的贸易逆差为10亿欧元--统计局",
+      "summary": "RTRS - 欧元区4月未经季节调整的贸易逆差为10亿欧元--统计局。",
+      "published_at": "2026-06-15T09:00:01.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "29e32c06e5222947631fddfd31af16e137fd49d3",
+      "dedupe_key": "tradealpha:586695",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 外资5月末持有中国银行间债券增至3.21万亿，当月增持900亿终结连12月减持",
+      "title": "RTRS - 外资5月末持有中国银行间债券增至3.",
+      "summary": "RTRS - 外资5月末持有中国银行间债券增至3.21万亿，当月增持900亿终结连12月减持。",
+      "published_at": "2026-06-15T08:59:34.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
       "id": "24dfb29c07debb1e0860a4397e89fb7058abd029",
       "dedupe_key": "x:Sungrow_Power:2066443563915956242",
       "source_type": "x",
@@ -765,6 +1296,510 @@
       "category": "储能行业"
     },
     {
+      "id": "986b07345a241b792f9b302e9ff05d2c54a658f3",
+      "dedupe_key": "tradealpha:586712",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 更新版 2-尽管美国与伊朗已达成协议，华丰对霍尔木兹海峡的过境运输仍持谨慎态度",
+      "title": "RTRS - 更新版 2-尽管美国与伊朗已达成协议，华丰对霍尔木兹海峡的过境运输仍持谨慎态度",
+      "summary": "RTRS - 更新版 2-尽管美国与伊朗已达成协议，华丰对霍尔木兹海峡的过境运输仍持谨慎态度。",
+      "published_at": "2026-06-15T08:50:35.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "f5a273d741b4c120c97a57e1b0aeb09ad7cdeffc",
+      "dedupe_key": "tradealpha:586676",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - SpaceX在创下华尔街IPO纪录后，股价涨势有望延续",
+      "title": "RTRS - SpaceX在创下华尔街IPO纪录后，股价涨势有望延续",
+      "summary": "RTRS - SpaceX在创下华尔街IPO纪录后，股价涨势有望延续。",
+      "published_at": "2026-06-15T08:50:30.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "很重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
+      "id": "2e5a426c1da7cfab1b7bb62f4084e3a4fd02cce0",
+      "dedupe_key": "tradealpha:586679",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 伯罗特：美伊和平协议的消息令人鼓舞",
+      "title": "RTRS - 伯罗特：美伊和平协议的消息令人鼓舞",
+      "summary": "RTRS - 伯罗特：美伊和平协议的消息令人鼓舞。",
+      "published_at": "2026-06-15T08:48:25.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "340f8ea7e3f02c907bc48651643a2887ff9c5da9",
+      "dedupe_key": "tradealpha:586666",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 伦敦美债：美国指标收益率触及一个月低点，此前美伊达成初步协议",
+      "title": "RTRS - 伦敦美债：美国指标收益率触及一个月低点，此前美伊达成初步协议",
+      "summary": "RTRS - 伦敦美债：美国指标收益率触及一个月低点，此前美伊达成初步协议。",
+      "published_at": "2026-06-15T08:44:29.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "很重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "d8a1ede85a9ed0f68bd901e7362a2c1db94cad4a",
+      "dedupe_key": "tradealpha:586658",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 在美伊达成协议后，黎巴嫩当局警告流离失所者不要急于返回家园",
+      "title": "RTRS - 在美伊达成协议后，黎巴嫩当局警告流离失所者不要急于返回家园",
+      "summary": "RTRS - 在美伊达成协议后，黎巴嫩当局警告流离失所者不要急于返回家园。",
+      "published_at": "2026-06-15T08:40:59.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "ca3cd3e962e951840bf9e8c16b07221449fd11df",
+      "dedupe_key": "tradealpha:586657",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 现金金上涨近3%至每盎司4343.77美元",
+      "title": "RTRS - 现金金上涨近3%至每盎司4343.",
+      "summary": "RTRS - 现金金上涨近3%至每盎司4343.77美元。",
+      "published_at": "2026-06-15T08:40:17.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "b73f92881ed9e63c689fbd4b5ddc3cdf5e8465b8",
+      "dedupe_key": "tradealpha:586654",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "6月15日讯，据俄罗斯方面当地时间15日消息，扎波罗热核电站发言人叶夫根尼娅·亚希娜表示，该核电站所在的埃涅尔戈达尔市自6月13日起已连续断电3天。亚希娜称，这座城市\"完全失去了电力供应\"。据俄方消息，13日至14日，扎波罗热地区的关键能源设施遭到袭击破坏，导致该地区电力供应出现部分限制。扎波罗热核电站是欧洲最大核电站之一。2022年2月乌克兰危机全面升级后，俄方控制了扎波罗热核电站。此后，该核电站多次遭到炮击或无人机攻击，引发国际社会对其安全的担忧。（央视新闻）",
+      "title": "6月15日讯，据俄罗斯方面当地时间15日消息，扎波罗热核电站发言人叶夫根尼娅·亚希娜表示，该核电站所在的埃涅尔戈达尔市自6月13日起已连续断电3",
+      "summary": "6月15日讯，据俄罗斯方面当地时间15日消息，扎波罗热核电站发言人叶夫根尼娅·亚希娜表示，该核电站所在的埃涅尔戈达尔市自6月13日起已连续断电3天。亚希娜称，这座城市\"完全失去了电力供应\"。据俄方消息，13日至14日，扎波罗热地区的关键能源设施遭到袭击破坏，导致该地区电力供应出现部分限制。扎波罗热核电站是欧洲最大核电站之一。2022年2月乌克兰危机全面升级后，俄方控制了扎波罗热核电站。此后，该核电站多次遭到炮击或无人机攻击，引发国际社会对其安全的担忧。（央视新闻）。",
+      "published_at": "2026-06-15T08:40:05.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "国内",
+        "政治军事",
+        "很重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "d3e1854efc2856b51f6499a3ce58c08ea33f81e0",
+      "dedupe_key": "tradealpha:586659",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 更新版 1-中国汇市：人民币缩量收创近三年半新高，受美伊达成协议提振",
+      "title": "RTRS - 更新版 1-中国汇市：人民币缩量收创近三年半新高，受美伊达成协议提振",
+      "summary": "RTRS - 更新版 1-中国汇市：人民币缩量收创近三年半新高，受美伊达成协议提振。",
+      "published_at": "2026-06-15T08:39:34.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "dfcf0a35ba2e014d04a292b99ec5b4df3dba7382",
+      "dedupe_key": "tradealpha:586645",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 更新 2-欧洲央行总裁拉加德对美伊协议表示欢迎，纳格尔则对通胀持续性提出警示",
+      "title": "RTRS - 更新 2-欧洲央行总裁拉加德对美伊协议表示欢迎，纳格尔则对通胀持续性提出警示",
+      "summary": "RTRS - 更新 2-欧洲央行总裁拉加德对美伊协议表示欢迎，纳格尔则对通胀持续性提出警示。",
+      "published_at": "2026-06-15T08:38:29.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "政策",
+        "很重要"
+      ],
+      "category": "政策"
+    },
+    {
+      "id": "6e80f6bd020fab4cd3dc06e5bebc0ca47bcbe1a9",
+      "dedupe_key": "tradealpha:586641",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 热门话题-司法部批准1100亿WBD案，派拉蒙天舞上涨",
+      "title": "RTRS - 热门话题-司法部批准1100亿WBD案，派拉蒙天舞上涨",
+      "summary": "RTRS - 热门话题-司法部批准1100亿WBD案，派拉蒙天舞上涨。",
+      "published_at": "2026-06-15T08:37:59.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "dc735a9c5bc6526a7fc3a450fa06020f8da86c91",
+      "dedupe_key": "tradealpha:586642",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 更新版 1-《图表新闻》五大主题：沃什首度主持美联储政策会议",
+      "title": "RTRS - 更新版 1-《图表新闻》五大主题：沃什首度主持美联储政策会议",
+      "summary": "RTRS - 更新版 1-《图表新闻》五大主题：沃什首度主持美联储政策会议。",
+      "published_at": "2026-06-15T08:36:35.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "65568da06e0b6e6b921f2222f1d54f43721104a1",
+      "dedupe_key": "tradealpha:586644",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 航运协会BIMCO表示，穿越霍尔木兹海峡仍存在极高风险",
+      "title": "RTRS - 航运协会BIMCO表示，穿越霍尔木兹海峡仍存在极高风险",
+      "summary": "RTRS - 航运协会BIMCO表示，穿越霍尔木兹海峡仍存在极高风险。",
+      "published_at": "2026-06-15T08:36:17.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "89650e49272d242d0770cda9c1f665145391e638",
+      "dedupe_key": "tradealpha:586643",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 热门话题-受中东协议影响油价走低，美国石油和天然气股下跌",
+      "title": "RTRS - 热门话题-受中东协议影响油价走低，美国石油和天然气股下跌",
+      "summary": "RTRS - 热门话题-受中东协议影响油价走低，美国石油和天然气股下跌。",
+      "published_at": "2026-06-15T08:36:09.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "d397e6da2c8fd56c23cab082e51845c5feee1d8d",
+      "dedupe_key": "tradealpha:586639",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 李强同越南总理通话：双方要妥善管控海上分歧，拓展能源矿产等领域合作",
+      "title": "RTRS - 李强同越南总理通话：双方要妥善管控海上分歧，拓展能源矿产等领域合作",
+      "summary": "RTRS - 李强同越南总理通话：双方要妥善管控海上分歧，拓展能源矿产等领域合作。",
+      "published_at": "2026-06-15T08:34:42.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "3ed33914cbd022bf40b6655f8391382467b33f1e",
+      "dedupe_key": "tradealpha:586630",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 中国外汇：5月银行结售汇顺差358亿美元--外管局",
+      "title": "RTRS - 中国外汇：5月银行结售汇顺差358亿美元--外管局",
+      "summary": "RTRS - 中国外汇：5月银行结售汇顺差358亿美元--外管局。",
+      "published_at": "2026-06-15T08:31:03.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "83a9f45c4c13056a4e316537caecc9390c08337f",
+      "dedupe_key": "tradealpha:586627",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 《汇市短评》投机者与日本当局在日圆问题上展开博弈",
+      "title": "RTRS - 《汇市短评》投机者与日本当局在日圆问题上展开博弈",
+      "summary": "RTRS - 《汇市短评》投机者与日本当局在日圆问题上展开博弈。",
+      "published_at": "2026-06-15T08:29:31.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "f4f1f7e4dac2255d10de6178804e68db8335d803",
+      "dedupe_key": "tradealpha:586616",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 《全球汇市》美元徘徊在10日低点，美伊框架协议提振风险资产",
+      "title": "RTRS - 《全球汇市》美元徘徊在10日低点，美伊框架协议提振风险资产",
+      "summary": "RTRS - 《全球汇市》美元徘徊在10日低点，美伊框架协议提振风险资产。",
+      "published_at": "2026-06-15T08:24:41.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "5b803470b4e37387d1d6bd28dd86dd34284715d6",
+      "dedupe_key": "tradealpha:586609",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 美国股市-受伊朗协议提振，华尔街期货上涨逾1%",
+      "title": "RTRS - 美国股市-受伊朗协议提振，华尔街期货上涨逾1%",
+      "summary": "RTRS - 美国股市-受伊朗协议提振，华尔街期货上涨逾1%。",
+      "published_at": "2026-06-15T08:22:51.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "ac6a45f095e6eca3959ea022ee6b35fab6625939",
+      "dedupe_key": "tradealpha:586608",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 更正-据《The Information》报道，OpenAI正考虑在Nvidia的支持下租赁俄亥俄州的一座数据中心（6月9日）",
+      "title": "RTRS - 更正-据《The Information》报道，OpenAI正考虑在Nvidia的支持下租赁俄亥俄州的一座数据中心（6月9日）",
+      "summary": "RTRS - 更正-据《The Information》报道，OpenAI正考虑在Nvidia的支持下租赁俄亥俄州的一座数据中心（6月9日）。",
+      "published_at": "2026-06-15T08:22:47.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "很重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
+      "id": "58cd8f0a20c6241af7b29787795db880850fa6f4",
+      "dedupe_key": "tradealpha:586606",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【COMEX铜库存激增，市场是否已提前定价关税风险？】美国针对精炼铜进口的关税决定已进入关键倒计时，商务部长将于6月30日前向总统特朗普提交更新后的建议。目前，市场已开始对这一结果进行提前定价，COMEX与LME的价差已走阔至约400美元/吨。在供应紧张、关税驱动的囤货行为以及与AI相关的电力需求的共同支撑下，LME铜价在复杂的宏观背景下表现出极强的韧性，年内涨幅已达10%左右。\n自今年2月以来，出于对关税期限的预期，美国铜进口量激增，直接导致COMEX注册库存创下历史新高，而LME和SHFE的库存则在同期急剧下降。ING Research指出：\"<b>这不是由需求驱动的库存增长。它反映了由关税套利驱动的可用金属的地理重新分配</b>。\" 随着大量铜阴极在经济上被\"锁定\"在美国市场，只要关税风险依然存在，这些库存就日益被视为具有战略意义，而非仅用于套利。\n关于政策落地后的市场前景，美国商务部最初的提案呼吁从2027年1月起对精炼铜进口征收15%的关税，并在2028年逐步升至30%。叠加2026年全球铜市场预计出现的约3.5万吨供应短缺，ING Research预计，<b>如果从2027年1月1日起实施确认的15%分阶段关税，可能会增加COMEX相对于LME铜的溢价。该决定的整体影响将对全球铜价形成支撑；相反，如果关税被推迟或彻底拒绝，则将构成今年下半年的主要下行风险</b>。\n（以上内容来自ING大宗商品分析师Ewa Manthey最新观点，仅供参考，不构成投资建议）",
+      "title": "【COMEX铜库存激增，市场是否已提前定价关税风险？",
+      "summary": "【COMEX铜库存激增，市场是否已提前定价关税风险？】美国针对精炼铜进口的关税决定已进入关键倒计时，商务部长将于6月30日前向总统特朗普提交更新后的建议。目前，市场已开始对这一结果进行提前定价，COMEX与LME的价差已走阔至约400美元/吨。在供应紧张、关税驱动的囤货行为以及与AI相关的电力需求的共同支撑下，LME铜价在复杂的宏观背景下表现出极强的韧性，年内涨幅已达10%左右。 自今年2月以来，出于对关税期限的预期，美国铜进口量激增，直接导致COMEX注册库存创下历史新高，而LME和SHFE的库存则在同期急剧下降。ING Research指出：\"<b>这不是由需求驱动的库存增长。它反映了由关税套利驱动的可用金属的地理重新分配</b>。\" 随着大量铜阴极在经济上被\"锁定\"在美国市场，只要关税风险依然存在，这些库存就日益被视为具有战略意义，而非仅用于套利。 关于政策落地后的市场前景，美国商务部最初的提案呼吁从2027年1月起对精炼铜进口征收15%的关税，并在2028年逐步升至30%。叠加2026年全球铜市场预计出现的约3.5万吨供应短缺，ING Research预计，<b>如果从2027年1月1日起实施确认的15%分阶段关税，可能会增加COMEX相对于LME铜的溢价。该决定的整体影响将对全球铜价形成支撑；相反，如果关税被推迟或彻底拒绝，则将构成今年下半年的主要下行风险</b>。 （以上内容来自ING大宗商品分析师Ewa Manthey最新观点，仅供参考，不构成投资建议）。",
+      "published_at": "2026-06-15T08:20:05.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "024acf180fbf7410ec603a70ea7e34fd694a91a0",
+      "dedupe_key": "tradealpha:586582",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "国内",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "美伊达成和平协议后油价下跌，美国航空股在盘前交易中上涨。阿拉斯加航空上涨3.3%，捷蓝航空上涨4.2%，联合航空上涨4.7%。达美航空上涨4.5%，美国航空上涨3.7%。",
+      "title": "美伊达成和平协议后油价下跌，美国航空股在盘前交易中上涨。",
+      "summary": "美伊达成和平协议后油价下跌，美国航空股在盘前交易中上涨。阿拉斯加航空上涨3.3%，捷蓝航空上涨4.2%，联合航空上涨4.7%。达美航空上涨4.5%，美国航空上涨3.7%。",
+      "published_at": "2026-06-15T08:10:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "国内",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "86ff9c5438e76e3e895daa37b9d23fdc845ee9ae",
+      "dedupe_key": "tradealpha:586580",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 热门话题-瑞银将索伊泰克评级下调至卖出，因光子学领域的乐观情绪似乎被高估",
+      "title": "RTRS - 热门话题-瑞银将索伊泰克评级下调至卖出，因光子学领域的乐观情绪似乎被高估",
+      "summary": "RTRS - 热门话题-瑞银将索伊泰克评级下调至卖出，因光子学领域的乐观情绪似乎被高估。",
+      "published_at": "2026-06-15T08:08:31.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
+      "id": "cd39eb1b1ddf519614f5ecfb6b1522daf48b24ad",
+      "dedupe_key": "tradealpha:586568",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 中国金融：5月央行口径外汇占款增加925.77亿元人民币--央行",
+      "title": "RTRS - 中国金融：5月央行口径外汇占款增加925.",
+      "summary": "RTRS - 中国金融：5月央行口径外汇占款增加925.77亿元人民币--央行。",
+      "published_at": "2026-06-15T08:02:06.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "a022d470070f9de024bc95675985df8a1a75051c",
+      "dedupe_key": "tradealpha:586567",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 独家报道-特斯拉向欧洲监管机构提交了具有误导性的完全自动驾驶安全数据",
+      "title": "RTRS - 独家报道-特斯拉向欧洲监管机构提交了具有误导性的完全自动驾驶安全数据",
+      "summary": "RTRS - 独家报道-特斯拉向欧洲监管机构提交了具有误导性的完全自动驾驶安全数据。",
+      "published_at": "2026-06-15T08:00:58.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
       "id": "72e7aceaa04f15c60bf47d51d63e4e659a2c511c",
       "dedupe_key": "x:BloombergNEF:2066430510629347502",
       "source_type": "x",
@@ -785,6 +1820,48 @@
         "欧洲能源转型"
       ],
       "category": "储能行业"
+    },
+    {
+      "id": "cccaa986b9aad5ca030c0cd16faad8d073c18c77",
+      "dedupe_key": "tradealpha:586565",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 《汇市短评》多项关键因素同时发力，欧元兑美元呈看涨态势",
+      "title": "RTRS - 《汇市短评》多项关键因素同时发力，欧元兑美元呈看涨态势",
+      "summary": "RTRS - 《汇市短评》多项关键因素同时发力，欧元兑美元呈看涨态势。",
+      "published_at": "2026-06-15T07:59:15.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "重要"
+      ],
+      "category": "市场与货币"
+    },
+    {
+      "id": "61ea876a8ee412304a862c93d8446da43f0f427e",
+      "dedupe_key": "tradealpha:586558",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "RTRS - 日本金融市场：日经指数收涨5%创新高、日债大涨，美伊消息提振情绪",
+      "title": "RTRS - 日本金融市场：日经指数收涨5%创新高、日债大涨，美伊消息提振情绪",
+      "summary": "RTRS - 日本金融市场：日经指数收涨5%创新高、日债大涨，美伊消息提振情绪。",
+      "published_at": "2026-06-15T07:54:21.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "市场与货币",
+        "很重要"
+      ],
+      "category": "市场与货币"
     },
     {
       "id": "c598e632286525f7fee5046eae6b940d9f2168bb",
@@ -833,6 +1910,27 @@
       "category": "储能行业"
     },
     {
+      "id": "673a41dd2de12cabf9fb7c320d9fdf1fed669b00",
+      "dedupe_key": "tradealpha:586745",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "彭博社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【腾讯投资的燧原科技获IPO批准，中国AI芯片浪潮再添动力-彭博社】\n腾讯控股投资的上海燧原科技已获得首次公开募股批准，标志着中国人工智能芯片行业领军企业\"四小龙\"中的最后一家即将登陆市场。\n腾讯持股20%并作为燧原科技主要客户的该公司，计划在上海证券交易所芯片产业集中的科创板筹集60亿元人民币（8.88亿美元）。据其招股书披露，公司将发行10%-15%股份，所募资金将用于支持AI云芯片及其配套软件的研发与生产。\n在当前中美科技竞争的背景下，人工智能产业链企业——从电路板制造商到AI模型开发商——正积极融资以满足需求并保持竞争优势。尽管燧原科技的募资规模小于长鑫存储等芯片企业的创纪录IPO，但其上市仍为中国高科技企业上市热潮增添重要案例。作为中国争夺全球AI主导地位的关键初创企业之一，燧原的上市受到高度关注。\n\"作为中国AI芯片四小龙的第四家，燧原拥有强劲的市场对标——国内同行仍维持着较高的销售倍数和估值，\"北京金桐私募基金管理基金经理徐大伟表示。这个知名初创企业组合包括摩尔线程、壁仞科技和沐曦集成电路，均引发强烈市场反响，其中摩尔线程去年12月上市首日暴涨425%。\n燧原与腾讯的紧密关系是其独特优势。2025年对腾讯的销售额占总营收达84%，较上年的38%大幅提升。腾讯的互联网及云平台构成了燧原芯片的核心商业基础，其产品应用于大型数据中心，支撑聊天机器人、推荐系统和生成式AI等应用。\n盈利方面仍面临挑战：净亏损从上年15亿元收窄至2025年12亿元，预计上半年亏损约6亿元。而营收预计将实现逾三倍同比增长，上半年达106-115亿元，2023至2025年间复合年增长率超过80%。公司在其招股书中明确表明：\"腾讯对AI加速器卡的需求已远超公司的供应能力\"，并强调已优先保障重点客户，通过大规模高需求部署完善技术。\nhttps://www.bloomberg.com/news/articles/2026-06-15/tencent-backed-enflame-heads-to-ipo-as-china-ai-chip-wave-grows",
+      "title": "【腾讯投资的燧原科技获IPO批准，中国AI芯片浪潮再添动力-彭博社】 腾讯控股投资的上海燧原科技已获得首次公开募股批准，标志着中国人工智能芯片行",
+      "summary": "【腾讯投资的燧原科技获IPO批准，中国AI芯片浪潮再添动力-彭博社】 腾讯控股投资的上海燧原科技已获得首次公开募股批准，标志着中国人工智能芯片行业领军企业\"四小龙\"中的最后一家即将登陆市场。 腾讯持股20%并作为燧原科技主要客户的该公司，计划在上海证券交易所芯片产业集中的科创板筹集60亿元人民币（8.88亿美元）。据其招股书披露，公司将发行10%-15%股份，所募资金将用于支持AI云芯片及其配套软件的研发与生产。 在当前中美科技竞争的背景下，人工智能产业链企业——从电路板制造商到AI模型开发商——正积极融资以满足需求并保持竞争优势。尽管燧原科技的募资规模小于长鑫存储等芯片企业的创纪录IPO，但其上市仍为中国高科技企业上市热潮增添重要案例。作为中国争夺全球AI主导地位的关键初创企业之一，燧原的上市受到高度关注。 \"作为中国AI芯片四小龙的第四家，燧原拥有强劲的市场对标——国内同行仍维持着较高的销售倍数和估值，\"北京金桐私募基金管理基金经理徐大伟表示。这个知名初创企业组合包括摩尔线程、壁仞科技和沐曦集成电路，均引发强烈市场反响，其中摩尔线程去年12月上市首日暴涨425%。 燧原与腾讯的紧密关系是其独特优势。2025年对腾讯的销售额占总营收达84%，较上年的38%大幅提升。腾讯的互联网及云平台构成了燧原芯片的核心商业基础，其产品应用于大型数据中心，支撑聊天机器人、推荐系统和生成式AI等应用。 盈利方面仍面临挑战：净亏损从上年15亿元收窄至2025年12亿元，预计上半年亏损约6亿元。而营收预计将实现逾三倍同比增长，上半年达106-115亿元，2023至2025年间复合年增长率超过80%。公司在其招股书中明确表明：\"腾讯对AI加速器卡的需求已远超公司的供应能力\"，并强调已优先保障重点客户，通过大规模高需求部署完善技术。 https://www.bloomberg.com/news/articles/2026-06-15/tencent-backed-enflame-heads-to-ipo-as-china-ai-chip-wave-grows。",
+      "published_at": "2026-06-15T01:19:16.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "彭博社",
+        "超大型公司",
+        "重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
       "id": "af203888838c7d0e42373381c63d6f60cd46070f",
       "dedupe_key": "x:jordanschneider:2066326477663072617",
       "source_type": "x",
@@ -855,6 +1953,48 @@
         "文班亚马"
       ],
       "category": "半导体行业"
+    },
+    {
+      "id": "64c7869bc399b081a66a98d83de52408394b6392",
+      "dedupe_key": "tradealpha:586724",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "联合国人权高专欢迎美伊协议并敦促地区各方克制-路透社\n日内瓦，6月15日（路透社）——联合国人权事务高级专员沃尔克·特克于周一（6月15日）对美伊和平协议的宣布表示欢迎，并敦促该地区各方保持最大克制。\n特克表示：\"我欢迎美国和伊朗达成和平协议的宣布，该协议规定立即实现永久停火、重开霍尔木兹海峡，并为后续谈判提供框架。\"他补充道：\"在此脆弱时刻，各方必须展现最大克制，并以诚意迅速执行所达成的协议。\"\n此声明发布之际，美伊官员确认已达成协议以结束战争并重新开放霍尔木兹海峡。这份初步协议导致油价下跌，但德黑兰核计划的命运将留待后续谈判决定。尽管仅为框架性协议，其标志着自今年二月美以联合袭击伊朗以来，这场造成2500多人丧生并扰乱能源市场的冲突取得最重大突破。\n特克同时对以色列在黎巴嫩人口稠密区及基础设施的袭击，以及真主党的跨境攻击表示震惊。他呼吁立即终止敌对行动、以色列撤出黎巴嫩领土，并对各方涉嫌违反国际法的行为展开调查。\nhttps://www.reuters.com/world/middle-east/un-human-rights-chief-welcomes-us-iran-deal-urges-restraint-region-2026-06-15/",
+      "title": "联合国人权高专欢迎美伊协议并敦促地区各方克制-路透社 日内瓦，6月15日（路透社）——联合国人权事务高级专员沃尔克·特克于周一（6月15日）对美",
+      "summary": "联合国人权高专欢迎美伊协议并敦促地区各方克制-路透社 日内瓦，6月15日（路透社）——联合国人权事务高级专员沃尔克·特克于周一（6月15日）对美伊和平协议的宣布表示欢迎，并敦促该地区各方保持最大克制。 特克表示：\"我欢迎美国和伊朗达成和平协议的宣布，该协议规定立即实现永久停火、重开霍尔木兹海峡，并为后续谈判提供框架。\"他补充道：\"在此脆弱时刻，各方必须展现最大克制，并以诚意迅速执行所达成的协议。\" 此声明发布之际，美伊官员确认已达成协议以结束战争并重新开放霍尔木兹海峡。这份初步协议导致油价下跌，但德黑兰核计划的命运将留待后续谈判决定。尽管仅为框架性协议，其标志着自今年二月美以联合袭击伊朗以来，这场造成2500多人丧生并扰乱能源市场的冲突取得最重大突破。 特克同时对以色列在黎巴嫩人口稠密区及基础设施的袭击，以及真主党的跨境攻击表示震惊。他呼吁立即终止敌对行动、以色列撤出黎巴嫩领土，并对各方涉嫌违反国际法的行为展开调查。 https://www.reuters.com/world/middle-east/un-human-rights-chief-welcomes-us-iran-deal-urges-restraint-region-2026-06-15/。",
+      "published_at": "2026-06-15T01:03:43.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "政治军事",
+        "很重要"
+      ],
+      "category": "政治军事"
+    },
+    {
+      "id": "173de6b6175c6987b652821cad76a694c14f06d2",
+      "dedupe_key": "tradealpha:586713",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【SpaceX set to extend rally after record Wall Street IPO- Reuters】\n6月15日(路透社报道)，SpaceX(SPCX.O)股票在周一盘前交易中上涨超过5.6%，延续了上周规模巨大的首次公开募股(IPO)之后的涨幅，该IPO推动其估值超过2万亿美元，使其跻身华尔街最有价值的公司行列。CEO埃隆·马斯克周日表示，这家从火箭到AI的公司可能在2030年前带来1万亿美元的收入。SpaceX在2025年报告了187亿美元的收入。股票在周五的纳斯达克交易所首秀中跳涨19%，使SpaceX成为美国第六大公司，同时马斯克成为全球第一位万富翁。零售投资者获得了IPO分配的大约20%，仅在周五就购买了价值1.176亿美元的SpaceX股票，使其成为当天最受欢迎的股票，并超越了Coinbase(COIN.O)在2021年4月创下的IPO纪录，这是根据Vanda Research的数据。分析师和投资组合经理表示，投资者应做好应对波动的准备，特别是SpaceX成为公众公司早期阶段，由于其相对小的流通股和高估值。但涨势可能继续，因为SpaceX即将被快速纳入纳斯达克100指数，将成为追踪该指数的被动基金和交易所交易基金(ETF)的主要持仓，创造对其股票的新需求。其他指数提供商FTSE Russell和MSCI也计划分别于6月26日和6月29日将其加入各自的指数。\nhttps://www.reuters.com/business/media-telecom/spacex-set-extend-rally-after-record-wall-street-ipo-2026-06-15/",
+      "title": "【SpaceX set to extend rally after record Wall Street IPO- Reuters】 6月15日",
+      "summary": "【SpaceX set to extend rally after record Wall Street IPO- Reuters】 6月15日(路透社报道)，SpaceX(SPCX.O)股票在周一盘前交易中上涨超过5.6%，延续了上周规模巨大的首次公开募股(IPO)之后的涨幅，该IPO推动其估值超过2万亿美元，使其跻身华尔街最有价值的公司行列。CEO埃隆·马斯克周日表示，这家从火箭到AI的公司可能在2030年前带来1万亿美元的收入。SpaceX在2025年报告了187亿美元的收入。股票在周五的纳斯达克交易所首秀中跳涨19%，使SpaceX成为美国第六大公司，同时马斯克成为全球第一位万富翁。零售投资者获得了IPO分配的大约20%，仅在周五就购买了价值1.176亿美元的SpaceX股票，使其成为当天最受欢迎的股票，并超越了Coinbase(COIN.O)在2021年4月创下的IPO纪录，这是根据Vanda Research的数据。分析师和投资组合经理表示，投资者应做好应对波动的准备，特别是SpaceX成为公众公司早期阶段，由于其相对小的流通股和高估值。但涨势可能继续，因为SpaceX即将被快速纳入纳斯达克100指数，将成为追踪该指数的被动基金和交易所交易基金(ETF)的主要持仓，创造对其股票的新需求。其他指数提供商FTSE Russell和MSCI也计划分别于6月26日和6月29日将其加入各自的指数。 https://www.reuters.com/business/media-telecom/spacex-set-extend-rally-after-record-wall-street-ipo-2026-06-15/。",
+      "published_at": "2026-06-15T00:57:15.000Z",
+      "imported_at": "2026-06-16T01:57:24.766Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "很重要"
+      ],
+      "category": "超大型公司"
     },
     {
       "id": "b2cda822af74ab69870f9258bf1826a07a7697b7",
@@ -880,6 +2020,90 @@
       "category": "储能行业"
     },
     {
+      "id": "39a01e3c304b4d03bef7afbfe661c65294d70e29",
+      "dedupe_key": "tradealpha:586589",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【Exclusive: Tesla presented misleading 'Full Self-Driving' safety data to European regulators-Reuters】\nJune 15 (Reuters) - Tesla presented self-published safety statistics to regulators in Sweden and the Netherlands aimed at securing European approval for its \"Full Self-Driving\" (FSD) system, which independent traffic-safety researchers deemed misleading marketing. A Reuters examination revealed Tesla CEO Elon Musk and other leaders cited data claiming FSD is up to 10 times safer than human drivers, but involved invalid comparisons that exaggerated safety claims. In late 2024, Tesla approached RDW, the Dutch road regulator, and in a November 2024 letter linked to its safety report, asserted \"increased usage\" of FSD \"leads to safer roads\" monthly subscription requiring driver attention. By April, RDW approved FSD for the Netherlands and is pursuing EU-wide approval, stating it \"does not rely on marketing claims or external statistics\" but performs its own \"tests, analyses and verifications,\" validating \"a lot of data\" collected by Tesla without assessing U.S. statistics. After Dutch approval, Tesla policy manager Ivan Komusanac emailed Swedish regulators attaching a slide presentation claiming FSD can travel over seven times farther between crashes than the average U.S. human driver and save 32,000 lives preventing 1.9 million injuries; researchers called these figures \"highly misleading,\" based on replacing all U.S. vehicles with FSD Teslas assuming sevenfold safety. Reuters found Tesla exaggerated safety by comparing FSD crashes with airbag deployments to the broader U.S. crash rate including less-severe accidents and older average vehicles. Anders Eriksson of the Swedish Transport Agency said they \"look beyond headline figures\" for overall evidence, not merely aggregated claims. Dudley Curtis from the European Transport Safety Council expressed concern about \"unreliable safety data,\" advising independent university verification. Tesla views FSD approval as vital for European sales rebound after 2023's decline amid protests over CEO Elon Musk's political activities with far-right parties, while competing with Chinese EV makers. EU-wide approval requires an affirmative vote from representatives of 55% of member states constituting 65% of the bloc's population. Greece aimed to approve FSD citing data \"from the other side of the Atlantic\" showing reduced accidents; its ministry declined to specify the source. European regulators faced driver pressure citing Tesla's stats for swift approval; Tesla did not comment.\nhttps://www.reuters.com/world/tesla-presented-misleading-full-self-driving-safety-data-european-regulators-2026-06-15/",
+      "title": "【Exclusive: Tesla presented misleading 'Full Self-Driving' safety data t",
+      "summary": "【Exclusive: Tesla presented misleading 'Full Self-Driving' safety data to European regulators-Reuters】 June 15 (Reuters) - Tesla presented self-published safety statistics to regulators in Sweden and the Netherlands aimed at securing European approval for its \"Full Self-Driving\" (FSD) system, which independent traffic-safety researchers deemed misleading marketing. A Reuters examination revealed Tesla CEO Elon Musk and other leaders cited data claiming FSD is up to 10 times safer than human drivers, but involved invalid comparisons that exaggerated safety claims. In late 2024, Tesla approached RDW, the Dutch road regulator, and in a November 2024 letter linked to its safety report, asserted \"increased usage\" of FSD \"leads to safer roads\" monthly subscription requiring driver attention. By April, RDW approved FSD for the Netherlands and is pursuing EU-wide approval, stating it \"does not rely on marketing claims or external statistics\" but performs its own \"tests, analyses and verifications,\" validating \"a lot of data\" collected by Tesla without assessing U.S. statistics. After Dutch approval, Tesla policy manager Ivan Komusanac emailed Swedish regulators attaching a slide presentation claiming FSD can travel over seven times farther between crashes than the average U.S. human driver and save 32,000 lives preventing 1.9 million injuries; researchers called these figures \"highly misleading,\" based on replacing all U.S. vehicles with FSD Teslas assuming sevenfold safety. Reuters found Tesla exaggerated safety by comparing FSD crashes with airbag deployments to the broader U.S. crash rate including less-severe accidents and older average vehicles. Anders Eriksson of the Swedish Transport Agency said they \"look beyond headline figures\" for overall evidence, not merely aggregated claims. Dudley Curtis from the European Transport Safety Council expressed concern about \"unreliable safety data,\" advising independent university verification. Tesla views FSD approval as vital for European sales rebound after 2023's decline amid protests over CEO Elon Musk's political activities with far-right parties, while competing with Chinese EV makers. EU-wide approval requires an affirmative vote from representatives of 55% of member states constituting 65% of the bloc's population. Greece aimed to approve FSD citing data \"from the other side of the Atlantic\" showing reduced accidents; its ministry declined to specify the source. European regulators faced driver pressure citing Tesla's stats for swift approval; Tesla did not comment. https://www.reuters.com/world/tesla-presented-misleading-full-self-driving-safety-data-european-regulators-2026-06-15/。",
+      "published_at": "2026-06-15T00:04:27.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "超大型公司",
+        "重要"
+      ],
+      "category": "超大型公司"
+    },
+    {
+      "id": "fb168921e761a81013ea1ff72b7cece154a502ec",
+      "dedupe_key": "tradealpha:586586",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "【标题-来源】：从澳大利亚到欧洲，多国采取措施限制儿童社交媒体访问-路透社\n澳大利亚于2025年12月10日起强制禁止16岁以下未成年人使用TikTok、YouTube、Instagram和Facebook等社交平台，成为全球首个实施此类禁令的国家。违规企业将面临最高4950万澳元（3490万美元）罚款。英国首相基尔·斯塔默6月15日表示，计划在圣诞节前批准16岁以下社交媒体禁令，预计2027年春季生效。该国还要求苹果和谷歌等科技公司开发阻止未成年人传播裸照的技术方案。\n中国实施了设备级\"未成年模式\"，根据年龄限制屏幕时间。丹麦2023年11月宣布禁止15岁以下儿童使用社交媒体，13岁以上需父母许可。法国国民议会2024年1月批准禁止15岁以下儿童使用社交媒体的法案。德国要求13-16岁未成年人需父母同意才能使用社交媒体。希腊政府2月3日表示将禁止15岁以下儿童使用社交媒体。\n印度1月有官员呼吁实施年龄限制，果阿邦考虑效仿澳大利亚禁令。意大利要求14岁以下注册社交媒体需父母许可。马来西亚6月1日起禁止16岁以下注册社交账号。挪威2024年提议将使用社交媒体的最低年龄从13岁提高到15岁。波兰执政党2月27日称正制定法案禁止15岁以下儿童使用社交媒体。斯洛文尼亚副总理2月6日表示拟立法禁止15岁以下儿童访问社交媒体。西班牙首相2月宣布将禁止16岁以下未成年人使用社交媒体。瑞典政府委员会6月2日建议设置15岁的最低年龄限制。土耳其4月24日立法禁止15岁以下儿童使用社交媒体。\nhttps://www.reuters.com/legal/government/australia-europe-countries-move-curb-childrens-social-media-access-2026-06-15/",
+      "title": "【标题-来源】：从澳大利亚到欧洲，多国采取措施限制儿童社交媒体访问-路透社 澳大利亚于2025年12月10日起强制禁止16岁以下未成年人使用Ti",
+      "summary": "【标题-来源】：从澳大利亚到欧洲，多国采取措施限制儿童社交媒体访问-路透社 澳大利亚于2025年12月10日起强制禁止16岁以下未成年人使用TikTok、YouTube、Instagram和Facebook等社交平台，成为全球首个实施此类禁令的国家。违规企业将面临最高4950万澳元（3490万美元）罚款。英国首相基尔·斯塔默6月15日表示，计划在圣诞节前批准16岁以下社交媒体禁令，预计2027年春季生效。该国还要求苹果和谷歌等科技公司开发阻止未成年人传播裸照的技术方案。 中国实施了设备级\"未成年模式\"，根据年龄限制屏幕时间。丹麦2023年11月宣布禁止15岁以下儿童使用社交媒体，13岁以上需父母许可。法国国民议会2024年1月批准禁止15岁以下儿童使用社交媒体的法案。德国要求13-16岁未成年人需父母同意才能使用社交媒体。希腊政府2月3日表示将禁止15岁以下儿童使用社交媒体。 印度1月有官员呼吁实施年龄限制，果阿邦考虑效仿澳大利亚禁令。意大利要求14岁以下注册社交媒体需父母许可。马来西亚6月1日起禁止16岁以下注册社交账号。挪威2024年提议将使用社交媒体的最低年龄从13岁提高到15岁。波兰执政党2月27日称正制定法案禁止15岁以下儿童使用社交媒体。斯洛文尼亚副总理2月6日表示拟立法禁止15岁以下儿童访问社交媒体。西班牙首相2月宣布将禁止16岁以下未成年人使用社交媒体。瑞典政府委员会6月2日建议设置15岁的最低年龄限制。土耳其4月24日立法禁止15岁以下儿童使用社交媒体。 https://www.reuters.com/legal/government/australia-europe-countries-move-curb-childrens-social-media-access-2026-06-15/。",
+      "published_at": "2026-06-15T00:03:28.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "路透社",
+        "政策",
+        "重要"
+      ],
+      "category": "政策"
+    },
+    {
+      "id": "e452866cdfecc0cd0eb62df0b3a77d5ed3f93884",
+      "dedupe_key": "tradealpha:586566",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "Trump Truth",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "The Dumocrats want FISA because that's what they used to go after me for three years during my First Term! I'm against FISA if it doesn't come with The Save America Act (Full version!) firmly attached to it. MAKE AMERICA GREAT AGAIN! THE SAVE AMERICA ACT!1. ALL VOTERS MUST SHOW PHOTO I.D. (IDENTIFICATION!).2. ALL VOTERS MUST SHOW PROOF OF CITIZENSHIP.3. NO MAIL-IN BALLOTS (EXCEPT FOR ILLNESS, DISABILITY, MILITARY, OR TRAVEL!).4. NO MEN IN WOMEN'S SPORTS.5. NO TRANSGENDER MUTILIZATION SURGERY FOR OUR CHILDREN.Thank you for your attention to this matter! President DONALD J. TRUMP\n假民主党人想要《外国情报监视法案》，因为这就是他们在我的第一个任期内用了整整三年时间来对付我的东西！如果不附带完整的《拯救美国法案》，我会坚决反对FISA法案！让美国再次伟大！《拯救美国法案》核心条款：1. 所有选民必须出示带照片身份证明！2. 所有选民必须出示公民身份证明！3. 取消邮寄选票（军人、病患、残障人士及旅行人士除外）！4. 禁止男性参加女子运动项目！5. 严禁为未成年人实施变性残割手术！敬请关注！唐纳德·J·特朗普总统",
+      "title": "The Dumocrats want FISA because that's what they used to go after me for",
+      "summary": "The Dumocrats want FISA because that's what they used to go after me for three years during my First Term! I'm against FISA if it doesn't come with The Save America Act (Full version!) firmly attached to it. MAKE AMERICA GREAT AGAIN! THE SAVE AMERICA ACT!1. ALL VOTERS MUST SHOW PHOTO I.D. (IDENTIFICATION!).2. ALL VOTERS MUST SHOW PROOF OF CITIZENSHIP.3. NO MAIL-IN BALLOTS (EXCEPT FOR ILLNESS, DISABILITY, MILITARY, OR TRAVEL!).4. NO MEN IN WOMEN'S SPORTS.5. NO TRANSGENDER MUTILIZATION SURGERY FOR OUR CHILDREN.Thank you for your attention to this matter! President DONALD J. TRUMP 假民主党人想要《外国情报监视法案》，因为这就是他们在我的第一个任期内用了整整三年时间来对付我的东西！如果不附带完整的《拯救美国法案》，我会坚决反对FISA法案！让美国再次伟大！《拯救美国法案》核心条款：1. 所有选民必须出示带照片身份证明！2. 所有选民必须出示公民身份证明！3. 取消邮寄选票（军人、病患、残障人士及旅行人士除外）！4. 禁止男性参加女子运动项目！5. 严禁为未成年人实施变性残割手术！敬请关注！唐纳德·J·特朗普总统。",
+      "published_at": "2026-06-14T23:57:03.000Z",
+      "imported_at": "2026-06-16T01:57:24.768Z",
+      "tags": [
+        "Trump Truth",
+        "政策",
+        "很重要"
+      ],
+      "category": "政策"
+    },
+    {
+      "id": "330350ccd18469cfe34d703160ea3660e31d76cc",
+      "dedupe_key": "tradealpha:586597",
+      "source_type": "tradealpha",
+      "summary_engine": "source",
+      "source_name": "路透社",
+      "handle": "TradeAlpha",
+      "profile_url": "https://alpha.lxaa.top/#/home",
+      "original_url": null,
+      "original_text": "澳大利亚首富莱因哈特10亿美元入股SpaceXIPO-路透社\n墨尔本6月15日电（路透社）——据《华尔街日报》周一援引知情人士报道，澳大利亚首富、矿业巨头吉娜·莱因哈特斥资超过10亿美元入股SpaceX创纪录的750亿美元IPO（SPCX.O）。汉考克勘探公司未证实其在马斯克SpaceX的具体持股规模，但莱因哈特声明表示：\"这是汉考克的重要投资，我们很高兴在如此极受欢迎且超额认购的IPO中获得配股。\"\n莱因哈特赞扬马斯克创建了两家全球前十的公司。\"我们认为SpaceX是罕见的企业：由真正卓越的领导者掌舵、技术顶尖、运营领域关键且具有长期潜力，\"其财富源自汉考克勘探公司铁矿石业务的莱因哈特表示。作为关键矿产项目的重要投资者，汉考克计划与SpaceX合作供应矿产需求。\n汉考克CEO加里·科特在声明中指出：\"随着支撑先进技术的材料和基础设施需求增长，未来我们还可能达成SpaceX与汉考克重大关键矿产投资间的互利协议。\"该公司是美国MP材料、Rare Earths Americas（REA.A）及澳大利亚Lynas Rare Earths（LYC.AX）等稀土企业的重要投资人。\n本月文件显示，汉考克今年在33亿美元的美国资产组合中增加了国防、黄金和稀土持仓。莱因哈特对SpaceX的入股即时获利，该公司股票上周五首日上市飙升19%，估值突破2万亿美元成为美国第六大企业。\n莱因哈特同时称颂马斯克通过特朗普政府的政府效率部（DOGE）削减联邦职位是爱国之举。\"SpaceX再次印证世界需要更多企业精神、更多建设者而非官僚，\"她表示。汉考克持有美国MP材料、Rare Earths Americas（REA.A）、澳大利亚Lynas Rare Earths（LYC.AX）及锂生产商Liontown Resources（LTR.AX）等多家企业股权。\n报道作者：梅兰妮·伯顿；编辑：索纳利·保罗\nhttps://www.reuters.com/business/media-telecom/australias-richest-person-rinehart-takes-1-billion-stake-spacex-ipo-wsj-reports-2026-06-15/",
+      "title": "澳大利亚首富莱因哈特10亿美元入股SpaceXIPO-路透社 墨尔本6月15日电（路透社）——据《华尔街日报》周一援引知情人士报道，澳大利亚首富",
+      "summary": "澳大利亚首富莱因哈特10亿美元入股SpaceXIPO-路透社 墨尔本6月15日电（路透社）——据《华尔街日报》周一援引知情人士报道，澳大利亚首富、矿业巨头吉娜·莱因哈特斥资超过10亿美元入股SpaceX创纪录的750亿美元IPO（SPCX.O）。汉考克勘探公司未证实其在马斯克SpaceX的具体持股规模，但莱因哈特声明表示：\"这是汉考克的重要投资，我们很高兴在如此极受欢迎且超额认购的IPO中获得配股。\" 莱因哈特赞扬马斯克创建了两家全球前十的公司。\"我们认为SpaceX是罕见的企业：由真正卓越的领导者掌舵、技术顶尖、运营领域关键且具有长期潜力，\"其财富源自汉考克勘探公司铁矿石业务的莱因哈特表示。作为关键矿产项目的重要投资者，汉考克计划与SpaceX合作供应矿产需求。 汉考克CEO加里·科特在声明中指出：\"随着支撑先进技术的材料和基础设施需求增长，未来我们还可能达成SpaceX与汉考克重大关键矿产投资间的互利协议。\"该公司是美国MP材料、Rare Earths Americas（REA.A）及澳大利亚Lynas Rare Earths（LYC.AX）等稀土企业的重要投资人。 本月文件显示，汉考克今年在33亿美元的美国资产组合中增加了国防、黄金和稀土持仓。莱因哈特对SpaceX的入股即时获利，该公司股票上周五首日上市飙升19%，估值突破2万亿美元成为美国第六大企业。 莱因哈特同时称颂马斯克通过特朗普政府的政府效率部（DOGE）削减联邦职位是爱国之举。\"SpaceX再次印证世界需要更多企业精神、更多建设者而非官僚，\"她表示。汉考克持有美国MP材料、Rare Earths Americas（REA.A）、澳大利亚Lynas Rare Earths（LYC.AX）及锂生产商Liontown Resources（LTR.AX）等多家企业股权。 报道作者：梅兰妮·伯顿；编辑：索纳利·保罗 https://www.reuters.com/business/media-telecom/australias-richest-person-rinehart-takes-1-billion-stake-spacex-ipo-wsj-reports-2026-06-15/。",
+      "published_at": "2026-06-14T23:51:04.000Z",
+      "imported_at": "2026-06-16T01:57:24.767Z",
+      "tags": [
+        "路透社",
+        "公司",
+        "重要"
+      ],
+      "category": "公司"
+    },
+    {
       "id": "0dcdae53802716375b280f0b2bb442972f10afad",
       "dedupe_key": "x:fabknowledge:2066272490821738530",
       "source_type": "x",
@@ -903,26 +2127,26 @@
       "category": "半导体行业"
     },
     {
-      "id": "e180d683b908214c38a90a27cb487c50d3963c2e",
-      "dedupe_key": "x:SKundojjala:2066270360278794588",
+      "id": "95e9de6d1b8c89ccc82de9f556b7bb58eed96148",
+      "dedupe_key": "x:dylan522p:2066270360278794588",
       "source_type": "x",
       "summary_engine": "deepseek",
-      "source_name": "Sravan Kundojjala",
-      "handle": "SKundojjala",
-      "profile_url": "https://x.com/SKundojjala",
+      "source_name": "Dylan Patel",
+      "handle": "dylan522p",
+      "profile_url": "https://x.com/dylan522p",
       "original_url": "https://x.com/dylan522p/status/2066270360278794588",
       "original_text": "Excited to announce the SemiAnalysis Teardown Engineering & Evaluation Lab (STEEL)\nWe have been building a state-of-the-art teardown lab in Oregon with $10s of millions Capex being spent capable of analyzing the world's most advanced and important chips and process technologies\nIs SMIC N+3's Metal Pitch Smaller than Intel 18A's?\nSMIC N+3 Node Deep Dive vs TSMC N6, TechInsights Private Equity Sale,\nSemiAnalysis Teardown Engineering & Evaluation Lab, HiSilicon Kirin 9030, Process Technology,\nPattering, Cell Architecture\nhttps://newsletter.semianalysis.com/p/steel-smic-n3-teardown…",
       "title": "SemiAnalysis斥资数千万美元建芯片拆解实验室",
-      "summary": "SemiAnalysis在俄勒冈州建设先进芯片拆解实验室STEEL，资本支出达数千万美元，用于分析最先进芯片与工艺技术。",
+      "summary": "SemiAnalysis宣布在俄勒冈州建成先进芯片拆解实验室STEEL，资本支出达数千万美元，可分析全球最先进芯片与工艺。",
       "published_at": "2026-06-14T21:23:37.000Z",
-      "imported_at": "2026-06-16T01:27:47.736Z",
+      "imported_at": "2026-06-16T01:53:53.756Z",
       "tags": [
-        "芯片",
-        "移动终端",
+        "AI",
+        "半导体",
         "半导体行业",
         "其他",
-        "半导体",
-        "实验室"
+        "芯片拆解",
+        "SemiAnalysis"
       ],
       "category": "半导体行业"
     },
