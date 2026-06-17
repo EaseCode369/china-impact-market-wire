@@ -3,11 +3,14 @@ import Link from "next/link";
 import { getLiveFeed } from "@/lib/content";
 import type { LiveFeedItem } from "@/lib/content-schema";
 
+const CHINA_TIME_ZONE = "Asia/Shanghai";
+
 function formatDay(dateString: string) {
   return new Intl.DateTimeFormat("zh-CN", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
+    timeZone: CHINA_TIME_ZONE,
   }).format(new Date(dateString));
 }
 
@@ -16,6 +19,7 @@ function formatTime(dateString: string) {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
+    timeZone: CHINA_TIME_ZONE,
   }).format(new Date(dateString));
 }
 
@@ -104,7 +108,7 @@ export default function LivePage() {
             <p className="brand-kicker">Status</p>
             <h2 className="section-title">抓取状态</h2>
             <p className="news-card-summary">当前展示 {feed.count} 条高盛内参快讯。</p>
-            <p className="news-card-summary">最近生成时间：{formatDay(feed.generatedAt)} {formatTime(feed.generatedAt)}</p>
+            <p className="news-card-summary">最近生成时间（北京时间）：{formatDay(feed.generatedAt)} {formatTime(feed.generatedAt)}</p>
           </div>
 
           {feed.warnings.length > 0 ? (
